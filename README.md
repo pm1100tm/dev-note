@@ -15,5 +15,6 @@ easy to access and understand.
 
 ## 🎮 TODO
 
-- term-and-concept
-  - [ ] cors
+- Database
+- React
+- Nest.js
