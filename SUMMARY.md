@@ -10,3 +10,10 @@
   - [Docker Network](/docker/f.docker-network.md)
   - [Dockerfile Layer](/docker/g.dockerfile-layer.md)
   - [Docker Login](/docker/zetc.docker-login.md)
+
+- [Term-And-Concept]
+
+  - [CORS](/term-and-concept/cors.md)
+
+- [ETC]
+  - [slow-vscode](/etc/slow-vscode.md)

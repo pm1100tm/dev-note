@@ -5,10 +5,15 @@ resolutions that occurs during the devlopment of a project, as well as other
 useful information. It helps keep all development-realted records organized and
 easy to access and understand.
 
-## 🎮 TODO
-
-- [ ] Docker and docker-compose
-
 ## 📚 Contents List
 
-- [ ] Docker and docker-compose
+- [x] Docker
+- [x] Term-And-Concept
+  - [x] CORS
+- [x] etc
+  - [x] slow-vscode
+
+## 🎮 TODO
+
+- term-and-concept
+  - [ ] cors

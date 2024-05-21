@@ -12,8 +12,6 @@ Login Succeeded
 
 Logging in with your password grants your terminal complete access to your account.
 For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
-
-#
 ```
 
 > 📚 로그인한 패스워드 정보는 ~/.docker/config.json에 저장된다.
