@@ -11,10 +11,10 @@
   - [Dockerfile Layer](/docker/g.dockerfile-layer.md)
   - [Docker Login](/docker/zetc.docker-login.md)
 
-- [Term-And-Concept]
+- [Term-And-Concept](/term-and-concept/README.md)
 
   - [CORS](/term-and-concept/cors.md)
 
-- [ETC]
+- [ETC](/etc/README.md)
 
   - [slow-vscode](/etc/slow-vscode.md)
