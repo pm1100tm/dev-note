@@ -18,3 +18,4 @@ easy to access and understand.
 - Database
 - React
 - Nest.js
+- 테스트 설계 기법(mock vs stub)
