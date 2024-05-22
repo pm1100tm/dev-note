@@ -9,7 +9,18 @@ easy to access and understand.
 
 - [x] Docker
 - [x] React
-  - [x] react development env setting
+  - [x] Setting to create React Project
+  - [x] JSX
+  - [ ] Virtual DOM
+  - [ ] Re-rendering
+  - [ ] React Hooks
+    - [ ] useState
+    - [ ] useEffect
+    - [ ] useMemo
+    - [ ] useCallback
+    - [ ] useReducer
+    - [ ] useSyncExternalStore
+  - [ ] React Router
 - [x] Term-And-Concept
   - [x] CORS
 - [x] etc

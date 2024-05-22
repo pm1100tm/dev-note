@@ -5,4 +5,15 @@ you'll find a collection of study notes, best practices, and problem-solving tec
 you're a beginner or an experienced developer, this section aims to provide
 valuable insights and resources to enhance your React development skills.
 
-- [x] react-dev-env-setting
+- [x] Setting to create React Project
+- [x] JSX
+- [ ] Virtual DOM
+- [ ] Re-rendering
+- [ ] React Hooks
+  - [ ] useState
+  - [ ] useEffect
+  - [ ] useMemo
+  - [ ] useCallback
+  - [ ] useReducer
+  - [ ] useSyncExternalStore
+- [ ] React Router
