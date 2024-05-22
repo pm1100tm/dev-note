@@ -11,7 +11,8 @@ easy to access and understand.
 - [x] Term-And-Concept
   - [x] CORS
 - [x] etc
-  - [x] slow-vscode
+  - [x] how to solve that vscode too slow
+  - [x] manage node version using fnm
 
 ## 🎮 TODO
 

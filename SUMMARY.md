@@ -17,4 +17,5 @@
 
 - [ETC](/etc/README.md)
 
-  - [slow-vscode](/etc/slow-vscode.md)
+  - [how to solve that vscode too slow](/etc/aaa.slow-vscode.md)
+  - [manage node version using fnm](/etc/aab.fnm.md)

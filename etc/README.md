@@ -2,4 +2,5 @@
 
 Post all about information for develoment.
 
-- [x] slow-vscode
+- [x] how to solve that vscode too slow
+- [x] manage node version using fnm
