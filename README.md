@@ -29,7 +29,13 @@ easy to access and understand.
 
 ## 🎮 TODO
 
+- Python
+- TypeScript
 - Database
+  - indexing
+  - cursor
 - React
 - Nest.js
+- Pytest
+- Jest
 - 테스트 설계 기법(mock vs stub)
