@@ -21,6 +21,9 @@ easy to access and understand.
     - [ ] useReducer
     - [ ] useSyncExternalStore
   - [ ] React Router
+- [x] Database
+  - [x] PostgreSQL
+    - [x] install
 - [x] Term-And-Concept
   - [x] CORS
 - [x] etc
