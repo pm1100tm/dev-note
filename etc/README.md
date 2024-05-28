@@ -2,5 +2,6 @@
 
 Post all about information for develoment.
 
-- [x] how to solve that vscode too slow
-- [x] manage node version using fnm
+- [x] What is JSON
+- [x] Manage node version using fnm
+- [x] How to solve that vscode too slow

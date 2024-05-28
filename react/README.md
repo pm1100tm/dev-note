@@ -17,3 +17,8 @@ valuable insights and resources to enhance your React development skills.
   - [ ] useReducer
   - [ ] useSyncExternalStore
 - [ ] React Router
+- [x] ETC. fnm
+
+- Deep learning
+  - React가 Virtual DOM을 사용하여 DOM을 조작하는 방식
+  - React Rerendering 될 때

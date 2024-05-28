@@ -23,6 +23,7 @@
 
   - [Setting to create React Project](/react/aaa.react-dev-env-setting.md)
   - [JSX](/react/aab.jsx.md)
+  - [Virtual DOM](/react/aac.virtual-dom.md)
 
 - [Term-And-Concept](/term-and-concept/README.md)
 
@@ -30,5 +31,6 @@
 
 - [ETC](/etc/README.md)
 
-  - [how to solve that vscode too slow](/etc/aaa.slow-vscode.md)
-  - [manage node version using fnm](/etc/aab.fnm.md)
+  - [What is JSON](/etc/aaa.json.md)
+  - [Manage node version using fnm](/etc/aab.fnm.md)
+  - [How to solve that vscode too slow](/etc/aac.slow-vscode.md)
