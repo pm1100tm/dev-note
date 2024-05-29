@@ -6,4 +6,5 @@ encountered while handling database.
 - [x] install
 - [x] command
 - [x] ddl
-- [x] copy
+- [x] copy command
+- [x] data type

@@ -18,6 +18,7 @@
     - [Basic Command](/database/postgresql/02.command.md)
     - [DDL](/database/postgresql/03.ddl.md)
     - [Copy Database](/database/postgresql/04.copy.md)
+    - [Data Type](/database/postgresql/05.data-type.md)
 
 - [React](/react/README.md)
 
