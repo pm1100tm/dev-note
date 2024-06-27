@@ -7,6 +7,7 @@ easy to access and understand.
 
 ## 📚 Contents List
 
+- [x] Python
 - [x] Docker
 - [x] React
   - [x] Setting to create React Project
@@ -41,4 +42,4 @@ easy to access and understand.
 - Nest.js
 - Pytest
 - Jest
-- 테스트 설계 기법(mock vs stub)
+- 테스트 설계 기법

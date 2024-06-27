@@ -1,5 +1,10 @@
 # Summary
 
+- [Python](/python/README.md)
+
+  - [heapq 모듈](./python/heapq.md)
+  - [리스트 요소의 중복 제거에는 set 을 사용하자](./python/중복제거는set을선호하자.md)
+
 - [Docker](/docker/README.md)
 
   - [Docker](/docker/a.docker.md)
