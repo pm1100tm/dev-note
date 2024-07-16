@@ -1,5 +1,9 @@
 # Summary
 
+- [Algorithms](/algorithms/README.md)
+
+  - [LRU cache](./algorithms/LRU_cache.md)
+
 - [Python](/python/README.md)
 
   - [heapq 모듈](./python/heapq.md)
