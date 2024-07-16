@@ -4,6 +4,7 @@
 
   - [heapq 모듈](./python/heapq.md)
   - [리스트 요소의 중복 제거에는 set 을 사용하자](./python/중복제거는set을선호하자.md)
+  - [딕셔너리 get 메서드와 in 연산자의 속도와 차이점](./python/딕셔너리_get과_in의차이점.md)
 
 - [Docker](/docker/README.md)
 
