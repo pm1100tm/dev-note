@@ -58,4 +58,4 @@ note-template.md
 play.ts
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
-java/
+ig_*

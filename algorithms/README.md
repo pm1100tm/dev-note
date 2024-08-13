@@ -4,4 +4,7 @@
 
 ## 목차
 
-1. [LRU_cache](./LRU_cache.md)
+1. [data - LRU_cache](./data_lru_cache.md)
+2. [data - MultiSet](./data_multiset.md)
+3. [algo - Array](./algo_array.md)
+4. [algo - Greedy](./algo_greedy.md)

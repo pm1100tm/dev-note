@@ -2,7 +2,14 @@
 
 - [Algorithms](/algorithms/README.md)
 
-  - [LRU cache](./algorithms/LRU_cache.md)
+  - [data - LRU cache](./algorithms/data_lru_cache.md)
+  - [data - MultiSet](./algorithms/data_multiset.md)
+  - [algo - Array](./algorithms/algo_array.md)
+  - [algo - Greedy](./algorithms/algo_greedy.md)
+
+- [Java](/java/README.md)
+
+  - []
 
 - [Python](/python/README.md)
 
