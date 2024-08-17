@@ -102,3 +102,48 @@ public class Person {
   - Name
   - 모듈 선택: ex) demo.main
   - 메인 클래스 선택
+
+## Code Style 적용
+
+### 네이버 코딩 컨텐션 적용하기
+
+- naver-intellij-formatter.xml 다운로드
+  - [hackday-conventions-java](https://github.com/naver/hackday-conventions-java/tree/master/rule-config)
+  - rule-config -> naver-intellij-formatter.xml 다운로드
+- File -> Setting -> Editor -> Code Style > Java -> Scheme 항목의 오른쪽 톱니바퀴
+  -> Import Scheme -> IntelliJ IDEA Code Style XML 에서 다운받은 formmter 적용
+- 그 후, Command + Option + L 로 지정한 코드 스타일에 맞게 자동으로 코드가 수정되는 것 확인
+- 파일의 마지막 줄에 빈줄이 반드시 생성되도록 설정
+  - IntelliJ IDEA > Setting > Editor > General ->
+    Ensure every saved file ends with a line break 옵션 체크
+- 코드 저장시 자동으로 Formatter가 동작하도록 설정
+  - IntelliJ IDEA -> Setting -> Tools > Actions on Save
+    - Reformat code, Optimize imports 체크하고 OK 선택하여 설정 적용
+
+### Gradle에서 Checkstyle 플러그인 설정
+
+- naver-checkstyle-rules.xml, naver-checkstyle-suppressions.xml 다운로드
+- 위에서 다운받은 파일을 프로젝트 루트 폴더에 위치
+- build.gradle 파일에 아래와 같이 Java Plugin 속성으로 인코딩 지정 및 checkstyle 추가
+
+```plain
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'checkstyle' // 추가
+}
+
+compileJava.options.encoding = 'UTF-8' // 추가
+compileTestJava.options.encoding = 'UTF-8' // 추가
+
+// 추가
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail 을 내고 싶다면 이 선언을 추가한다.
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+    toolVersion = "8.24"  // checkstyle 버전 8.24 이상 선언
+}
+```
+
+- ![code-style-in-gradle](./assets/code-style-in-gradle.png)
