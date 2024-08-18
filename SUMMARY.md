@@ -9,7 +9,9 @@
 
 - [Java](/java/README.md)
 
-  - []
+  - [1. Java 환경설정](./java/실습001_환경설정.md)
+  - [2. SpringBoot 프로젝트 생성](./java/실습002_프로젝트만들기_spring_boot.md)
+  - [3. H2DB 설정](./java/실습003_H2DB.md)
 
 - [Python](/python/README.md)
 
