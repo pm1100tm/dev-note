@@ -5,6 +5,14 @@
 
 ## 목차
 
+### 실습
+
 1. [기초-JVM](./기초_JVM.md)
 2. [환경설정](./실습001_환경설정.md)
 3. [프로젝트 만들기 - Spring Boot](./실습002_프로젝트만들기_spring_boot.md)
+
+### 이론
+
+1. [Spring 관련 프로젝트 소개](./이론001_스프링_프로젝트_소개.md)
+2. [JDBC DataSource](./이론002_JDBC_DataSource.md)
+3. [Transaction](./이론003_트랜잭션.md)
