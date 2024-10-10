@@ -29,7 +29,7 @@
 
 ### docker-compose up [options] [SERVICE...]
 
-컴포즈 파일을 기바능로 컨테이너를 빌드하고 실행한다.
+컴포즈 파일을 기반으로 컨테이너를 빌드하고 실행한다.
 
 - -f, --file: 파일 경로 지정
   - docker compose -f /path/to/docker-compose.yml up

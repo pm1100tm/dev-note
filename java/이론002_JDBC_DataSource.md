@@ -93,3 +93,99 @@ dependencies {
   testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 ```
+
+### 초기화
+
+src/main/resources 디렉토리 아래에 schema.sql, data.sql 라는 파일을 생성해두고 아래의 옵션을
+주면 스프링부트가 시작될 때, 해당 쿼리를 실행하여 테이블 생성 및 데이터 insert 를 실행한다.
+
+```properties
+spring.sql.init.mode=always
+```
+
+파일을 폴더링하고 위치를 지정하고 싶을 떄는, 파일 위치를 지정하는 속성을 정의한다.
+
+```yml
+spring:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema/*.sql
+      data-locations: classpath:sql/data/*.sql
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/study
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10 # 커넥션 풀의 최대 연결 수
+      minimum-idle: 5 # 최소 유휴 커넥션 수
+      idle-timeout: 30000 # 유휴 커넥션을 유지할 시간
+      max-lifetime: 180000 # 커넥션의 최대 생명주기
+      connection-timeout: 30000
+
+server:
+  port: 9000
+```
+
+![spring-sql-init](./assets/spring-sql-init.png)
+
+### DataSourceConfig 클래스 만들기
+
+```java
+package com.javaspringstudy.com.javaspringstudy.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+import jakarta.annotation.PostConstruct;
+
+@Configuration
+public class DataSourceConfig {
+
+  private final DataSourceProperties dataSourceProperties;
+
+  // Constructor injection of DataSourceProperties
+  public DataSourceConfig(DataSourceProperties dataSourceProperties) {
+    this.dataSourceProperties = dataSourceProperties;
+  }
+
+  // Load properties under "spring.datasource" prefix
+  @Bean
+  @ConfigurationProperties("spring.datasource")
+  public DataSourceProperties dataSourceProperties() {
+    return new DataSourceProperties();
+  }
+
+  // Create a DataSource using the properties loaded
+  @Bean
+  public DataSource dataSource() {
+    return dataSourceProperties().initializeDataSourceBuilder().build();
+  }
+
+  @Bean
+  public DataSourceTransactionManager transactionManager(DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+  }
+
+  // PostConstruct 는 Java EE 와 Jakarta EE 에서 제공하는 어노테이션이다.
+  // javax.annotation 패키지에서 제공
+  // 빈이 초기화된 후 애플리케이션에서 사용되기 전에 실행되어야 하는 메서드를 표시하는데 사용된다.
+  // 여기서는 datasource 설정이 yml 파일에서 정상적으로 설정이 되었는지 확인하는 용도로 사용되었다.
+  @PostConstruct
+  public void printDataSourceInfo() {
+    // 확인용 코드. PRD 를 만들 시 코드 삭제 필요
+    System.out.println("====================================");
+    System.out.println("DataSource URL: " + dataSourceProperties.getUrl());
+    System.out.println("DataSource Username: " + dataSourceProperties.getUsername());
+    System.out.println("DataSource Driver Class Name: " + dataSourceProperties.getDriverClassName());
+    System.out.println("====================================");
+  }
+}
+```
