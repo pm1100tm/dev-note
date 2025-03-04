@@ -81,6 +81,9 @@
 
 - [ETC](/etc/README.md)
 
-  - [What is JSON](/etc/aaa.json.md)
-  - [Manage node version using fnm](/etc/aab.fnm.md)
-  - [How to solve that vscode too slow](/etc/aac.slow-vscode.md)
+  - [001. What is JSON](/etc/etc001_json.md)
+  - [002. Manage node version using fnm](/etc/etc002_fnm.md)
+  - [003. How to solve that vscode too slow](/etc/etc003_slow_vscode.md)
+  - [004. Local IP란?](/etc/etc004_local_ip.md)
+  - [005. NAT IP란?](/etc/etc005_nat_ip.md)
+  - [006. Java 에서 Local IP 와 NAT IP validation 그리고 Testcode](/etc/etc006_Java에서%20Local%20IP%20&%20NAT%20IP%20검증%20코드.md)
