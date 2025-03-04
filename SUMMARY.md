@@ -57,6 +57,7 @@
   - [JPA - Transient](./05_java/jpa/entity-annotation-transient.md)
   - [JPA - JPA 엔티티의 Detached 상태가 되는 경우](./05_java/jpa/JPA%20엔티티의%20Detached%20상태가%20되는%20경우.md)
   - [JPA - 🚀 StaleObjectStateException 이 발생한다면](./05_java/jpa/StaleObjectStateException%20이%20발생한다면.md)
+  - [Jenkins - 🚀 로컬에서 jenkins 연동하기](./05_java/jenkins/jenkins001_로컬에서%20jenkins%20연동하기.md)
 
 - [Python](/06_python/README.md)
 
