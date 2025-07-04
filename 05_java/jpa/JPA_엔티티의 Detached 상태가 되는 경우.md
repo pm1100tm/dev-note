@@ -136,4 +136,3 @@ public void process(String userId, String newLocalIp) {
 |Managed (영속, Persistent)|JPA가 관리하는 상태|
 |Detached (준영속, Detached)|트랜잭션 종료 후 관리되지 않는 상태|
 |Removed (삭제, Removed)|삭제된 상태|
-
