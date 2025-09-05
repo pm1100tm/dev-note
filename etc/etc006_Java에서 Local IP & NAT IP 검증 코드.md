@@ -7,6 +7,7 @@
 ✔️ Java & Spring Boot에서 정규식 검증 적용 가능
 
 ## Validation code
+
 ```java
 import java.util.regex.Pattern;
 
@@ -37,6 +38,7 @@ public class IPValidator {
 ```
 
 ## Test code
+
 ```groovy
 import spock.lang.Specification
 import spock.lang.Unroll

@@ -11,7 +11,7 @@ containers, and examples of their use in real-world projects.
 - [x] b. docker-cli
 - [x] c. dockerfile-syntax
 - [x] d. docker-compose-syntax
-- [x] e. expose vs ports
-- [x] f. docker-network
+- [x] e. docker-network
+- [x] f. expose vs ports
 - [x] g. dockerfile-layer
 - [x] etc. docker-login

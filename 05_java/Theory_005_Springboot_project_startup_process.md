@@ -1,4 +1,4 @@
-# 이론005_Springboot_project_startup_process - Springboot 프로젝트 구동 과정
+# Springboot_project_startup_process - Springboot 프로젝트 구동 과정
 
 Spring Boot 애플리케이션이 실행될 때 내부에서 어떤 일이 일어나는지 순서대로 정리합니다.
 
