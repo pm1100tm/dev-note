@@ -4,7 +4,7 @@ CI/CD 구축 방법에 대한 노트
 
 ---
 
-- [x] 1. CoreService(VPC,EC2,ELB)
+- 1. [cicd_github_action.md](./cicd_github_action.md)
 - [ ]
 - [ ]
 - [ ]

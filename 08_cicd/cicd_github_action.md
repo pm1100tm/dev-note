@@ -75,3 +75,7 @@ jobs:
 
 ![Action 성공 화면1](./assets/github-action_02.png)
 ![Action 성공 화면2](./assets/github-action_03.png)
+
+## TODO
+
+이 작업에 CD 는 포함되지 않아, 다음에는 AWS EC2 Instance 를 생성하여, CI/CD 작업을 해보겠습니다.
