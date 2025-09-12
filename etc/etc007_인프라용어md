@@ -12,3 +12,8 @@ Tibero
 GitLab vs Github
 nginx 인증서 갱신
 FWS 프로그램
+
+known_host
+known_hosts.old
+
+.ssh 에 config 만들기
