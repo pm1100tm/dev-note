@@ -10,10 +10,11 @@
 
 ```plain
 📚 t3.medium 타입 이상이 필요한 이유
-- 지금 여기서는 Jenkins 와 Java 를 Docker Image 를 사용하여 배포하는 것이 목적합니다.
+- 지금 여기서는 Jenkins 와 Java 를 Docker Continer 로 띄우는 것이 목적입니다.
 - 일단 Docker 를 설치하고 실행하게 되면, 1GB 의 메모리는 부족합니다.
-- t3.micro 또는 t3.small 타입은 1GB 의 메모리 밖에 주어지지 않습니다.
-- 실제로 Jenkins UI 가 매우 느렸으며, 수시로 서버가 죽는 현상을 경험하였습니다.
+- t3.micro 또는 t3.small 타입의 메모리는 1GB 입니다.
+- t3.micro 와 t3.small 타입은, Jenkins UI 가 매우 느렸으며, 수시로 서버가 죽는 현상을
+  경험하였습니다. 특히 Jenkins 의 경우 컨테이너로 띄우는 경우, 최소 4기가의 램이 있어야 합니다.
 ```
 
 ### 보안 그룹 설정
@@ -35,6 +36,8 @@
 > 📚 EIP 는 인스턴스와 연결 중일 때는 한 개 까지 무료이며, 연결되지 않은 상태로 두면 요금 부과
 
 ## 2️⃣ Jenkins 서버에 기본 환경 설치 (EC2 #1)
+
+Jenkins 와 개발 서버에 대한 EC2는 Ubuntu 24 버전 이미지를 사용하여 생성하였습니다.
 
 SSH 접속 후 Docker & Compose 설치:
 
