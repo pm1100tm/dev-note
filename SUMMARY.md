@@ -82,6 +82,12 @@
 
   - [CORS](/term-and-concept/cors.md)
 
+- [CI/CD](/08_cicd/README.md)
+
+  - [GitHub Action](/08_cicd/cicd_github_action.md)
+  - [Jenkins](/08_cicd/cicd_jenkins_docker_aws_ec2.md)
+  - [Jenkins Performance Issue](/08_cicd/cicd_jenkins_on_ec2_performance_issue.md)
+
 - [ETC](/etc/README.md)
 
   - [001. What is JSON](/etc/etc001_json.md)

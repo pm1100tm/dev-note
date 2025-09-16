@@ -25,14 +25,17 @@ Github Repository 의 Actions 탭에서 관련 파일을 만들어 설정할 수
 돌아가도록 하였으며, [컴파일 → 빌드 → 테스트] 과정이 정상적으로 수행되는지 검증합니다.
 
 ```yml
-name: PR - Build & Test # 워크플로우 명(Actions 탭에 표시)
+name: PR - Build & Test To develop # 워크플로우 명(Actions 탭에 표시)
 
 on:
+  push:
+    branches:
+      - develop
   pull_request:
     #    branches-ignore:
     #      - 'feature/**'
     branches:
-      - main
+      - develop
       # - 'feature/**' # feature/* 브랜치로 PR 올릴 때 실행
       # - 'fix/**'     # fix/* 브랜치로 PR 올릴 때 실행
 
@@ -49,8 +52,8 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4 # GitHub 제공 JDK 설치 액션
         with:
-          java-version: '21' # 설치할 자바 버전
-          distribution: 'corretto' # JDK 배포판(temurin / corretto 가능)
+          java-version: '21'        # 설치할 자바 버전
+          distribution: 'corretto'  # JDK 배포판(temurin / corretto 가능)
 
       # 3) Gradle 캐시 설정(빌드 속도 향상)
       - name: Setup Gradle
@@ -69,9 +72,13 @@ jobs:
 그 후의 작업은 아래와 같습니다.
 
 - git push origin feature/github-action
-- pull request [feature/github-action] to [main]
+- pull request [feature/github-action] to [develop]
 
-이렇게 하면, main 브랜치에 대해서 pull requset 를 생성할 때 GitHub Action 작업이 수행됩니다.
+이렇게 하면,
+
+- develop 브랜치에 pull requset 를 생성할 때,
+- develop 브랜치에 push 를 할 때,
+GitHub Action 작업이 수행됩니다.
 
 ![Action 성공 화면1](./assets/github-action_02.png)
 ![Action 성공 화면2](./assets/github-action_03.png)
