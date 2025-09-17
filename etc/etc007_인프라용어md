@@ -17,3 +17,7 @@ known_host
 known_hosts.old
 
 .ssh 에 config 만들기
+
+OSI 7 계층
+
+ngrok 설정
