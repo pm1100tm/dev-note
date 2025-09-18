@@ -43,7 +43,7 @@ git log
 
 📌 영구 적용 방법
 
-매번 컨테이너 들어가서 실행하는 게 귀찮다면, Dockerfile-app에 아래를 추가하세요:
+매번 컨테이너 들어가서 실행하는 게 귀찮다면, Dockerfile-app에 아래를 추가합니다.
 
 ```shell
 RUN git config --global --add safe.directory /app
