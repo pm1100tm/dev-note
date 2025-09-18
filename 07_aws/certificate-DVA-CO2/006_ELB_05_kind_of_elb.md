@@ -190,3 +190,21 @@ ALB 가 트래픽을 보내줄 수 있는 대상들
 - ALB (웹/앱 트래픽, 7계층)
 - NLB (초고성능, 4계층, 금융/게임)
 - GWLB (보안 장비용, 3계층)
+
+## 📌 AWS Load Balancer 종류별 지원 프로토콜
+
+| 로드 밸런서                         | 세대      | 지원 계층                     | 지원 프로토콜                            |
+| ----------------------------------- | --------- | ----------------------------- | ---------------------------------------- |
+| **CLB (Classic Load Balancer)**     | v1 (2009) | L4, L7                        | **TCP, SSL (보안 TCP), HTTP, HTTPS**     |
+| **ALB (Application Load Balancer)** | v2 (2016) | L7 (애플리케이션 계층)        | **HTTP, HTTPS, WebSocket**               |
+| **NLB (Network Load Balancer)**     | v2 (2017) | L4 (네트워크 계층, 전송 계층) | **TCP, TLS (보안 TCP), UDP**             |
+| **GWLB (Gateway Load Balancer)**    | v2 (2020) | L3 (네트워크 계층)            | **IP 패킷 (GENEVE 프로토콜, 포트 6081)** |
+
+---
+
+✅ 요약
+
+- **CLB**: 구세대, TCP/HTTP 둘 다 지원 (범용)
+- **ALB**: 웹/애플리케이션 전용 (HTTP/HTTPS/WebSocket)
+- **NLB**: 초고성능 네트워크 트래픽 (TCP/UDP/TLS)
+- **GWLB**: 보안 장비용, IP 패킷 단위 전달 (GENEVE)

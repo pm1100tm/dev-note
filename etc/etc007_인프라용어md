@@ -21,3 +21,6 @@ known_hosts.old
 OSI 7 계층
 
 ngrok 설정
+
+프로토콜
+- http, https, WebSocket, TCP, UDP
