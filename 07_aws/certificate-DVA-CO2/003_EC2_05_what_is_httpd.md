@@ -56,3 +56,60 @@ ProxyPassReverse "/" "http://localhost:8080/"
   - [1.] 정적 리소스 서빙
   - [2.] 리버스 프록시(80/443 → 8080)
   - [3.] SSL 인증서 관리
+
+---
+
+### 실습
+
+- 환경: Ubuntu 24 LTS
+
+#### 1. 설치
+
+Ubuntu에서는 httpd 대신 패키지명이 apache2입니다. (yum을 쓰는 CentOS/RHEL 계열은 httpd)
+
+```shell
+sudo apt update
+sudo apt install apache2 -y
+```
+
+#### 2. 설치 후 생성되는 주요 파일/디렉토리
+
+설치가 완료되면 기본적으로 아래 구조가 생깁니다:
+
+- 실행/서비스 관련
+  - /usr/sbin/apache2 → Apache 실행 바이너리
+  - /lib/systemd/system/apache2.service → systemd 서비스 유닛 파일 (부팅 시 자동 실행 가능)
+- 설정 파일
+  - /etc/apache2/apache2.conf → 메인 설정 파일
+  - /etc/apache2/ports.conf → 어떤 포트를 열지 정의 (기본: 80, 443)
+  - /etc/apache2/sites-available/000-default.conf → 기본 가상호스트 설정 (DocumentRoot 경로 등)
+  - /etc/apache2/sites-enabled/ → 실제 활성화된 사이트 설정 심볼릭 링크
+- 웹 루트 디렉토리
+  - /var/www/html/ → 기본 문서 디렉토리 (여기 index.html 있으면 브라우저에서 보여짐)
+- 로그 파일
+  - /var/log/apache2/access.log → 요청 로그
+  - /var/log/apache2/error.log → 에러 로그
+
+#### 3. 서비스 동작
+
+```shell
+sudo systemctl status apache2
+```
+
+출력에 active (running)이 보이면 성공적으로 동작 중입니다. 기본적으로:
+
+- 80번 포트 (HTTP) 에서 LISTEN
+- 443번 포트 (HTTPS) 는 SSL 모듈 활성화해야 동작
+- /etc/apache2/ports.conf 파일 확인
+
+```shell
+sudo lsof -i -P -n | grep LISTEN | grep apache2
+```
+
+#### 4. 외부 접속 동작 방식
+
+- 클라이언트 브라우저 → EC2 퍼블릭 IP (80포트) 요청
+- 보안 그룹에서 80번 포트가 열려 있으면 → EC2로 트래픽 전달
+- EC2 내 apache2 프로세스가 80포트를 LISTEN 중이므로 요청을 수신
+- /var/www/html/index.html 같은 파일을 찾아 클라이언트로 응답
+  - • 없으면 기본적으로 Apache2 Ubuntu Default Page 라는 안내 페이지가 뜸
