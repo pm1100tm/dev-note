@@ -17,7 +17,7 @@ ssh-keygen -t rsa -C "회사이멜주소" -f "id_rsa_<회사ID>"
 ssh-keygen -t rsa -C "개인이멜주소" -f "id_rsa_<내ID>"
 ```
 
-id_rsa_<회사ID> 와 같이, id_rsa_ 다음에 적는 ID는 구별 할 수 있도록 해줍니다.
+id*rsa*<회사ID> 와 같이, id*rsa* 다음에 적는 ID는 구별 할 수 있도록 해줍니다.
 
 이제 위의 명령어를 실행하면 아래와 같은 문구가 나오는데, 그냥 엔터를 눌러줍니다.
 
@@ -69,7 +69,7 @@ Host github.com-swd
     IdentityFile ~/.ssh/id_rsa_swd
 ```
 
-## 테스트!
+## 테스트
 
 ```bash
 ssh -T git@github.com
