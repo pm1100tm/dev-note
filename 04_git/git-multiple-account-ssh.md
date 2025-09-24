@@ -115,3 +115,35 @@ git remote set-url origin git@github.com-swd:<깃헙 ID>/repo-name.git
 ```
 
 이렇게 하여 push 하면 회사 컴퓨터에서 개인 깃헙 계정의 레포지토리로 푸시를 할 수 있습니다.
+
+### Git Clone 이 안될 때
+
+```shell
+╭─ ~/Desktop/personal/my-project ──────---───────────---──────── ✔ │ base 
+╰─ git clone git@github.com:pm1100tm/myblog-backend.git
+Cloning into 'myblog-backend'...
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+config 에 Git 계정 설정을 했음에도, 위와 같이 레포지토리 클론이 되지 않았다.
+
+- 확인해봐야 할 것
+  - git T
+
+```shell
+ssh -T git@github.com
+
+╰─ ssh -T git@github.com
+Hi swd0705Tosky! You've successfully authenticated, but GitHub does not provide
+shell access.
+```
+
+연결된 Git 계정이 나의 개인 계정이 아니었다. 따라서, clone 할 때, github.com-swd 를 사용합니다.
+
+```shell
+git clone git@github.com-swd:pm1100tm/myblog-backend.git
+```
