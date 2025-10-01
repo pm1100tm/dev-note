@@ -154,8 +154,31 @@ sudo blkid /dev/sdb
 # 출력 예:
 /dev/sdb: UUID="abcd-1234-5678-efgh" TYPE="ext4"
 
-# /etc/fstab 에 추가:
+# /etc/fstab 에 등록:
+vim /etc/fstab
+
+# 아래와 깉이 등록
 UUID=abcd-1234-5678-efgh   /mnt/disks/ssd-data   ext4    discard,defaults,nofail   0   2
+
+# 옵션 설명:
+# - discard → SSD TRIM 최적화
+# - defaults → 기본 마운트 옵션
+# - nofail → 디스크 없어도 부팅 실패하지 않음
+# -	0 2 → fsck 순서 (루트는 1, 나머지는 2)
+
+# 저장 후 재적용
+sudo mount -a
+
+# 정상 마운트 확인
+df -h | grep ssd-data
+
+# 재부팅
+sudo reboot
+
+# 재부팅 후 다시 SSH 접속해서 확인:
+df -h | grep ssd-data
+# 👉 /mnt/disks/ssd-data 가 잘 붙어 있으면 성공 🎉
+
 
 # ✅ 이후 단계
 # - /mnt/disks/ssd-data/postgres 디렉토리 생성
