@@ -5,7 +5,27 @@ DNS - Domain Name System
 사람이 읽을 수 있는 주소(example.com)를 실제 IP 주소(192.0.2.1)로 변환해주는 시스템입니다.
 이 변환을 담당하는 것이 DNS 이며, 다양한 레코드(Record) 타입으로 구성됩니다.
 
-## 🔹 1. A 레코드 (Address Record)
+## 정리 용어
+
+- DNS 레코드 관련
+
+  - A
+  - AAAA
+  - CNAME
+  - MX
+  - TXT
+  - NS
+
+- 메일 보안 기술
+
+  - SPF
+  - DKIM
+
+---
+
+## DNS 레코드 관련
+
+### 🔹 1. A 레코드 (Address Record)
 
 - 역할: 도메인 이름을 IPv4 주소(예: 123.45.67.89) 로 연결합니다.
 - 설명
@@ -20,7 +40,7 @@ example.com.   IN   A   123.45.67.89
   - Cloud Run / EC2 / Nginx 서버와 연결
   - 기본 웹사이트 주소 (@) 또는 특정 서브도메인 (api.example.com)
 
-## 🔹 2. AAAA 레코드 (Quad A Record)
+### 🔹 2. AAAA 레코드 (Quad A Record)
 
 - 역할: 도메인 이름을 IPv6 주소(예: 2001:db8::1) 로 연결합니다.
 - 설명:
@@ -34,7 +54,7 @@ example.com.   IN   AAAA   2001:db8::1
 - 주요 사용 예:
   - IPv6 지원 서버 (특히 CDN, CloudFront, Cloud DNS 등)
 
-## 🔹 3. CNAME 레코드 (Canonical Name Record)
+### 🔹 3. CNAME 레코드 (Canonical Name Record)
 
 - 역할: 하나의 도메인 이름을 다른 도메인 이름에 별칭으로 연결합니다.
 - 설명:
@@ -52,7 +72,7 @@ www.example.com. IN CNAME example.com.
   - Cloud Run, GitHub Pages, Netlify, Vercel, Firebase Hosting 연결 시
   - 서브도메인을 특정 호스팅 서비스로 연결할 때
 
-## 🔹 4. MX 레코드 (Mail eXchange Record)
+### 🔹 4. MX 레코드 (Mail eXchange Record)
 
 - 역할: 메일 서버 주소를 지정합니다. 이메일 전송 시, 어떤 서버가 메일을 수신할지 알려주는 역할입니다.
 - 설명:
@@ -68,7 +88,7 @@ example.com.   IN   MX   20   backup-mail.example.com.
   - Google Workspace, Naver Works, Microsoft 365, Zoho Mail 등과 연동 시
   - 기업 메일 서비스 세팅
 
-## 🔹 5. TXT 레코드 (Text Record)
+### 🔹 5. TXT 레코드 (Text Record)
 
 - 역할
   - 도메인과 관련된 문자열 정보를 저장합니다.
@@ -86,7 +106,7 @@ example.com.   IN   TXT   "v=spf1 include:_spf.google.com ~all"
   - Google, AWS, GitHub 도메인 검증
   - API Key, 서비스 연결 인증
 
-## 🔹 6. NS 레코드 (Name Server Record)
+### 🔹 6. NS 레코드 (Name Server Record)
 
 - 역할: 도메인 이름을 어떤 네임서버가 관리하는지 지정합니다.
 - 설명:
@@ -102,23 +122,107 @@ example.com.   IN   NS   ns2.google.com.
   - Google Cloud DNS, Route53, Cloudflare 등으로 DNS 이전
   - 도메인 레지스트리에서 네임서버 변경 시 필요
 
----
-
 ## 📘 정리표
 
-| 레코드 타입 | 역할                      | 주요 사용 예                      |
-| ----------- | ------------------------- | --------------------------------- |
-| A           | 도메인 -> IPv4 주소 연결  | 웹서버, 로드벨런서                |
-| AAAA        | 도메인 -> IPv6 주소 연결  | IPv6 지원 서비스                  |
-| CNAME       | 다른 도메인으로 별칭 연결 | www, blog, api 등 서브도메인      |
-| MX          | 메일 서버 지정            | Gmail, Naver Works 등 메일 서비스 |
-| TXT         | 텍스트 정보 저장          | SPF/DKIM/도메인 인증              |
-| NS          | 네임서버 지정             | Cloud DNS / Cloudflare 등         |
-
----
+| 레코드 타입 | 역할                      | 주요 사용 예                                    |
+| ----------- | ------------------------- | ----------------------------------------------- |
+| A           | 도메인 -> IPv4 주소 연결  | 웹서버, 로드벨런서                              |
+| AAAA        | 도메인 -> IPv6 주소 연결  | IPv6 지원 서비스                                |
+| CNAME       | 다른 도메인으로 별칭 연결 | www, blog, api 등 서브도메인                    |
+| MX          | 메일 서버 지정            | Gmail, Naver Works 등 메일 서비스               |
+| TXT         | 텍스트 정보 저장          | Google Search Console/SPF/DKIM/도메인 소유 인증 |
+| NS          | 네임서버 지정             | Cloud DNS / Cloudflare 등                       |
 
 ## 💡 요약
 
 DNS는 웹사이트 접속뿐 아니라 이메일, 보안 인증, 서비스 연동 등 인터넷의 모든 동작의 기반입니다.
 Cloud DNS나 Route53 같은 관리형 DNS 서비스를 이용하면 이 레코드들을 손쉽게 설정하고,
 안정적으로 운영할 수 있습니다.
+
+---
+
+## 메일 보안 기술
+
+### ✅ SPF (Sender Policy Framework)
+
+SPF 는 이 도메인에서 메일 보낼 수 있는 서버 목록을 공개하는 방식입니다.
+
+쉽게 말해,
+“내 도메인에서 메일 보낼 수 있는 IP 리스트가 여기 있어!”
+라고 DNS 에 적어두는 것입니다.
+
+이렇게 하면, 스팸 발송자가 example.com 도메인을 도용해서 메일을 보내려고 해도
+수신 서버에서 SPF 를 보고 “허용된 서버가 아니네?” 하고 차단할 수 있습니다.
+
+DNS TXT 레코드 예시:
+
+```shell
+example.com  TXT  "v=spf1 include:_spf.google.com ~all"
+```
+
+설명:
+
+- v=spf1 : SPF 버전
+- include:\_spf.google.com : Google 메일 서버 허용
+- ~all : 나머지 서버는 모두 의심(Soft Fail)
+
+만약 AWS SES, Gmail, 회사 SMTP 같이 여러 발신 시스템을 쓰면:
+
+```shell
+v=spf1 include:_spf.google.com include:amazonses.com ip4:203.0.113.10 ~all
+```
+
+### ✅ DKIM (DomainKeys Identified Mail)
+
+DKIM 은 메일에 전자 서명을 붙여서 진짜 내가 보냈다는 것을 증명하는 방식입니다.
+
+원리 요약:
+
+- 보낸 메일 서버가 메일에 암호화된 서명(Private Key) 삽입
+- 수신 서버는 DNS 에 등록된 공개키(Public Key) 로 서명 검증
+- 서명이 맞으면 → 도메인 위조 아님 ✅
+
+DNS TXT 레코드 예시:
+
+```shell
+google._domainkey.example.com  TXT  "v=DKIM1; k=rsa; p=MIIBIjANBgkq…"
+```
+
+### ✅ SPF vs DKIM 비교
+
+| 항목 | SPF                                        | DKIM                     |
+| ---- | ------------------------------------------ | ------------------------ |
+| 목적 | 발신 서버 인증                             | 메일 자체의 위조 방지    |
+| 방식 | 도메인 DNS 에 허용된 발송 서버 리스트 공개 | 메일에 전자 서명 첨부    |
+| 장점 | 설정 간단, 대부분 서비스 지원              | 위조 방지 수준 매우 높음 |
+| 약점 | 포워딩하면 깨질 수 있음                    | 키 관리 필요             |
+
+### 📧 함께 쓰면 더 강력: DMARC
+
+SPF + DKIM + DMARC 조합 = 이메일 보안 완전체
+
+DMARC 는
+“SPF, DKIM 둘 다 안 맞으면 이 메일 차단해라”
+라는 정책을 설정하는 기술입니다.
+
+```shell
+_dmarc.example.com TXT "v=DMARC1; p=reject; rua=mailto:dmarc@example.com"
+```
+
+#### ✨ 실제 DNS 구성 예시 (G Suite/Workspace 기준)
+
+| 레코드 | 예시                                                   |
+| ------ | ------------------------------------------------------ |
+| SPF    | `v=spf1 include:_spf.google.com ~all`                  |
+| DKIM   | `google._domainkey TXT v=DKIM1; k=rsa; p=MIIBIjAN...`  |
+| DMARC  | `v=DMARC1; p=quarantine; rua=mailto:admin@example.com` |
+
+---
+
+## 🔚 요약
+
+- SPF: “이 IP 들만 내 도메인으로 메일 보낼 수 있어”
+- DKIM: “내가 보낸 메일은 이렇게 서명돼 있어”
+- DMARC: “검증 안 되면 차단 & 나에게 보고해줘”
+
+웹 서비스 운영할 때 도메인 이메일을 안전하게 만들려면 반드시 필요한 설정입니다.
