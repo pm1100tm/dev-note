@@ -6,6 +6,8 @@
 - [] Failover
 - [] SLA
 - [] GPT 의 한글 요약 요청에서, 도커 볼륨을 SSD Mounted 된 곳으로 옮기는 방법 정리
+- [] SSD로 이전 후, 성능(입출력 속도, IOPS, latency) 를 테스트하는 fio / dd 기반 디스크
+  벤치마크 스크립트
 
 ---
 
