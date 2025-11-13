@@ -75,3 +75,7 @@ VPC 특징
   - Public/Private Subnet 을 구분한 뒤,
   - Route Table로 인터넷 접근 여부를 정의하고,
   - Security Group/NACL 로 보안을 관리하는 구조입
+
+<br>
+
+![vpc diragram](./assets/vpc_001_diagram.png)

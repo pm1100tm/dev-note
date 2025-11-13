@@ -56,3 +56,46 @@ SSL, HTTP, SSH 등 모든 통신이 이 경로를 이용함.
 - VPC/Subnet = AWS 내부 네트워크 구조의 뼈대
 - Internet Gateway(IGW) = 공용 인터넷과 통신하는 문(게이트웨이)
 - Public Subnet은 IGW 경로가 있어야 하고, EC2는 Public IP가 있어야 인터넷이 열린다.
+
+<br>
+
+![vpc diragram](./assets/vpc_002_nat_gateway.png)
+
+---
+
+## Q. Private Subnet 에서 NAT 를 통해서 Outbound 만 가능한 실무적인 예시
+
+### 🧑‍💻 1. App Server(EC2)가 패키지 설치/업데이트 해야 할 때
+
+- Private Subnet에 있는 EC2는 인터넷에 바로 나갈 수 없음
+  - → 하지만 서버는 OS 업데이트, 패키지 설치 등 외부 리포지토리에 접근해야 함
+
+```shell
+sudo apt update
+sudo apt install python3-pip
+pip install boto3
+```
+
+### 🧠 2. App 서버가 외부 API 호출이 필요할 때
+
+예:
+
+- 외부 결제 API (KakaoPay, Toss)
+- 외부 SMS API (Naver Cloud, Twilio)
+- 외부 지도 API (Google Maps)
+- 외부 인증 API (Google OAuth, Apple OAuth)
+- 외부 웹훅 호출
+
+Private App Server가 이런 API로 나가려면 Outbound 인터넷이 필요함.
+
+```shell
+App Server (Private Subnet)
+       ↓ (NAT GW)
+Internet
+       ↓
+KakaoPay API
+```
+
+하지만 외부에서 우리 서버로는 들어올 수 없음 → secure!
+
+ING~
