@@ -17,8 +17,11 @@
   - VPC CIDR Range: 10.0.0.0/16 의미
 
 - AWS 관련 용어
+
   - Failover
   - SLA
+
+- Wheel(휠) 파일이란?
 
 ## GPT 조사 후 정리할 목록
 
