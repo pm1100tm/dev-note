@@ -96,6 +96,11 @@
   - [Jenkins](/08_cicd/cicd_jenkins_docker_aws_ec2.md)
   - [Jenkins Performance Issue](/08_cicd/cicd_jenkins_on_ec2_performance_issue.md)
 
+- [Kubernetes](/07_dev_opt_and_infra/kubernetes/README.md)
+
+  - [Kube Overview](/07_dev_opt_and_infra/kubernetes/001_kube_overview.md)
+  - [Kube HPA Overview](/07_dev_opt_and_infra/kubernetes/002_kube_HPA.md)
+
 - [ETC](/etc/README.md)
 
   - [001. What is JSON](/etc/etc001_json.md)
