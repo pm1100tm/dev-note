@@ -72,3 +72,13 @@ Internet
 
 - ➡️ 실무에서 사람이 비용 폭탄을 가장 많이 맞는 서비스 중 하나…
 - ➡️ 대안: NAT Instance, VPC Endpoint (특히 S3/DynamoDB)
+
+## NAT Gateway VS IG(Internet Gateway)
+
+| 항목               | IGW                | NAT Gateway        |
+| ------------------ | ------------------ | ------------------ |
+| **연결 대상**      | VPC                | Private Subnet EC2 |
+| **위치**           | VPC                | Public Subnet      |
+| **트래픽**         | Inbound + Outbound | Outbound only      |
+| **Public IP 필요** | EC2에 필요         | NAT Gateway에 필요 |
+| **목적**           | 인터넷 연결        | Private 유지       |
