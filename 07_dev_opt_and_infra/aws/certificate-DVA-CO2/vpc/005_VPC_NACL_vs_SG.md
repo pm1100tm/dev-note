@@ -27,6 +27,8 @@
 - 서브넷 전체 차단/허용
 - 보안 1차 방어선
 
+![vpc_nacl](./assets/vpc_003_NACL.png)
+
 ---
 
 ## 2️⃣ Security Group (SG)
