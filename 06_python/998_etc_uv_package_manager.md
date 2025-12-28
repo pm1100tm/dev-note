@@ -186,70 +186,6 @@ uv pip list
 
 ---
 
-## 명령어 정리
-
-```shell
-# 설치
-# Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# macOS(Homebrew)
-brew install uv
-
-# pip
-pip install uv
-
-# Python 버전 설치/삭제
-uv python list
-uv python install 3.12
-uv python uninstall 3.12
-
-# 가상환경
-uv venv
-uv venv --python 3.12
-
-# 프로젝트 초기화
-uv init
-
-# 프로젝트 초기화 + Python 버전 지정
-uv init --no-workspace --python 3.12
-
-# 가상환경 없이 프로젝트 생성
-uv init my-project --no-venv
-
-# 일반 의존성 추가
-uv add fastapi
-
-# 개발용 의존성 추가
-uv add --dev pytest
-
-# requirements.txt 기반 설치
-uv add -r requirements.txt
-
-# dependencies 만 설치
-uv sync --no-dev
-
-# dev 그룹만 설치
-uv sync --only-dev
-
-# 특정 그룹만 설치
-uv sync --group <GROUP>
-
-# 특정 그룹 제외 설치
-uv sync --no-group <GROUP>
-
-# 설치된 패키지 목록
-uv pip list
-
-# 가상환경 자동 적용 후 실행
-uv run main.py
-
-# 임시 실행
-uvx black .
-```
-
----
-
 ## CI/CD 에서 uv 사용
 
 의존성 버전 고정 (Frozen) 전략 - ✅ uv에서 진짜 고정은 uv.lock
@@ -379,4 +315,68 @@ uv pip compile pyproject.toml \
 pyproject.toml = 선언
 uv.lock        = 진실
 CI             = --frozen
+```
+
+---
+
+## 명령어 정리
+
+```shell
+# 설치
+# Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# macOS(Homebrew)
+brew install uv
+
+# pip
+pip install uv
+
+# Python 버전 설치/삭제
+uv python list
+uv python install 3.12
+uv python uninstall 3.12
+
+# 가상환경
+uv venv
+uv venv --python 3.12
+
+# 프로젝트 초기화
+uv init
+
+# 프로젝트 초기화 + Python 버전 지정
+uv init --no-workspace --python 3.12
+
+# 가상환경 없이 프로젝트 생성
+uv init my-project --no-venv
+
+# 일반 의존성 추가
+uv add fastapi
+
+# 개발용 의존성 추가
+uv add --dev pytest
+
+# requirements.txt 기반 설치
+uv add -r requirements.txt
+
+# dependencies 만 설치
+uv sync --no-dev
+
+# dev 그룹만 설치
+uv sync --only-dev
+
+# 특정 그룹만 설치
+uv sync --group <GROUP>
+
+# 특정 그룹 제외 설치
+uv sync --no-group <GROUP>
+
+# 설치된 패키지 목록
+uv pip list
+
+# 가상환경 자동 적용 후 실행
+uv run main.py
+
+# 임시 실행
+uvx black .
 ```
