@@ -351,7 +351,12 @@ uv init --no-workspace --python 3.12
 uv init my-project --no-venv
 
 # 일반 의존성 추가
+# .venv 에 실제 설치, pyproject.toml 수정
 uv add fastapi
+
+# 임시 / 응급용 의존성 추가
+# .venv 에 실제 설치, pyproject.toml 수정하지 않음
+uv pip install fastapi
 
 # 개발용 의존성 추가
 uv add --dev pytest
