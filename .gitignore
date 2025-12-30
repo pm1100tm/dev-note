@@ -53,10 +53,11 @@ Temporary Items
 .history
 .ionide
 
-### Added ###
-note-template.md
-play.ts
-
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
 ig_*
 /db_data/
+
+### Added ###
+note-template.md
+play.ts
+.env*
