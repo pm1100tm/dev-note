@@ -109,3 +109,4 @@
   - [004. Local IP란?](/etc/etc004_local_ip.md)
   - [005. NAT IP란?](/etc/etc005_nat_ip.md)
   - [006. Java 에서 Local IP 와 NAT IP validation 그리고 Testcode](/etc/etc006_Java에서%20Local%20IP%20&%20NAT%20IP%20검증%20코드.md)
+  - [019_jetbrain_license.md](/etc/etc006_Java에서%20Local%20IP%20&%20NAT%20IP%20검증%20코드.md)
