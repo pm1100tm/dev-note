@@ -77,7 +77,7 @@ Using CPython 3.12.12
 Creating virtual environment at: .venv
 Activate with: source .venv/bin/activate
 
-
+👉
 # 버전 지정하여 가상 환경 생성
 > uv venv --python 3.12
 Using CPython 3.12.12
@@ -169,13 +169,11 @@ uv pip list
 
 - uvx 명령어를 사용하면 파이썬 패키지를 설치하지 않고 임시 환경에서 즉시 실행 가능
 - 과거의 방식
-
   - 전역 또는 가상 환경에 도구를 설치합니다. (pip install black)
   - 명령어를 실행합니다. (black .)
   - 환경을 오염시키지 않기 위해 다시 삭제합니다. (pip uninstall black)
 
 - uvx 방식
-
   - 격리된 임시 환경을 만듭니다. (uvx black .)
   - black 패키지와 그 의존성을 다운로드하여 설치합니다.
   - black . 명령어를 실행합니다.
