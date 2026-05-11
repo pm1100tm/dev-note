@@ -1,7 +1,6 @@
 # Summary
 
 - [Algorithms](/01_algorithms/README.md)
-
   - [data - LRU cache](./01_algorithms/data_lru_cache.md)
   - [data - MultiSet](./01_algorithms/data_multiset.md)
   - [algo - Array](./01_algorithms/algo_array.md)
@@ -10,7 +9,6 @@
   - [data - multiset](./01_algorithms/data_multiset.md)
 
 - [Database](/02_database/README.md)
-
   - [PostgreSQL](/02_database/postgresql/README.md)
     - [Install](/02_database/postgresql/01.install-mac.md)
     - [Basic Command](/02_database/postgresql/02.command.md)
@@ -19,7 +17,6 @@
     - [Data Type](/02_database/postgresql/05.data-type.md)
 
 - [Docker](/03_docker/README.md)
-
   - [Docker](/03_docker/a.docker.md)
   - [Docker CLI](/03_docker/b.docker-cli.md)
   - [Dockerfile Syntax](/03_docker/c.dockerfile-syntax.md)
@@ -30,7 +27,6 @@
   - [Docker Login](/03_docker/zetc.docker-login.md)
 
 - [Git](/04_git/README.md)
-
   - [branch rename](./04_git/branch-rename.md)
   - [commit message](./04_git/commit-message.md)
   - [git diff](./04_git/git-diff.md)
@@ -42,7 +38,6 @@
   - [git tag](./04_git/git-tag.md)
 
 - [Java](/05_java/README.md)
-
   - [1. 기초\_객체지향 프로그래밍의 특징](./05_java/기초001_객체지향프로그래밍의특징.md)
   - [2. 기초\_변수와 메소드가 JVM에 저장되는 위치](./05_java/기초002_변수와메소드가JVM에저장되는위치.md)
   - [3. 기초\_인터페이스](./05_java/기초003_인터페이스.md)
@@ -62,26 +57,22 @@
   - [Jenkins - 🚀 로컬에서 jenkins 연동하기](./05_java/jenkins/jenkins001_로컬에서%20jenkins%20연동하기.md)
 
 - [Python](/06_python/README.md)
-
   - [heapq 모듈](./06_python/heapq.md)
   - [리스트 요소의 중복 제거에는 set 을 사용하자](./06_python/중복제거는set을선호하자.md)
   - [딕셔너리 get 메서드와 in 연산자의 속도와 차이점](./06_python/딕셔너리_get과_in의차이점.md)
 
 - [AWS](/07_AWS/README.md)
-
   - [01. intro](./07_aws/001.%20Intro.md)
   - [02. 네트워크 구성하기](./07_aws/002.%20네트워크%20구성하기.md)
   - [03. Webserver 생성하기](./07_aws/003.%20Webserver%20생성하기.md)
   - [04. 로드벨런서 구성하기](./07_aws/004.%20로드벨런서%20구성하기.md)
 
 - [React](/react/README.md)
-
   - [Setting to create React Project](/react/aaa.react-dev-env-setting.md)
   - [JSX](/react/aab.jsx.md)
   - [Virtual DOM](/react/aac.virtual-dom.md)
 
 - [Term-And-Concept](/term-and-concept/README.md)
-
   - [CORS](/term-and-concept/cors.md)
   - [고가용성(High-Availability)](/term-and-concept/high_available_고가용성.md)
   - [IOPS](/term-and-concept/iops.md)
@@ -92,17 +83,15 @@
 
 - [CI/CD](/08_cicd/README.md)
 
-  - [GitHub Action](/08_cicd/cicd_github_action.md)
+  <!-- - [GitHub Action](/08_cicd/cicd_github_action.md)
   - [Jenkins](/08_cicd/cicd_jenkins_docker_aws_ec2.md)
-  - [Jenkins Performance Issue](/08_cicd/cicd_jenkins_on_ec2_performance_issue.md)
+  - [Jenkins Performance Issue](/08_cicd/cicd_jenkins_on_ec2_performance_issue.md) -->
 
 - [Kubernetes](/07_dev_opt_and_infra/kubernetes/README.md)
-
   - [Kube Overview](/07_dev_opt_and_infra/kubernetes/001_kube_overview.md)
   - [Kube HPA Overview](/07_dev_opt_and_infra/kubernetes/002_kube_HPA.md)
 
 - [ETC](/etc/README.md)
-
   - [001. What is JSON](/etc/etc001_json.md)
   - [002. Manage node version using fnm](/etc/etc002_fnm.md)
   - [003. How to solve that vscode too slow](/etc/etc003_slow_vscode.md)
