@@ -44,3 +44,10 @@ easy to access and understand.
 - Pytest
 - Jest
 - 테스트 설계 기법
+- React Query
+  - staleTime 이란 무엇인가
+  - gcTime 이란 무엇인가
+- Next.js
+  - 1. 로컬에서 npm run dev 명령어를 실행하면, 환경변수 envNode 가 local 이 주입된다.
+       이 원리를 알려줘.
+  - 2. instrumentation.ts 가 서버 시작 시 자동 실행된다고 했는데, 이게 어떤 원리로 자동 시작되는지 알려줘.
