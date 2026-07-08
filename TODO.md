@@ -6,6 +6,7 @@
 - [ ] Java 차이점 Long.valueOf, Long.parseLong
 - [ ] Spring @Modifying 의미
 - [ ] 페이팔 Vault 결제 시 Platform / Merchant 의미
+- [ ] test
 
 <br>
 
