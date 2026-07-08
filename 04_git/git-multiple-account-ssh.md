@@ -1,23 +1,21 @@
-# 하나의 컴퓨터에서 복수의 Git 계정 사용하기
+# github multiple account ssh
 
 하나의 컴퓨터에서 Github 계정을 2개 이상 사용하는 방법에 대해서 알아봅니다.
 
-저의 경우, 회사 계정과 회사 맥북을 받아 작업하던 중, 그날 그날 검색 및 알아낸 것들을 개인 Github
-레포지토리에 블로깅하고자 하려고 했으나 번번히 Permission denied 라는 메세지를 보게되었습니다.
+저의 경우, 회사 계정과 회사 맥북을 받아 작업하던 중, 그날 그날 검색 및 알아낸 것들을 개인 Github 레포지토리에 블로깅하고자 하려고 했으나 번번히 Permission denied 라는 메세지를 보게되었습니다.
 
 검색을 해봐도 간단하게 해결이 되지 않아, 나중에 알아보고자 하였는데, 이제 정리하게 되었습니다.
 
 ## SSH Key 생성하기
 
-먼저 각 Github 계정에 대한 SSH Key 를 생성해야 합니다. 저는 기존에 회사 계정에서 사용하는
-Key 가 있었기 때문에 제 개인 계정에 대한 Key 만 생성하였습니다.
+먼저 각 Github 계정에 대한 SSH Key 를 생성해야 합니다. 저는 기존에 회사 계정에서 사용하는 Key 가 있었기 때문에 제 개인 계정에 대한 Key 만 생성하였습니다.
 
 ```bash
 ssh-keygen -t rsa -C "회사이멜주소" -f "id_rsa_<회사ID>"
 ssh-keygen -t rsa -C "개인이멜주소" -f "id_rsa_<내ID>"
 ```
 
-id*rsa*<회사ID> 와 같이, id*rsa* 다음에 적는 ID는 구별 할 수 있도록 해줍니다.
+i&#x64;_&#x72;sa_<회사ID> 와 같이, i&#x64;_&#x72;sa_ 다음에 적는 ID는 구별 할 수 있도록 해줍니다.
 
 이제 위의 명령어를 실행하면 아래와 같은 문구가 나오는데, 그냥 엔터를 눌러줍니다.
 
@@ -39,13 +37,13 @@ Enter same passphrase again:
 
 ## Github 에 공개키 등록하기
 
-- Github -> Profile -> Settings -> SSH and GPG keys -> New SSH Key
+* Github -> Profile -> Settings -> SSH and GPG keys -> New SSH Key
 
 위의 등록 화면에서 .pub 키를 등록해줍니다.
 
 ## 확인 화면
 
-![github-ssy-keys](./assets/github-ssh-keys.png)
+![github-ssy-keys](../.gitbook/assets/github-ssh-keys.png)
 
 위의 화면은 저의 개인 맥북에서 등록된 rsa 키와, 회사 컴퓨터에서 생성한 rsa 키가 들어간 모습입니다.
 
@@ -76,7 +74,7 @@ ssh -T git@github.com
 ssh -T git@github.com-swd
 ```
 
-![github-ssh-test](./assets/git-ssh-test.png)
+![github-ssh-test](../.gitbook/assets/git-ssh-test.png)
 
 ## user name, email 확인하기
 
@@ -131,8 +129,8 @@ and the repository exists.
 
 config 에 Git 계정 설정을 했음에도, 위와 같이 레포지토리 클론이 되지 않았다.
 
-- 확인해봐야 할 것
-  - git T
+* 확인해봐야 할 것
+  * git T
 
 ```shell
 ssh -T git@github.com

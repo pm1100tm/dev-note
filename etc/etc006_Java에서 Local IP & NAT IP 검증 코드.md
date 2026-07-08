@@ -1,6 +1,6 @@
-# 🚀 Java에서 Local IP & NAT IP 검증 코드
+# 006. Java 에서 Local IP 와 NAT IP validation 그리고 Testcode
 
-✔️ Local IP는 사설 네트워크 범위(10.x.x.x, 172.16.x.x ~ 172.31.x.x, 192.168.x.x)
+✔️ Local IP는 사설 네트워크 범위(10.x.x.x, 172.16.x.x \~ 172.31.x.x, 192.168.x.x)
 
 ✔️ NAT IP는 사설 IP를 제외한 모든 IPv4 주소
 
