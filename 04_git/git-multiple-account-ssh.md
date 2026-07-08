@@ -59,12 +59,14 @@ Host github.com
     HostName github.com
     User git
     IdentityFile ~/.ssh/swd_회사명
+    IdentitiesOnly yes
 
 # 개인 계정 SSH 설정
 Host github.com-swd
     HostName github.com
     User 내 깃헙 아이디 적음
     IdentityFile ~/.ssh/id_rsa_swd
+    IdentitiesOnly yes
 ```
 
 ## 테스트
