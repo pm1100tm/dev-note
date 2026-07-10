@@ -16,13 +16,13 @@ typescript-language-server --version
 
 먼저 jdtls(Eclipse JDT Language Server)를 설치해야 합니다:
 
-```
+```shell
 brew install jdtls
 ```
 
 ### 2. 프로젝트에서 LSP 초기화
 
-```
+```shell
 /code init
 
 ✓ Workspace initialization started
