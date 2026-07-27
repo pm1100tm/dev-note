@@ -72,3 +72,16 @@
 - 🚀 클라우드 프론트와 연결했을 때, Java 에서 IP 값을 가져올 때, 주의해야 하는 이유
 - 🚀 Spring Boot/JPA N+1 해결 방법
 - 🚀 Spring Boot save 결과 객체를 사용해야 하는 이유
+
+===
+리엑트 앱 처음부터 만들자
+
+- react 요즘 많이 쓰는 버전으로
+- node 버전은 최신으로
+- vite 로
+- tailwind 로
+- typescript 로
+- main 페이지 띄우자
+- build 하자
+- s3에 올리자
+- 클라우드 프론트 붙여보자
