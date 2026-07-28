@@ -50,10 +50,6 @@
 
 - Jira, Confluence
 
-### Collaboration
-
-Jira, Confluence
-
 ---
 
 ## 🎓 EDUCATION
