@@ -54,6 +54,8 @@ $ echo 'eval "$(jenv init -)"' >> ~/.zshrc
 
 ### jenv의 Export Plugin 설치
 
+JAVA_HOME 자동 설정 플러그인 활성화
+
 ```shell
 $ jenv enable-plugin export
 ```
@@ -95,11 +97,28 @@ jenv add /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/
 jenv add /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/
 jenv add /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/
 
+jenv add "$(/usr/libexec/java_home -v 17)"
+jenv add "$(/usr/libexec/java_home -v 21)"
+jenv add "$(/usr/libexec/java_home -v 25)"
+
 # jenv 에 자바 제거하기
 jenv remove /Library/Java/JavaVirtualMachines/openjdk64-11.0.24/Contents/Home/
 
 # 확인
-jenv versions
+$ jenv versions
+* system (set by /Users/wondushim/.jenv/version)
+  17
+  17.0
+  17.0.20.1
+  21
+  21.0
+  21.0.12.1
+  25
+  25.0
+  25.0.4.1
+  temurin64-17.0.20.1
+  temurin64-21.0.12.1
+  temurin64-25.0.4.1
 
 # jenv로 버전 변경하기
 $ jenv global {JAVA_VERSION}
@@ -136,3 +155,123 @@ brew install openjdk@17
 > 📚 openJDK 8설치는 Apple Silicon Chip 환경에서 설치 오류가 발생합니다.
 >
 > - 이 부분은 나중에 알아보도록 합니다.
+
+---
+
+## jenv enable-plugin export 명령어 실행이 안될 경우
+
+```shell
+$ jenv enable-plugin export
+jenv: no such command `enable-plugin' 가 표시되는 경우
+```
+
+원인은 보통 둘 중 하나입니다.
+
+- 1. jenv 초기화가 현재 셸에 적용되지 않음
+- 2. Homebrew로 설치한 jenv가 아니라 예전에 설치된 다른 jenv가 PATH에서 먼저 잡힘
+
+먼저 확인:
+
+```shell
+which -a jenv
+jenv --version
+jenv commands | grep plugin
+
+# enable-plugin이 목록에 안 나오면 현재 잡힌 jenv가 정상 설치본이 아니거나 오래된 설치본일 가능성이 큽니다.
+```
+
+해결 순서:
+
+```plain
+# 1. Homebrew jenv 재설치
+brew reinstall jenv
+
+# 2. zsh 설정 확인
+vi ~/.zshrc
+
+~/.zshrc에 아래가 있어야 합니다.
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+저장 후 현재 셸에 적용합니다.
+
+exec $SHELL -l
+
+다시 확인합니다.
+
+jenv commands | grep plugin
+
+이제 아래 명령이 동작해야 합니다.
+
+만약 여전히 안 되면 which -a jenv 결과에서 여러 개가 나올 가능성이 높습니다.
+그 경우 Homebrew 경로가 먼저 잡히도록 확인하세요.
+
+Apple Silicon 기준:
+
+which jenv
+
+정상 예시:
+
+/opt/homebrew/bin/jenv
+```
+
+## 왜 brew 로 Java 를 설치할 때 --cask 로 설치하는가?
+
+Java/JDK는 CLI처럼 쓰지만, macOS 배포 형태 기준으로는 앱 번들처럼 설치되는 패키지라서
+Homebrew에서 cask로 제공되는 경우가 많습니다.
+
+핵심 차이는 이겁니다.
+
+```shell
+brew install --cask temurin@17
+```
+
+위의 명령어는 Eclipse Temurin JDK를 macOS 표준 JDK 위치에 설치합니다.
+
+```shell
+/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+```
+
+그래서 macOS의 Java 관리 도구가 바로 인식합니다.
+
+```shell
+/usr/libexec/java_home -V
+```
+
+반면,
+
+```shell
+brew install openjdk@17
+```
+
+은 Homebrew Formula로 설치되며 보통 아래 쪽에 들어갑니다.
+
+```shell
+/opt/homebrew/opt/openjdk@17
+```
+
+이 경우 macOS가 자동으로 JDK로 인식하지 못할 수 있어서, 별도 symlink가 필요합니다.
+
+```shell
+sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk \
+ /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+```
+
+즉, cask를 쓰는 이유는 **_GUI라서_** 가 아니라:
+
+- Temurin JDK가 .jdk 번들 형태로 배포됨
+- macOS 표준 JDK 위치에 설치됨
+- /usr/libexec/java_home -V에서 바로 잡힘
+- IntelliJ, Gradle, Maven, jenv와 연동이 편함
+- 별도 symlink 작업이 거의 필요 없음
+
+정리하면:
+
+| 설치 방식 | 예시                           | 특징                                                 |
+| --------- | ------------------------------ | ---------------------------------------------------- |
+| Cask      | brew install --cask temurin@17 | macOS 표준 JDK 설치 방식, 추천                       |
+| Formula   | brew install openjdk@17        | Homebrew 내부 경로 설치, symlink/PATH 추가 필요 가능 |
+
+Java 개발 환경에서는 Temurin Cask 방식이 더 실무적으로 편합니다.
+GUI 앱은 아니지만 macOS 패키지/번들 설치 방식이라 cask로 관리한다고 보면 됩니다.
