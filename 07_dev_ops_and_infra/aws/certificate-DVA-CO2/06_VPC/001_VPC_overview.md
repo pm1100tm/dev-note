@@ -1,4 +1,4 @@
-# 🚀 VPC Overview
+# 🚀 VPC(Virtual Private Cloud) Overview
 
 - VPC = AWS 상에 사용자가 직접 설계하는 사설 네트워크
 - 리전(Region) 단위 리소스이며, 네트워크 대역(CIDR), Subnet, Routing, 보안 정책 등을 직접
@@ -45,7 +45,6 @@ VPC 특징
 #### 💡 Public Subnet 특징
 
 - Subnet Route Table 에 0.0.0.0/0 → IGW 가 있어야 함
-
   - 예: public-facing 웹서버, ALB, Bastion Host
 
 #### 💡 Private Subnet 특징
