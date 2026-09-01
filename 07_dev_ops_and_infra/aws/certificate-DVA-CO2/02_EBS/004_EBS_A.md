@@ -38,7 +38,7 @@
 - 다른 AZ나 리전으로 옮기려면 스냅샷 → 복원 절차 필요
 - 용량과 성능(IOPS)을 미리 정하고, 그 기준으로 요금이 나감
 
-![ebs-volume](./assets/ebs_volume_1.png)
+![ebs-volume](../assets/ebs_volume_1.png)
 
 ## EC2 종료 시 EBS 삭제 옵션
 
@@ -94,4 +94,4 @@ aws ec2 modify-instance-attribute \
 
 ---
 
-![ebs-volume-delete-option](./assets/ebs_volume_delete_option.png)
+![ebs-volume-delete-option](../assets/ebs_volume_delete_option.png)

@@ -30,10 +30,8 @@
 
 - Free Tier 계정(가입한 지 12개월 이내)은 AWS EC2 Free Tier에 Public IPv4 주소 사용
   750시간/month 면제가 있음
-
   - “750 hours of public IPv4 address usage per month for the first 12 months”
     이라는 문구로 명시됨.
-
     - [AWS free-tier 750 hours free public ipv4](https://aws.amazon.com/about-aws/whats-new/2024/02/aws-free-tier-750-hours-free-public-ipv4-addresses/?utm_source=chatgpt.com)
     - 그러나 “가입한 지 1년 지난 계정, 즉 Free Tier 기간이 만료된 계정”의
       경우에는 이 면제가 더 이상 적용되지 않음. Free Tier 혜택은 첫 12개월 동안만 유효함
@@ -77,7 +75,6 @@
 - Go into your AWS Bill
 - Look into the AWS Public IP insight service
 - Article
-
   - [공지 – AWS Public IPv4 주소 요금 변경 및 Public IP Insights 기능 출시](https://aws.amazon.com/ko/blogs/korea/new-aws-public-ipv4-address-charge-public-ip-insights/)
 
 - https://ap-northeast-2.console.aws.amazon.com/ipam/home?region=ap-northeast-2#Home
@@ -93,17 +90,17 @@
 - Region 선택
 - Create IPAM 버튼 클릭
 
-![IPAM](./assets/IPAM_1.png)
-![IPAM](./assets/IPAM_2.png)
-![IPAM](./assets/IPAM_3.png)
-![IPAM](./assets/IPAM_4.png)
-![IPAM](./assets/IPAM_5.png)
-![IPAM](./assets/IPAM_6.png)
+![IPAM](../assets/IPAM_1.png)
+![IPAM](../assets/IPAM_2.png)
+![IPAM](../assets/IPAM_3.png)
+![IPAM](../assets/IPAM_4.png)
+![IPAM](../assets/IPAM_5.png)
+![IPAM](../assets/IPAM_6.png)
 
 5분 정도 기다린 후에 아래의 화면에서 확인이 가능하다.
 
-![IPAM](./assets/IPAM_7.png)
-![IPAM](./assets/IPAM_8.png)
+![IPAM](../assets/IPAM_7.png)
+![IPAM](../assets/IPAM_8.png)
 
 ## IPAM 서비스는 비용이 부과되는가?
 

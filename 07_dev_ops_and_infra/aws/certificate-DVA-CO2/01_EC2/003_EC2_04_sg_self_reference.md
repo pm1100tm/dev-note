@@ -1,6 +1,6 @@
 # 🚀 EC2 SG 의 자기참조(Self-reference) 규칙이 의미하는 것
 
-![sg](./assets/ec2_connection_with_port_80_1.png)
+![sg](../assets/ec2_connection_with_port_80_1.png)
 
 - 위의 스크린샷과 같이 두번 째 인바운드룰에 EC2 자신의 보안 그룹이 설정되어있는 상태입니다.
 - 이건 흔히 자기참조라고 부릅니다.

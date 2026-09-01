@@ -12,20 +12,20 @@
 - 필요할 때 이 스냅샷으로 새로운 EBS 볼륨을 만들 수 있음 → 데이터 복원 가능
 - 다른 리전으로 옮겨두면, 리전 장애 시에도 데이터 복구 가능
 
-![ebs-snapshot](./assets/ebs_snapshot.png)
+![ebs-snapshot](../assets/ebs_snapshot.png)
 
 ## EBS Volume Snapshot 생성하기
 
 EC2 -> 왼쪽 메뉴 바 -> Elastic Block Store -> Snapshots -> Create Snapshot
 
-![ebs-snapshot](./assets/ebs_snapshot_1.png)
-![ebs-snapshot](./assets/ebs_snapshot_2.png)
+![ebs-snapshot](../assets/ebs_snapshot_1.png)
+![ebs-snapshot](../assets/ebs_snapshot_2.png)
 
 생성된 snapshot 마우스 우클릭 후 copy snapshot
-![ebs-snapshot](./assets/ebs_snapshot_3.png)
+![ebs-snapshot](../assets/ebs_snapshot_3.png)
 
 생성된 snapshot 으로부터 volume 생성
-![ebs-snapshot](./assets/ebs_snapshot_4.png)
+![ebs-snapshot](../assets/ebs_snapshot_4.png)
 
 생성된 snapshot 을 기반으로 다른 AZ에 volume 이나 snapshot 을 생성할 수 있다.
 

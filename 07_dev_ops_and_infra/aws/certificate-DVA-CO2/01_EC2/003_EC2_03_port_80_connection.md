@@ -15,7 +15,7 @@
 
 👉 HTTP 80번 포트 연결 확인
 
-![ec2-sg-http-port-80](./assets/ec2_connection_with_port_80_1.png)
+![ec2-sg-http-port-80](../assets/ec2_connection_with_port_80_1.png)
 
 ## 서버 애플리케이션 동작 여부
 

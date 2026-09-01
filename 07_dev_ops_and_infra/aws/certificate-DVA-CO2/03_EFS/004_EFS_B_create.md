@@ -6,7 +6,6 @@
 ## EFS 생성하기
 
 - File system type
-
   - **Regional**
     - 여러 가용 영역에 걸쳐 한 지역 내에 파일 시스템을 제공
     - 데이터의 가용성과 내구성을 매우 높게 유지할 수 있음
@@ -18,6 +17,6 @@
 
 ING
 
-![efs-create](./assets/efs_create1.png)
-![efs-create](./assets/efs_create2.png)
-![efs-create](./assets/efs_create3.png)
+![efs-create](../assets/efs_create1.png)
+![efs-create](../assets/efs_create2.png)
+![efs-create](../assets/efs_create3.png)

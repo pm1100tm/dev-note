@@ -1,6 +1,6 @@
 # 🚀 EFS - Elastic File System
 
-![efs](./assets/efs.png)
+![efs](../assets/efs.png)
 
 - Managed NFS(Network File System)
 - AWS 에서 완전관리형으로 제공

@@ -15,13 +15,13 @@ AWS Console
 위와 같은 과정으로도 가능하고, EC2 서비스의 왼쪽 메뉴에서 **Elastic Volume Store** 탭에
 들어가서도 생성이 가능합니다.
 
-![create ebs volume](./assets/ebs_volume_create_1.png)
-![create ebs volume](./assets/ebs_volume_create_2.png)
-![create ebs volume](./assets/ebs_volume_create_3.png)
-![create ebs volume](./assets/ebs_volume_create_4.png)
-![create ebs volume](./assets/ebs_volume_create_5.png)
-![create ebs volume](./assets/ebs_volume_create_7.png)
-![create ebs volume](./assets/ebs_volume_create_6.png)
+![create ebs volume](../assets/ebs_volume_create_1.png)
+![create ebs volume](../assets/ebs_volume_create_2.png)
+![create ebs volume](../assets/ebs_volume_create_3.png)
+![create ebs volume](../assets/ebs_volume_create_4.png)
+![create ebs volume](../assets/ebs_volume_create_5.png)
+![create ebs volume](../assets/ebs_volume_create_7.png)
+![create ebs volume](../assets/ebs_volume_create_6.png)
 
 ## 생성한 EBS를 실제로 마운트해서 사용하는 방법
 
@@ -266,32 +266,28 @@ sudo rm -rf /data
 
 ## 기존 volume 옵션 변경하기
 
-![ebs-modify](./assets/ebs_volume_modify.png)
+![ebs-modify](../assets/ebs_volume_modify.png)
 
 ### 👉 각 옵션에 대한 설명
 
 - Volume ID
-
   - 해당 EBS 볼륨의 고유 식별자
   - 특정 EC2 인스턴스에 연결되어 있는 볼륨임을 나타냄
   - 뒤의 (myblog-backend-dev) 는 태그(이름)
 
 - Volume type
-
   - 볼륨의 종류(성능 특성)
   - 현재는 General Purpose SSD (gp3) 선택됨
   - 범용 SSD 볼륨, 대부분의 워크로드에 적합
   - IOPS와 처리량(Throughput)을 따로 설정 가능
 
 - Size (GiB)
-
   - 볼륨의 크기 (단위: GiB)
   - 여기선 8 GiB (= 약 8GB)
   - 최소 1 GiB, 최대 16 TiB (16384 GiB) 까지 설정 가능
   - 크기를 늘릴 수 있지만, 줄이는 건 불가능 (데이터 손실 위험 때문)
 
 - IOPS (Input/Output Operations Per Second)
-
   - 초당 몇 번의 읽기/쓰기 작업을 처리할 수 있는지 나타내는 성능 지표
   - 현재 값: 3000 IOPS (gp3의 최소값)
   - gp3는 최대 16,000 IOPS 까지 설정 가능
