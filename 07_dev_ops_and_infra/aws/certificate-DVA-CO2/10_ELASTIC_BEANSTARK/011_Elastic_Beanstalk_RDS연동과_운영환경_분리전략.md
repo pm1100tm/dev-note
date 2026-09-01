@@ -71,19 +71,17 @@ Beanstalk Environment 삭제
 Environment에 묶인 RDS도 영향을 받을 수 있음
 ```
 
-애플리케이션 서버는 새로 만들거나 교체할 수 있습니다.
-
-하지만 운영 데이터베이스는 쉽게 삭제되거나 재생성되면 안 됩니다.
-
-운영 DB에는 사용자 정보, 주문 정보, 결제 정보, 로그성 데이터 등 중요한 데이터가 들어갈 수 있습니다.
-
-따라서 운영 환경에서는 RDS를 Beanstalk와 분리해서 관리하는 편이 안전합니다.
+- 애플리케이션 서버는 새로 만들거나 교체할 수 있습니다.
+- 하지만 운영 데이터베이스는 쉽게 삭제되거나 재생성되면 안 됩니다.
+- 운영 DB에는 사용자 정보, 주문 정보, 결제 정보, 로그성 데이터 등 중요한 데이터가 들어갈 수 있습니다.
+- 따라서 운영 환경에서는 RDS를 Beanstalk와 분리해서 관리하는 편이 안전합니다.
 
 <br>
 
 ## 4. 운영 환경 권장 구조
 
-운영 환경에서는 RDS를 Elastic Beanstalk 밖에서 별도로 생성하고, Beanstalk 애플리케이션에는 연결 문자열만 전달하는 방식이 권장됩니다.
+운영 환경에서는 RDS를 Elastic Beanstalk 밖에서 별도로 생성하고, Beanstalk 애플리케이션에는
+연결 문자열만 전달하는 방식이 권장됩니다.
 
 ```shell
 RDS 별도 생성
@@ -105,7 +103,8 @@ Elastic Beanstalk Environment
 Separate RDS Database
 ```
 
-이렇게 구성하면 Beanstalk Environment를 삭제하거나 새로 만들어도 RDS 생명주기를 별도로 보호할 수 있습니다.
+이렇게 구성하면 Beanstalk Environment를 삭제하거나 새로 만들어도 RDS 생명주기를 별도로
+보호할 수 있습니다.
 
 <br>
 
@@ -306,8 +305,8 @@ B. RDS를 별도로 생성하고 Beanstalk 애플리케이션에는 connection s
 ### 해설
 
 운영 환경에서는 RDS 생명주기를 Beanstalk Environment와 분리하는 편이 안전합니다.
-
-Beanstalk Environment를 삭제하거나 재생성하더라도 운영 데이터베이스가 영향을 받지 않도록 RDS는 별도 리소스로 관리하고, 애플리케이션에는 연결 정보를 전달하는 방식이 권장됩니다.
+Beanstalk Environment를 삭제하거나 재생성하더라도 운영 데이터베이스가 영향을 받지 않도록 RDS는
+별도 리소스로 관리하고, 애플리케이션에는 연결 정보를 전달하는 방식이 권장됩니다.
 
 <br>
 
@@ -331,16 +330,15 @@ A. 빠르게 애플리케이션과 데이터베이스를 함께 만들고 테스
 ### 해설
 
 개발 / 테스트 환경에서는 빠른 생성과 삭제가 중요합니다.
-
 Beanstalk가 RDS를 함께 만들면 애플리케이션과 데이터베이스를 빠르게 구성해 테스트할 수 있습니다.
-
 하지만 운영 환경에서는 RDS 생명주기가 Environment와 묶일 수 있어 위험합니다.
 
 <br>
 
 ### 문제 3
 
-이미 Elastic Beanstalk Environment와 함께 생성된 RDS를 운영 환경에서 분리하려고 합니다. 가장 먼저 수행해야 할 안전 조치는 무엇입니까?
+이미 Elastic Beanstalk Environment와 함께 생성된 RDS를 운영 환경에서 분리하려고 합니다.
+가장 먼저 수행해야 할 안전 조치는 무엇입니까?
 
 - A. RDS DB Snapshot을 생성합니다.
 - B. Route 53 Hosted Zone을 삭제합니다.
@@ -358,9 +356,7 @@ A. RDS DB Snapshot을 생성합니다.
 ### 해설
 
 RDS 분리 작업 전에는 데이터 보호를 위해 Snapshot을 먼저 생성해야 합니다.
-
 Snapshot은 작업 중 실수나 장애가 발생했을 때 복구 지점 역할을 합니다.
-
 운영 DB 작업에서 백업 없이 바로 Environment를 삭제하는 방식은 위험합니다.
 
 <br>
@@ -384,18 +380,17 @@ A. CNAME Swap 또는 Route 53 업데이트
 
 ### 해설
 
-RDS 없이 새 Beanstalk Environment를 만들고 기존 RDS에 정상 연결되는지 확인한 뒤, CNAME Swap 또는 Route 53 업데이트로 사용자 트래픽을 새 환경으로 전환할 수 있습니다.
-
+RDS 없이 새 Beanstalk Environment를 만들고 기존 RDS에 정상 연결되는지 확인한 뒤,
+CNAME Swap 또는 Route 53 업데이트로 사용자 트래픽을 새 환경으로 전환할 수 있습니다.
 이 방식은 Blue / Green 배포와 유사하게 기존 환경에서 새 환경으로 안전하게 이동하는 전략입니다.
 
 <br>
 
 ## 요약
 
-Elastic Beanstalk에서 RDS를 함께 생성하는 방식은 개발 / 테스트 환경에서는 편리합니다.
-
-하지만 운영 환경에서는 RDS 생명주기가 Beanstalk Environment와 묶일 수 있어 위험합니다.
-
-운영에서는 RDS를 별도로 생성하고, Beanstalk 애플리케이션에는 connection string을 전달하는 방식이 더 안전합니다.
-
-이미 Beanstalk와 묶인 RDS를 분리할 때는 Snapshot 생성, deletion protection 활성화, RDS 없는 새 Environment 생성, 기존 RDS 연결, CNAME Swap 또는 Route 53 업데이트 순서로 진행해야 합니다.
+- Elastic Beanstalk에서 RDS를 함께 생성하는 방식은 개발 / 테스트 환경에서는 편리합니다.
+- 하지만 운영 환경에서는 RDS 생명주기가 Beanstalk Environment와 묶일 수 있어 위험합니다.
+- 운영에서는 RDS를 별도로 생성하고, Beanstalk 애플리케이션에는 connection string을 전달하는
+  방식이 더 안전합니다.
+- 이미 Beanstalk와 묶인 RDS를 분리할 때는 Snapshot 생성, deletion protection 활성화,
+  RDS 없는 새 Environment 생성, 기존 RDS 연결, CNAME Swap 또는 Route 53 업데이트 순서로 진행해야 합니다.

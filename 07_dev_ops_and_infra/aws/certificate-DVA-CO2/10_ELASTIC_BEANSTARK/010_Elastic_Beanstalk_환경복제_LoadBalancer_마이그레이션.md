@@ -4,7 +4,8 @@ Elastic Beanstalk에서는 기존 Environment와 같은 설정을 가진 새 Env
 
 이 기능을 환경 복제, 즉 Cloning이라고 부릅니다.
 
-또한 Elastic Beanstalk Environment를 만든 뒤에는 Load Balancer 타입을 직접 변경할 수 없으므로, Load Balancer 타입을 바꾸려면 별도 마이그레이션 절차가 필요합니다.
+또한 Elastic Beanstalk Environment를 만든 뒤에는 Load Balancer 타입을 직접 변경할 수 없으므로,
+Load Balancer 타입을 바꾸려면 별도 마이그레이션 절차가 필요합니다.
 
 초보자 관점에서는 다음처럼 이해하면 됩니다.
 
@@ -17,7 +18,8 @@ LB 마이그레이션 = 기존 환경의 Load Balancer 타입을 직접 바꾸�
 
 ## 1. 환경 복제란 무엇입니까?
 
-환경 복제는 기존 Elastic Beanstalk Environment와 동일한 설정을 가진 새 Environment를 만드는 기능입니다.
+환경 복제는 기존 Elastic Beanstalk Environment와 동일한 설정을 가진 새 Environment를
+만드는 기능입니다.
 
 예를 들어 운영 환경과 거의 같은 테스트 환경을 만들고 싶을 때 유용합니다.
 
@@ -103,7 +105,8 @@ Elastic Beanstalk Environment를 생성한 뒤에는 Elastic Load Balancer 타�
 
 중요한 점은 "타입은 변경할 수 없지만 설정은 일부 변경할 수 있다"는 것입니다.
 
-예를 들어 Classic Load Balancer를 사용하는 환경을 만든 뒤, 같은 Environment 안에서 Application Load Balancer로 직접 바꾸는 방식은 사용할 수 없습니다.
+예를 들어 Classic Load Balancer를 사용하는 환경을 만든 뒤, 같은 Environment 안에서
+Application Load Balancer로 직접 바꾸는 방식은 사용할 수 없습니다.
 
 ```shell
 기존 Environment
@@ -120,7 +123,8 @@ CLB 사용 중
 
 환경 복제는 기존 설정을 그대로 복사하는 기능입니다.
 
-따라서 기존 환경이 Classic Load Balancer를 사용 중이면, 복제한 환경도 같은 Load Balancer 타입을 유지하려고 합니다.
+따라서 기존 환경이 Classic Load Balancer를 사용 중이면, 복제한 환경도 같은 Load Balancer
+타입을 유지하려고 합니다.
 
 하지만 목표가 CLB에서 ALB로 바꾸는 것이라면, 기존 환경을 그대로 clone하는 방식은 적합하지 않습니다.
 
@@ -224,7 +228,8 @@ Load Balancer 타입 변경은 단순 설정 변경이 아니라 새 환경으�
 
 ### 문제 1
 
-Elastic Beanstalk에서 운영 환경과 동일한 설정을 가진 테스트 환경을 빠르게 만들고 싶습니다. 가장 적절한 기능은 무엇입니까?
+Elastic Beanstalk에서 운영 환경과 동일한 설정을 가진 테스트 환경을 빠르게 만들고 싶습니다.
+가장 적절한 기능은 무엇입니까?
 
 - A. Environment Cloning
 - B. S3 Versioning
@@ -241,17 +246,16 @@ A. Environment Cloning
 
 ### 해설
 
-Environment Cloning은 기존 Elastic Beanstalk Environment와 동일한 설정을 가진 새 Environment를 만드는 기능입니다.
-
-운영 환경과 유사한 테스트 환경을 만들 때 유용합니다.
-
+Environment Cloning은 기존 Elastic Beanstalk Environment와 동일한 설정을 가진
+새 Environment를 만드는 기능입니다. 운영 환경과 유사한 테스트 환경을 만들 때 유용합니다.
 복제 후 필요한 설정을 변경할 수도 있습니다.
 
 <br>
 
 ### 문제 2
 
-Elastic Beanstalk 환경을 생성한 뒤 Classic Load Balancer에서 Application Load Balancer로 타입을 변경하려고 합니다. 가장 적절한 방법은 무엇입니까?
+Elastic Beanstalk 환경을 생성한 뒤 Classic Load Balancer에서
+Application Load Balancer로 타입을 변경하려고 합니다. 가장 적절한 방법은 무엇입니까?
 
 - A. 기존 Environment에서 Load Balancer 타입만 직접 변경합니다.
 - B. 새 Environment를 원하는 Load Balancer 타입으로 생성하고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트를 수행합니다.
@@ -262,17 +266,16 @@ Elastic Beanstalk 환경을 생성한 뒤 Classic Load Balancer에서 Applicatio
 
 ### 정답
 
-B. 새 Environment를 원하는 Load Balancer 타입으로 생성하고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트를 수행합니다.
+B. 새 Environment를 원하는 Load Balancer 타입으로 생성하고 애플리케이션을 배포한 뒤
+CNAME Swap 또는 Route 53 업데이트를 수행합니다.
 
 <br>
 
 ### 해설
 
 Elastic Beanstalk Environment 생성 후에는 Load Balancer 타입을 직접 변경할 수 없습니다.
-
-따라서 원하는 Load Balancer 타입으로 새 Environment를 생성하고, 애플리케이션을 배포한 뒤 트래픽을 새 환경으로 전환해야 합니다.
-
-전환 방법으로 CNAME Swap 또는 Route 53 업데이트를 사용할 수 있습니다.
+따라서 원하는 Load Balancer 타입으로 새 Environment를 생성하고, 애플리케이션을 배포한 뒤 트래픽을
+새 환경으로 전환해야 합니다. 전환 방법으로 CNAME Swap 또는 Route 53 업데이트를 사용할 수 있습니다.
 
 <br>
 
@@ -296,16 +299,15 @@ A. RDS 데이터베이스 타입은 보존될 수 있지만 데이터 자체는 
 ### 해설
 
 환경 복제 시 RDS 데이터베이스 타입 같은 설정은 보존될 수 있습니다.
-
 하지만 실제 데이터베이스 데이터 자체가 그대로 복제되는 것은 아닙니다.
-
 운영 데이터가 필요한 테스트 환경이라면 별도 스냅샷 복원이나 데이터 복제 전략을 고려해야 합니다.
 
 <br>
 
 ### 문제 4
 
-Load Balancer 타입 변경을 위해 새 Elastic Beanstalk Environment를 만들었습니다. 새 환경 검증 후 사용자 트래픽을 전환하는 대표 방법은 무엇입니까?
+Load Balancer 타입 변경을 위해 새 Elastic Beanstalk Environment를 만들었습니다.
+새 환경 검증 후 사용자 트래픽을 전환하는 대표 방법은 무엇입니까?
 
 - A. CNAME Swap 또는 Route 53 업데이트
 - B. IAM Password Policy 변경
@@ -323,15 +325,15 @@ A. CNAME Swap 또는 Route 53 업데이트
 ### 해설
 
 새 Environment를 만들고 애플리케이션 검증까지 완료한 뒤에는 사용자 트래픽을 새 환경으로 옮겨야 합니다.
-
-Elastic Beanstalk에서는 CNAME Swap을 사용할 수 있고, DNS를 Route 53에서 관리할 경우 레코드 업데이트로 트래픽을 전환할 수 있습니다.
+Elastic Beanstalk에서는 CNAME Swap을 사용할 수 있고, DNS를 Route 53에서 관리할 경우
+레코드 업데이트로 트래픽을 전환할 수 있습니다.
 
 <br>
 
 ## 요약
 
-Elastic Beanstalk 환경 복제는 기존 Environment와 같은 설정을 가진 새 Environment를 만드는 기능입니다.
-
-테스트 환경 생성이나 새 버전 검증에 유용하지만, RDS 데이터 자체까지 자동 복제되는 것은 아닙니다.
-
-Load Balancer 타입은 Environment 생성 후 직접 변경할 수 없으므로, 새 Environment를 만들고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트로 트래픽을 전환해야 합니다.
+- Elastic Beanstalk 환경 복제는 기존 Environment와 같은 설정을 가진 새 Environment를
+  만드는 기능입니다.
+- 테스트 환경 생성이나 새 버전 검증에 유용하지만, RDS 데이터 자체까지 자동 복제되는 것은 아닙니다.
+- Load Balancer 타입은 Environment 생성 후 직접 변경할 수 없으므로, 새 Environment를
+  만들고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트로 트래픽을 전환해야 합니다.
