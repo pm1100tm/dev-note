@@ -1,7 +1,5 @@
 # 🚀 RDS 읽기 전용 복제본과 다중 AZ & Single-AZ → Multi-AZ 전환
 
----
-
 ## 🔥 읽기 전용 복제본(Read Replica)
 
 - 읽기 전용 부하(SELECT 쿼리)를 분산시키기 위해 사용하는 복제 데이터베이스 인스턴스
