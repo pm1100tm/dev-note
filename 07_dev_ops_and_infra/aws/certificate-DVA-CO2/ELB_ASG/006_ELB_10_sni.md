@@ -11,7 +11,7 @@
 SNI(Server Name Indication) = 하나의 서버(혹은 로드 벨런서)에 여러 개의 SSL 인증서를 올려서,
 접속하려는 도메인에 맞는 인증서를 선택해서 제공하는 기능입니다.
 
-⸻
+---
 
 ## 🔹 동작 방식
 
@@ -25,7 +25,7 @@ SNI(Server Name Indication) = 하나의 서버(혹은 로드 벨런서)에 여�
 - ✅ 지원: ALB, NLB, CloudFront (신세대 서비스)
 - ❌ 미지원: CLB (구세대 Classic Load Balancer)
 
-⸻
+---
 
 ✅ 쉽게 설명
 
@@ -38,12 +38,10 @@ SNI(Server Name Indication) = 하나의 서버(혹은 로드 벨런서)에 여�
 ## 📚 Elastic Load Balancers – SSL Certificates
 
 - 🔹 Classic Load Balancer (CLB, v1)
-
   - SSL 인증서 1개만 지원
   - 여러 도메인(호스트네임)에서 각기 다른 SSL 인증서를 사용하려면, CLB를 여러 개 생성해야 함
 
 - 🔹 Application Load Balancer (ALB, v2)
-
   - 여러 리스너(Listener)를 지원
   - 따라서 다수의 SSL 인증서 적용 가능
   - SNI(Server Name Indication) 활용하여, 클라이언트 요청 도메인에 맞는 인증서를 선택
@@ -52,7 +50,7 @@ SNI(Server Name Indication) = 하나의 서버(혹은 로드 벨런서)에 여�
   - ALB와 동일하게 여러 리스너 + 여러 SSL 인증서 지원
   - 역시 SNI를 사용해 요청한 호스트네임에 맞는 인증서를 제공
 
-⸻
+---
 
 ✅ 쉽게 요약
 

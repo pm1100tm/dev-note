@@ -15,13 +15,11 @@
 ## 🔹 로드 밸런서별 기본 설정 및 요금
 
 - Application Load Balancer (ALB)
-
   - 기본값: 활성화(Enabled by default)
   - Target Group 단위에서 비활성화 가능
   - 교차 AZ 데이터 전송 비용 없음
 
 - Network Load Balancer (NLB) & Gateway Load Balancer (GWLB)
-
   - 기본값: 비활성화(Disabled by default)
   - 활성화하면 교차 AZ 데이터 전송 비용 발생 ($)
 

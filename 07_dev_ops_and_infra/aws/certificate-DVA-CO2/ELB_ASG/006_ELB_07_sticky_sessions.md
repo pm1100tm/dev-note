@@ -72,7 +72,7 @@ Sticky sessions (세션 고정)
   - Turn on skickiness 체크박스 체크
     - 로드 벨런서 생성 쿠키 / 애플리케이션 기반 쿠키 선택 가능
 
-⸻
+---
 
 ✅ 쉽게 요약
 
