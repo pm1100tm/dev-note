@@ -1,6 +1,11 @@
 {
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
   "editor.formatOnSave": true,
   "editor.rulers": [80],
   "files.autoSave": "onFocusChange",
