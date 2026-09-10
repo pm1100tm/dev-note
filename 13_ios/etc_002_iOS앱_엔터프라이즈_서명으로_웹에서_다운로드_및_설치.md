@@ -36,14 +36,14 @@ Apple Developer Enterprise Program을 사용하려면 일반적으로 다음 조
 Enterprise 앱을 웹에서 설치하는 방식은 `.ipa` 파일을 직접 여는 방식이 아닙니다.
 일반적으로 다음 흐름으로 동작합니다.
 
-- 1. Enterprise 인증서와 In-House 프로비저닝 프로파일로 앱을 빌드하여 `.ipa` 파일을 생성합니다.
-- 2. `.ipa` 파일을 HTTPS 서버에 업로드합니다.
-- 3. `.ipa` 파일 정보를 담은 manifest plist 파일을 작성합니다.
-- 4. manifest plist 파일도 HTTPS 서버에 업로드합니다.
-- 5. 웹 페이지에 `itms-services` 스킴을 사용하는 설치 링크를 제공합니다.
-- 6. 사용자가 iPhone 또는 iPad에서 설치 링크를 탭합니다.
-- 7. iOS가 manifest plist를 읽고 `.ipa`를 다운로드하여 설치를 시도합니다.
-- 8. 수동 설치인 경우 사용자가 설정에서 Enterprise 개발자를 신뢰해야 앱을 실행할 수 있습니다.
+- Enterprise 인증서와 In-House 프로비저닝 프로파일로 앱을 빌드하여 `.ipa` 파일을 생성합니다.
+- `.ipa` 파일을 HTTPS 서버에 업로드합니다.
+- `.ipa` 파일 정보를 담은 manifest plist 파일을 작성합니다.
+- manifest plist 파일도 HTTPS 서버에 업로드합니다.
+- 웹 페이지에 `itms-services` 스킴을 사용하는 설치 링크를 제공합니다.
+- 사용자가 iPhone 또는 iPad에서 설치 링크를 탭합니다.
+- iOS가 manifest plist를 읽고 `.ipa`를 다운로드하여 설치를 시도합니다.
+- 수동 설치인 경우 사용자가 설정에서 Enterprise 개발자를 신뢰해야 앱을 실행할 수 있습니다.
 
 핵심은 사용자가 `.ipa` 파일을 직접 다운로드해서 여는 것이 아니라, iOS가 `itms-services` 링크와
 manifest plist를 통해 설치 절차를 수행한다는 점입니다.
@@ -88,7 +88,8 @@ manifest plist를 통해 설치 절차를 수행한다는 점입니다.
     <h1>사내 앱 설치</h1>
     <p>이 앱은 조직 내부 직원 전용 앱입니다.</p>
     <a
-      href="itms-services://?action=download-manifest&url=https://example.com/apps/manifest.plist"
+      href="itms-services://?action=download-manifest&
+      url=https://example.com/apps/manifest.plist"
     >
       iOS 앱 설치
     </a>
@@ -173,15 +174,15 @@ manifest plist를 통해 설치 절차를 수행한다는 점입니다.
 
 일반적인 절차는 다음과 같습니다.
 
-- 1. 앱 설치 후 앱을 실행합니다.
-- 2. 신뢰되지 않은 Enterprise 개발자 메시지가 표시되면 취소합니다.
-- 3. 설정 앱을 엽니다.
-- 4. `일반`으로 이동합니다.
-- 5. `VPN 및 기기 관리`로 이동합니다.
-- 6. Enterprise App 섹션에서 개발자 이름을 선택합니다.
-- 7. 해당 개발자를 신뢰합니다.
-- 8. iOS 18, iPadOS 18, visionOS 2 이상에서는 `허용 및 재시동` 절차가 필요할 수 있습니다.
-- 9. 기기가 재시동된 뒤 화면 안내에 따라 신뢰 절차를 완료합니다.
+- 앱 설치 후 앱을 실행합니다.
+- 신뢰되지 않은 Enterprise 개발자 메시지가 표시되면 취소합니다.
+- 설정 앱을 엽니다.
+- `일반`으로 이동합니다.
+- `VPN 및 기기 관리`로 이동합니다.
+- Enterprise App 섹션에서 개발자 이름을 선택합니다.
+- 해당 개발자를 신뢰합니다.
+- iOS 18, iPadOS 18, visionOS 2 이상에서는 `허용 및 재시동` 절차가 필요할 수 있습니다.
+- 기기가 재시동된 뒤 화면 안내에 따라 신뢰 절차를 완료합니다.
 
 개발자를 한 번 신뢰하면 같은 개발자가 서명한 다른 Enterprise 앱은 바로 실행될 수 있습니다.
 다만 iOS는 Enterprise 개발자 인증서를 주기적으로 재검증합니다. 재검증을 위해 기기가 인터넷에
@@ -278,6 +279,6 @@ Enterprise 서명으로 iOS 앱을 웹에서 설치하는 것은 가능합니다
 ## 참고 문서
 
 - [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/)
-- [Install custom enterprise apps on iOS, iPadOS, and visionOS](https://support.apple.com/en-mide/118254)
-- [ManifestURL.ItemsItem.AssetsItem](https://developer.apple.com/documentation/devicemanagement/manifesturl/itemsitem/assetsitem)
-- [Installing, managing, updating, and removing apps](https://developer.apple.com/documentation/devicemanagement/installing-managing-updating-and-removing-apps)
+- Apple의 custom enterprise apps 설치 가이드
+- Apple Device Management의 manifest asset 레퍼런스
+- Apple Device Management의 앱 설치·관리·업데이트 가이드

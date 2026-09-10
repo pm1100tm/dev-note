@@ -17,7 +17,8 @@ public class ICTInfoService {
     public void process(String userId, String newLocalIp) {
         // 🔹 1. 데이터베이스에서 조회
         ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("ICTInfo not found: " + userId));
+                .orElseThrow(() -> new IllegalArgumentException(
+                    "ICTInfo not found: " + userId));
 
         // 🔹 2. 트랜잭션이 끝나면서 ictInfo는 Detached 상태가 됨
         // 이후 수정해도 DB에 반영되지 않음
@@ -45,7 +46,8 @@ public class ICTInfoService {
     public void process(String userId, String newLocalIp) {
         // 🔹 1. 데이터 조회 (영속 상태)
         ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("ICTInfo not found: " + userId));
+                .orElseThrow(() -> new IllegalArgumentException(
+                    "ICTInfo not found: " + userId));
 
         // 🔹 2. 강제로 Detached 상태로 변경
         entityManager.detach(ictInfo);
@@ -76,7 +78,8 @@ public class ICTInfoService {
     public void process(String userId, String newLocalIp) {
         // 🔹 1. findById()를 호출한 후 메서드가 종료되면 트랜잭션이 종료됨 (Detached)
         ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("ICTInfo not found: " + userId));
+                .orElseThrow(() -> new IllegalArgumentException(
+                    "ICTInfo not found: " + userId));
 
         // 다른 트랜잭션에서 변경 시도
         updateIpInNewTransaction(userId, newLocalIp);
@@ -88,7 +91,8 @@ public class ICTInfoService {
     @Transactional
     public void updateIpInNewTransaction(String userId, String newLocalIp) {
         ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
-                .orElseThrow(() -> new IllegalArgumentException("ICTInfo not found: " + userId));
+                .orElseThrow(() -> new IllegalArgumentException(
+                    "ICTInfo not found: " + userId));
 
         ictInfo.setLocalIp(newLocalIp);
     }

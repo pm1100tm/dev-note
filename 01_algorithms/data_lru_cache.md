@@ -1,213 +1,129 @@
-# LRU cache(Least Recently Used)
+# LRU 캐시(Least Recently Used)
 
-## 🧐 What is caching
+캐시는 원본 데이터보다 빠르게 접근할 수 있는 저장소에 자주 사용하는 데이터나 연산 결과를 보관하는 기술입니다. 응답 시간을
+줄이고 원본 저장소, 외부 API, CPU 등에 가해지는 부하를 낮출 수 있습니다.
 
-캐싱은 데이터를 읽어오는데 시간이 오래 걸리거나, 실행하는데 오래 걸리는 연산의 결과를 미리 계산하여
-필요할 때 최초로 한번만 계산하여 저장해놓고 재사용하는 기술을 의미합니다.
+캐시는 성능 최적화 수단이지 원본 데이터의 대체물이 아닙니다. 만료, 무효화, 일관성, 장애 시 동작을 함께 설계해야 합니다.
 
-프론트앤드에서는 클리이언트 컴퓨터에 캐시를 두고, 이 캐시에 전에 방문했던 웹페이지의 내용을 저장해놓고
-동일한 페이지를 재방문시 이 저장해놓은 사본의 페이지를 보여주는 방식을 취할 수 있습니다.
+## 캐시 교체 정책
 
-백엔드에서는 클라이언트에서 받은 요청에 대한 처리 결과를 캐시에 저장해두고, 나중에 동일한 요청이 들어왔을
-때, 저장해둔 결과를 그대로 응답합니다. 이렇게 하여 조회 속도를 향상시키고, 서버 단의 부하를 줄일 수
-있습니다.
+저장 공간이 가득 찼을 때 제거할 항목을 결정하는 규칙을 캐시 교체 정책이라고 합니다.
 
-네트워크에서는 프록시 서버나 CDN을 대표적인 캐싱 사례로 볼 수 있습니다.
+- **LRU(Least Recently Used)**: 가장 오래 사용되지 않은 항목을 제거합니다.
+- **LFU(Least Frequently Used)**: 사용 빈도가 가장 낮은 항목을 제거합니다.
+- **MRU(Most Recently Used)**: 가장 최근에 사용된 항목을 제거합니다.
 
-## 캐싱 전략이란?
+LRU는 최근 사용된 데이터가 다시 사용될 가능성이 높다는 **시간 지역성(temporal locality)**을 활용합니다. 접근 패턴이
+순차 스캔에 가깝거나 과거 사용 시점이 미래 사용을 잘 예측하지 못한다면 효과가 떨어질 수 있습니다.
 
-일반적으로 캐싱을 위해 사용되는 저장 매체는 가격이 비쌉니다. 따라서, 저장 메체의 용량을 제한하여
-최대한 효과적으로 사용하는 전략을 취합니다. 이것을 캐싱 전략이라고 합니다.
+## 주요 용어
 
-캐싱 전략은 캐시 용량이 꽉 찼을 때, 어떤 데이터를 남겨두고, 어떤 데이터를 지워야할지에 대한 방법을
-뜻합니다. 캐싱 전략에는 아래와 같은 종류가 있습니다.
+- **Cache hit**: 요청한 데이터가 캐시에 있어 즉시 반환하는 경우
+- **Cache miss**: 요청한 데이터가 캐시에 없어 원본에서 조회해야 하는 경우
+- **Eviction**: 용량 확보를 위해 캐시 항목을 제거하는 작업
+- **Hit ratio**: 전체 조회 중 캐시 적중 비율
+- **TTL(Time To Live)**: 캐시 항목이 유효한 시간
 
-- LRU(Least Recently Used) cache
-- MRU(Most Recently Used) cache
-- LFU(Least Frequently Used) cache
+## 동작 예시
 
-### 캐싱 전략 - LRU cache(Least Recently Used)
+아래에서는 왼쪽이 가장 최근에 사용된 위치이고 캐시 용량은 3입니다.
 
-여기서는 **LRU cache** 전략에 대해서 알아보고자 합니다.
-
-LRU cache 전략은 **최근에 사용된 데이터일수록 앞으로도 사용될 가능성이 높다**라는 가설을 바탕으로
-만들어졌습니다. 이 전략은 가장 오랫동안 참조(사용)되지 않은 데이터를 삭제하여 공간을 확보하고, 조회한
-데이터는 가장 최근에 사용된 데이터로 간주합니다. 메모리가 제한되어있고 자주 엑세스하는 데이터에 빠르게
-엑세스 할 수 있어야 하는 시나리오에 유용합니다.
-
-LRU cache의 세부 동작방식은 아래와 같습니다.
-
-- 새로운 데이터가 추가될 경우,
-  - 캐시의 공간이 가득차지 않은 경우, 데이터를 가장 최근 위치로 이동시킵니다.
-  - 캐시의 공간이 가득찬 경우, 가장 오랫동안 사용되지 않은 데이터를 제거하고, 새로운 데이터를 가장 최근
-    위치로 이동시킵니다.
-- 이미 존재하는 데이터를 조회할 경우,
-  - 해당 데이터를 가장 최근 위치로 이동시킵니다.
-
-> 📚 용어도 알아두면 좋습니다.
->
-> - Cache Hit: 캐시에 원하는 데이터가 있어, 디스크에 접근하지 않고 데이터를 가져오는 것
-> - Cache Miss: 캐시에 원하는 데이터가 없는 것
-> - Eviction: 캐시 공간이 꽉차서 데이터를 제거하는 것
-
-### LRU cache 동작방식 알아보기
-
-아래의 예시에서는 가장 왼쪽에 있는 데이터가 가장 최신에 [조회/삽입] 데이터라고 가정합니다.
-
-```python
-# 캐시 크기가 3인 초기 상태
-[empty, empty, empty]
-
-# 데이터 1 접근, 데이터가 없기 때문에 1추가
-[1, empty, empty]
-
-# 데이터 2 접근, 데이터가 없기 때문에 2추가, 2 가장 처음으로
-[2, 1, empty]
-
-# 데이터 3 접근, 데이터가 없기 때문에 3추가, 3 가장 처음으로
-[3, 2, 1]
-
-# 데이터 4 접근, 4 데이터 없기 때문에 4추가, 4 가장 처음으로, 가장 마지막 원소(1) 제거
-[4, 3, 2]
-
-# 데이터 2 접근, 데이터가 있고, 2 가장 처음으로
-[2, 4, 3]
-
-# 데이터 4 접근, 데이터가 있고, 4 가장 처음으로
-[4, 2, 3] # 4가 가장 최근 사용된 데이터가 됨
+```text
+접근 1: [1]
+접근 2: [2, 1]
+접근 3: [3, 2, 1]
+접근 4: [4, 3, 2]  # 가장 오래된 1 제거
+접근 2: [2, 4, 3]  # 2를 최신 위치로 이동
+접근 4: [4, 2, 3]
 ```
 
-## Python에서 LRU 캐시 사용
+## Python의 `functools.lru_cache`
 
-functools 모듈의 lru_cache 데코레이터를 사용하여 LRU 캐시를 쉽게 구현할 수 있습니다.
+`lru_cache`는 함수의 인수별 반환값을 저장하는 메모이제이션 데코레이터입니다. 인수는 딕셔너리 키로 사용되므로 해시 가능한
+값이어야 합니다.
 
 ```python
-import random
-
 from functools import lru_cache
 
 
-def fetch_num(n: int):
-    print(f'Fetching num: {n}')
-    return n
+@lru_cache(maxsize=128)
+def fibonacci(n: int) -> int:
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-@lru_cache(maxsize=3)
-def get_num(n: int) -> int:
-    return fetch_num(n)
-
-
-def main():
-    for _ in range(10):
-        get_num(random.randint(0, 10))
-
-    print(get_num.cache_info())
-
-
-if __name__ == '__main__':
-    main()
-
-
-# Fetching num: 1
-# Fetching num: 7
-# Fetching num: 2
-# Fetching num: 0
-# Fetching num: 9
-# Fetching num: 5
-# CacheInfo(hits=4, misses=6, maxsize=3, currsize=3) << 랜덤으로 변경됨
+print(fibonacci(30))
+print(fibonacci.cache_info())
+fibonacci.cache_clear()
 ```
 
-### maxsize 의 의미
+- `maxsize`는 저장할 최대 항목 수이며 기본값은 128입니다.
+- `maxsize=None`이면 항목을 제거하지 않아 메모리가 계속 증가할 수 있습니다.
+- `cache_info()`로 적중·실패 횟수와 현재 크기를 확인할 수 있습니다.
+- `cache_clear()`로 저장된 결과를 비울 수 있습니다.
 
-lru_cache 데코레이의 매개변수 maxsize는 **캐시에 저장할 수 있는 최대 항목 수**를 지정합니다.
-캐시가 이 크기를 초과하면 최근에 가장 적게 사용된 항목은 새 항목을 위한 공간을 확보하기 위해 제거됩니다.
+입력은 같지만 외부 상태에 따라 결과가 바뀌는 함수, 부수 효과가 있는 함수, 매번 새 객체를 반환해야 하는 함수에는 결과 캐싱이
+적합하지 않을 수 있습니다.
 
-명시적으로 지정하지 않은 경우 maxsize의 기본 값은 128입니다.
-이 값을 None으로 설정하면 캐시가 제한 없이 커질 수 있기 때문에 주의해야합니다.
+## `OrderedDict`로 구현하기
 
-## LRU 캐시 클래스 구현
+해시 맵만 사용하면 키 조회는 빠르지만 사용 순서를 효율적으로 갱신하기 어렵습니다. Python의 `OrderedDict`는 키 조회와
+순서 변경을 평균 `O(1)`에 지원하므로 간단한 LRU 캐시를 구현할 수 있습니다.
 
 ```python
 from collections import OrderedDict
+from typing import Generic, TypeVar
 
 
-class LRUCache:
-    def __init__(self, max_size):
-        self.cache = OrderedDict()
-        self.max_size = max_size
+K = TypeVar("K")
+V = TypeVar("V")
 
-    def get(self, key):
+
+class LRUCache(Generic[K, V]):
+    def __init__(self, capacity: int) -> None:
+        if capacity <= 0:
+            raise ValueError("capacity는 1 이상이어야 합니다.")
+        self.capacity = capacity
+        self.cache: OrderedDict[K, V] = OrderedDict()
+
+    def get(self, key: K) -> V | None:
+        if key not in self.cache:
+            return None
+
+        self.cache.move_to_end(key)
+        return self.cache[key]
+
+    def put(self, key: K, value: V) -> None:
         if key in self.cache:
-            # 키를 가장 최근 사용된 상태로 갱신
-            value = self.cache.pop(key)
-            self.cache[key] = value
-            return value
-        return None
-
-    def put(self, key, value):
-        if key in self.cache:
-            # 기존 키를 제거하여 최근 사용된 상태로 갱신
-            self.cache.pop(key)
-        elif len(self.cache) >= self.max_size:
-            # 캐시가 가득 찬 경우 가장 오래된 항목 제거
-            self.cache.popitem(last=False)
-        # 새로운 키-값 쌍 추가
+            self.cache.move_to_end(key)
         self.cache[key] = value
 
-    def __str__(self):
-        return str(self.cache)
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
 
 
-max_size = 3  # 최대 크기를 3으로 설정
-lru_cache = LRUCache(max_size)
+cache = LRUCache[str, str](capacity=3)
+cache.put("a", "apple")
+cache.put("b", "banana")
+cache.put("c", "cherry")
 
-lru_cache.put("a", "apple")
-lru_cache.put("b", "banana")
-lru_cache.put("c", "cherry")
-
-print(lru_cache) # 출력: OrderedDict([('a', 'apple'), ('b', 'banana'), ('c', 'cherry')])
-
-# 접근하여 'a'를 최신 상태로 갱신
-print(lru_cache.get("a"))  # 출력: apple
-print(lru_cache)  # 출력: OrderedDict([('b', 'banana'), ('c', 'cherry'), ('a', 'apple')])
-
-# 새로운 항목 추가로 인해 가장 오래된 'b'가 제거됨
-lru_cache.put("d", "durian")
-print(lru_cache)  # 출력: OrderedDict([('c', 'cherry'), ('a', 'apple'), ('d', 'durian')])
-
-# 존재하지 않는 키 접근 시 None 반환
-print(lru_cache.get("b"))  # 출력: None
-print(lru_cache)  # 출력: OrderedDict([('c', 'cherry'), ('a', 'apple'), ('d', 'durian')])
-
-max_size = 3  # 최대 크기를 3으로 설정
-lru_cache = LRUCache(max_size)
-
-lru_cache.put("a", "apple")
-lru_cache.put("b", "banana")
-lru_cache.put("c", "cherry")
-
-print(lru_cache)  # 출력: OrderedDict([('a', 'apple'), ('b', 'banana'), ('c', 'cherry')])
-
-# 접근하여 'a'를 최신 상태로 갱신
-print(lru_cache.get("a"))  # 출력: apple
-print(lru_cache)  # 출력: OrderedDict([('b', 'banana'), ('c', 'cherry'), ('a', 'apple')])
-
-# 새로운 항목 추가로 인해 가장 오래된 'b'가 제거됨
-lru_cache.put("d", "durian")
-print(lru_cache)  # 출력: OrderedDict([('c', 'cherry'), ('a', 'apple'), ('d', 'durian')])
-
-# 존재하지 않는 키 접근 시 None 반환
-print(lru_cache.get("b"))  # 출력: None
-print(lru_cache)  # 출력: OrderedDict([('c', 'cherry'), ('a', 'apple'), ('d', 'durian')])
-
-
-# LRUCache 클래스
-- __init__(self, max_size): 최대 캐시 크기를 설정하는 생성자입니다.
-- get(self, key): 키를 사용하여 값을 가져옵니다. 키가 존재하면 가장 최근 사용된 상태로 갱신합니다.
-- put(self, key, value): 키-값 쌍을 캐시에 추가합니다. 캐시가 가득 차면 가장 오래된 항목을 제거합니다.
-- __str__(self): 캐시의 현재 상태를 문자열로 반환합니다.
-
-- put 메서드를 통해 캐시에 문자열 값을 저장합니다.
-- get 메서드를 통해 캐시에서 값을 가져오고, 최근 사용된 상태로 갱신합니다.
-- 캐시가 가득 찬 상태에서 새로운 값을 추가하면 가장 오래된 항목이 제거됩니다.
+assert cache.get("a") == "apple"
+cache.put("d", "durian")
+assert cache.get("b") is None
 ```
+
+`get`과 `put`의 평균 시간 복잡도는 모두 `O(1)`이고, 공간 복잡도는 용량을 `c`라 할 때 `O(c)`입니다. 다른 언어에서는
+보통 해시 맵과 이중 연결 리스트를 조합해 같은 복잡도를 구현합니다.
+
+> 저장할 값 자체가 `None`일 수 있다면 cache miss와 구분할 수 없으므로 별도의 sentinel 객체나 `KeyError`를 사용하는 편이 안전합니다.
+
+## 운영 환경에서 고려할 점
+
+- TTL과 명시적 무효화 전략 없이 오래된 데이터를 제공할 위험
+- 여러 인스턴스의 로컬 캐시 간 데이터 불일치
+- 동일한 키의 만료 직후 요청이 원본으로 몰리는 cache stampede
+- 키와 값이 계속 증가해 발생하는 메모리 압박
+- 민감 정보의 캐시 저장 및 테넌트 간 키 충돌
+
+운영에서는 적중률뿐 아니라 miss 지연 시간, eviction 수, 메모리 사용량도 함께 관찰해야 합니다.

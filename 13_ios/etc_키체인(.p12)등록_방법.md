@@ -29,14 +29,14 @@ ls -l 인증서.p12
 
 ## 3. 키체인 등록
 
-- 1. Command + Space를 눌러 Spotlight를 엽니다.
-- 2. 키체인 접근 또는 Keychain Access를 입력합니다.
-- 3. 키체인 접근 앱을 실행합니다.
-- 4. 왼쪽 상단 키체인 목록에서 로그인 또는 login을 선택합니다.
-- 5. 카테고리에서 나의 인증서 또는 My Certificates를 선택합니다.
-- 6. 메뉴 > 파일 > Add Keychain > 인증서.p12 선택
-- 7. 대상 키체인은 로그인을 선택합니다.
-- 8. .p12 비밀번호를 입력합니다.
+- Command + Space를 눌러 Spotlight를 엽니다.
+- 키체인 접근 또는 Keychain Access를 입력합니다.
+- 키체인 접근 앱을 실행합니다.
+- 왼쪽 상단 키체인 목록에서 로그인 또는 login을 선택합니다.
+- 카테고리에서 나의 인증서 또는 My Certificates를 선택합니다.
+- 메뉴 > 파일 > Add Keychain > 인증서.p12 선택
+- 대상 키체인은 로그인을 선택합니다.
+- .p12 비밀번호를 입력합니다.
 
 * 여기서 입력하는 비밀번호는 Mac 로그인 비밀번호가 아니라 .p12 내보내기 비밀번호입니다.
 
@@ -109,10 +109,10 @@ codesign이 키체인에 있는 개인 키에 접근하려고 합니다.
 
 이 경우:
 
-- 1. 요청 프로그램이 codesign 또는 Xcode 관련 프로세스인지 확인합니다.
-- 2. Mac 로그인 비밀번호를 입력합니다.
-- 3. 회사 보안 정책상 허용된다면 항상 허용을 선택합니다.
-- 4. 출처를 알 수 없는 프로그램이면 허용하지 않습니다.
+- 요청 프로그램이 codesign 또는 Xcode 관련 프로세스인지 확인합니다.
+- Mac 로그인 비밀번호를 입력합니다.
+- 회사 보안 정책상 허용된다면 항상 허용을 선택합니다.
+- 출처를 알 수 없는 프로그램이면 허용하지 않습니다.
 
 개인 키의 접근 제어에서 “모든 응용 프로그램의 접근 허용”을 직접 설정하는 것은 권장하지 않습니다.
 
@@ -173,7 +173,7 @@ cp "/Users/<username>/Desktop/work/ios/config/HLAHiHR.mobileprovision" \
 security cms -D -i \
 "$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles/<UUID>.mobileprovision" \
 | plutil -p - \
-| grep -E '"Name"|"UUID"|"TeamIdentifier"|"application-identifier"|"ProvisionsAllDevices"|"ExpirationDate"'
+| grep -E '"Name"|"UUID"|"TeamIdentifier"|"application-identifier"'
 ```
 
 정상인 경우 TEAM ID 값 출력
@@ -237,5 +237,5 @@ security find-identity -v -p codesigning
 Apple도 소프트웨어 서명 인증서에는 WWDR G3가 사용되며 2030년까지 유효한 갱신 인증서를 설치해야
 한다고 안내합니다.
 
-- Apple WWDR 인증서 안내 (https://developer.apple.com/help/account/certificates/wwdr-intermediate-certificates)
+- Apple WWDR 인증서는 Apple Developer 계정의 Certificates 도움말에서 확인한다.
 - Apple PKI (https://www.apple.com/certificateauthority/)

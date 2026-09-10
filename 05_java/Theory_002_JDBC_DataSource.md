@@ -184,7 +184,8 @@ public class DataSourceConfig {
     System.out.println("====================================");
     System.out.println("DataSource URL: " + dataSourceProperties.getUrl());
     System.out.println("DataSource Username: " + dataSourceProperties.getUsername());
-    System.out.println("DataSource Driver Class Name: " + dataSourceProperties.getDriverClassName());
+    String driverClassName = dataSourceProperties.getDriverClassName();
+    System.out.println("DataSource Driver Class Name: " + driverClassName);
     System.out.println("====================================");
   }
 }

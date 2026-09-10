@@ -1,3 +1,9 @@
-# Intellij Java Code Convention
+# IntelliJ Java 코드 컨벤션
 
-- https://velog.io/@nefertiri/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4-%EC%9E%90%EB%B0%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%BD%94%EB%94%A9-%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0
+팀의 formatter, import 순서, 들여쓰기 규칙은 저장소에 설정 파일로 함께 관리하는 것이 가장
+안전하다. IDE 설정만 공유하면 신규 구성원과 CI 환경에서 규칙이 달라질 수 있다.
+
+- IntelliJ의 `Settings > Editor > Code Style > Java`에서 팀 규칙을 적용한다.
+- `File > Manage IDE Settings > Export Settings`로 설정을 내보낼 수 있다.
+- Checkstyle, Spotless, EditorConfig 등을 빌드에 연결하면 CI에서 일관되게 검증할 수 있다.
+- IntelliJ Java 컨벤션 적용 방법은 팀에서 사용하는 formatter 문서를 함께 참고한다.

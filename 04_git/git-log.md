@@ -1,26 +1,20 @@
-# git log
+# Git 로그 조회
+
+`git log`는 커밋 이력을 확인하는 명령이다. 그래프, 작성자, 기간, 파일 경로를 함께 지정하면
+원하는 변경을 빠르게 찾을 수 있다.
 
 ```shell
-# 로그 보기
 git log
-
-# 특정 개수의 로그 보기
-git log -2
-
-# 각 커밋의 diff 확인하기
-git log -p
-
-# 커밋의 통계 정보 확인하기
+git log -n 10 --oneline
+git log --graph --decorate --oneline --all
+git log -p -n 1
 git log --stat
-
-# 커밋을 한줄로 보기
-git log --pretty=oneline
-
-# with format: 커밋 해시 - 저자 이름, 시간 : 요약
-git log --pretty=format:"%h - %an, %ar : %s"
-
-# 조회 제한조건
-## 시간으로 조회하는 옵션
---since, --after
---until, --before
+git log --since="2026-01-01" --until="2026-01-31"
+git log --author="name@example.com"
+git log -- path/to/file
 ```
+
+- `--oneline`은 해시와 제목만 표시해 이력 흐름을 훑기 좋다.
+- `--graph --all`은 브랜치와 merge 관계를 함께 표시한다.
+- `-p`는 각 커밋의 patch를, `--stat`은 파일별 변경량을 보여 준다.
+- `-- path/to/file` 앞의 `--`는 옵션과 파일 경로를 구분한다.

@@ -1,19 +1,54 @@
-# Java
+# Java와 Spring Boot
 
-이 저장소는 자바 스터디를 위한 노트와 자료들을 모아놓은 곳입니다. 자바의 기초부터 심화 주제까지 다루며, 각 주제별로 예제 코드와 설명을 포함하고 있습니다.
+Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요한 주제를 정리한다.
+문서는 JDK 17 이상과 Spring Boot 3 계열을 기준으로 읽되, 실제 프로젝트의 버전과
+공식 문서를 함께 확인한다.
 
-## 목차
+## Java 기초
 
-### 실습
+- [객체지향 프로그래밍의 특징](기초001_객체지향프로그래밍의특징.md)
+- [변수와 메서드가 JVM에 저장되는 위치](기초002_변수와메소드가JVM에저장되는위치.md)
+- [인터페이스](기초003_인터페이스.md)
+- [인터페이스의 메서드](기초004_인터페이스에서의_메서드.md)
+- [추상 클래스](기초005_추상클래스.md)
+- [JVM](기초006_JVM.md)
+- [String.toString과 String.valueOf](<java/20260402_01_Java String.toString() vs
+- String.valueOf() 차이 완벽 정리.md>)
+- [Long.valueOf와 Long.parseLong](<java/20260402_02_Java Long.valueOf() vs Long.parseLong() 차이
+- 완벽 정리.md>)
 
-1. [기초-JVM](https://github.com/pm1100tm/dev-note/blob/main/java/%EA%B8%B0%EC%B4%88_JVM.md)
-2. [환경설정](실습001_환경설정.md)
-3. [프로젝트 만들기 - Spring Boot](실습002_프로젝트만들기_spring_boot.md)
+## Spring과 데이터 접근
 
-### 이론
+- [Java 환경 설정](실습001_Java_환경설정.md)
+- [Spring Boot 프로젝트 만들기](실습002_프로젝트만들기_spring_boot.md)
+- [H2 Database 실습](실습003_H2DB.md)
+- [Spring 프로젝트 소개](Theory_001_스프링_프로젝트_소개.md)
+- [JDBC와 DataSource](Theory_002_JDBC_DataSource.md)
+- [트랜잭션](Theory_003_트랜잭션.md)
+- [선언적·명시적 트랜잭션](Theory_004_트랜잭션_선언적_명시적.md)
+- [Spring Boot 프로젝트 구동 과정](Theory_005_Springboot_project_startup_process.md)
+- [실행 JAR와 plain JAR](Theory_006_SNAP_jar_plain_jar_차이점.md)
 
-1. [Spring 관련 프로젝트 소개](https://github.com/pm1100tm/dev-note/blob/main/java/%EC%9D%B4%EB%A1%A0001_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%86%8C%EA%B0%9C.md)
-2. [JDBC DataSource](https://github.com/pm1100tm/dev-note/blob/main/java/%EC%9D%B4%EB%A1%A0002_JDBC_DataSource.md)
-3. [Transaction](https://github.com/pm1100tm/dev-note/blob/main/java/%EC%9D%B4%EB%A1%A0003_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98.md)
-4. [Transaction - 선언/명시](https://github.com/pm1100tm/dev-note/blob/main/java/%EC%9D%B4%EB%A1%A0004_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98_%EC%84%A0%EC%96%B8%EC%A0%81_%EB%AA%85%EC%8B%9C%EC%A0%81.md)
-5. [MultiModule Project - ING](https://github.com/pm1100tm/dev-note/blob/main/java/%EC%9D%B4%EB%A1%A0005_%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%93%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.md)
+## JPA와 동시성
+
+- [@Transient](jpa/entity-annotation-transient.md)
+- [엔티티의 Detached 상태](<jpa/JPA_엔티티의 Detached 상태가 되는 경우.md>)
+- [StaleObjectStateException](<jpa/JPA_StaleObjectStateException 이 발생한다면.md>)
+- [@ElementCollection](jpa/JPA_ElementCollection.md)
+- [JSONB 타입 설정](jpa/JPA_JSONB_타입_설정하기.md)
+- [낙관락과 비관락](<springboot/20260402_01_Spring Boot 에서 낙관락, 비관락.md>)
+- [낙관락 Best Practice](springboot/20260402*02*낙관락\_Best Practice.md)
+
+## 운영과 품질
+
+- [SLF4J로 Spring 로그 작성하기](<etc/001_Spring 로그 제대로 쓰기 — SLF4J의 올바른 사용법.md>)
+- [Enum 비교에 `==` 사용하기](<etc/002_Java Enum 비교에 == 연산자를 사용해야 하는 이유.md>)
+- [인터페이스 기반 Validator](validator/001_validator_with_interface.md)
+- [로컬 Jenkins 연동](<jenkins/jenkins001_로컬에서 jenkins 연동하기.md>)
+- [IntelliJ Java 코드 컨벤션](TODO_code_convention.md)
+
+## 학습 원칙
+
+- 예제는 복사해 실행하기 전에 JDK, Spring Boot, Hibernate 버전 호환성을 확인한다.
+- 트랜잭션 경계, 영속성 컨텍스트, 락은 테스트로 동작을 검증한 뒤 운영에 적용한다.
+- 비밀값과 운영 설정은 코드나 문서 예시에 고정하지 않고 외부 설정으로 분리한다.

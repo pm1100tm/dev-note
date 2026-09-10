@@ -25,14 +25,14 @@ uv 0.9.18 (Homebrew 2025-12-16)
 ```shell
 # 파이썬 버전 설치
 ╰─ uv python install 3.12
-cpython-3.12.12-macos-aarch64-none (download) ------------------------------ 14.45 MiB/16.21 MiB
+# 다운로드 진행 출력은 생략한다.
 
 
 # 설치된 파이썬 버전 조회
 ╰─ uv python list
 cpython-3.13.11-macos-aarch64-none                  <download available>
 cpython-3.13.11+freethreaded-macos-aarch64-none     <download available>
-cpython-3.12.12-macos-aarch64-none  /Users/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/bin/python3.12
+# 설치된 Python 경로는 환경마다 다르므로 `uv python list`로 확인한다.
 cpython-3.11.14-macos-aarch64-none                  <download available>
 ...
 

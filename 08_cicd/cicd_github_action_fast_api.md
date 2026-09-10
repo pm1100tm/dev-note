@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /app/ShopperHousePy   # ✅ GCE 안의 FastAPI app 폴더
+            cd /app/shopPy   # ✅ GCE 안의 FastAPI app 폴더
             git pull origin main   # 코드 업데이트
             docker compose -f docker-dev/compose-dev.yml restart
 ```
@@ -81,7 +81,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /app/ShopperHouseDataPy   # ✅ GCE 안의 DataPy app 폴더
+            cd /app/shopDataPy   # ✅ GCE 안의 DataPy app 폴더
             git pull origin main   # 코드 업데이트. DataPy 는 상시 떠있는 것이 아니라 docker restart 등은 필요 없음
 ```
 

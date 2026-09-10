@@ -13,7 +13,8 @@
 
 ## 사용해야 하는 예시 상황
 
-Github Repository 에 setting webhook 으로 들어갈 주소를 등록해줘야 합니다. 이 때 localhost 또는 퍼블릭 IP + port 를 등록해도, 로컬 젠킨스 컨테이너를 찾을 수 없으므로 ngrok 라는 것을 사용하여 외부 IP를 임시로 생성하여 등록합니다.
+Github Repository 에 setting webhook 으로 들어갈 주소를 등록해줘야 합니다. 이 때 localhost 또는 퍼블릭 IP + port 를
+등록해도, 로컬 젠킨스 컨테이너를 찾을 수 없으므로 ngrok 라는 것을 사용하여 외부 IP를 임시로 생성하여 등록합니다.
 
 ***
 

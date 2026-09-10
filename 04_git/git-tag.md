@@ -1,81 +1,33 @@
-# Git Tag 사용법
+# Git 태그
 
-## Lightweight Tag
+태그는 특정 커밋에 버전 같은 읽기 쉬운 이름을 붙인다. 릴리스에는 작성자·날짜·메시지를 담는
+annotated tag를 사용하고, 원격에 push해야 다른 사람이 볼 수 있다.
 
-단순히 커밋의 이름을 붙이는 태그입니다. 메타데이터(작성자, 날짜 등)가 없습니다.
+## 태그 만들기와 조회
 
-```bash
-git tag <태그이름>
-
-git tag v1.0.0
-```
-
-## Annotated Tag
-
-작성자 정보, 날짜, 메시지 등을 포함한 정식 태그입니다.
-
-```bash
-git tag -a <태그이름> -m "<메시지>"
-
-git tag -a v1.0.0 -m "Release version 1.0.0"
-```
-
-## 특정 커밋에 태그 추가
-
-```bash
-git tag <태그이름> <커밋해시>
-
-git tag v1.0.0 <hashId>
-```
-
-## 저장소에 지정된 태그 확인
-
-```bash
-git tag
-```
-
-### 특정 패턴으로 필터링
-
-```bash
+```shell
+git tag -a v1.0.0 -m "Release v1.0.0"
+git tag -a v1.0.0 <commit-sha> -m "Release v1.0.0"
 git tag -l "v1.*"
+git show v1.0.0
 ```
 
-## 태그 삭제
+## 원격 전송과 삭제
 
-```bash
-git tag -d <태그이름>
-
+```shell
+git push origin v1.0.0
+git push origin --tags
 git tag -d v1.0.0
-```
-
-### 원격 태그 삭제
-
-```bash
-git push origin --delete <태그이름>
-
 git push origin --delete v1.0.0
 ```
 
-## 태그 푸시
+## 태그 기준 작업
 
-```bash
-git push origin <태그이름>
+```shell
+git switch --detach v1.0.0
+git switch -c hotfix/v1.0.1 v1.0.0
 ```
 
-## 태그로 체크아웃
-
-```bash
-git checkout <태그이름>
-```
-
-> 주의: 태그를 체크아웃하면 detached HEAD 가 생성됩니다. 작업하려면 새로운 브랜치를 생성해야 합니다.
-
-```bash
-git checkout -b <branch-name> <tag-name>
-```
-
-## 태그 재작성
-
-```bash
-git tag -f <태그이름>
-```
+- 태그를 checkout하면 detached HEAD가 된다. 새 작업은 브랜치를 만들어 시작한다.
+- 이미 배포한 태그를 `-f`로 재지정하면 빌드 재현성과 배포 추적이 깨진다. 새 버전을 발행한다.
+- `git push origin --tags`는 모든 로컬 태그를 전송하므로 의도한 태그만 보낼 때는 이름을 명시한다.

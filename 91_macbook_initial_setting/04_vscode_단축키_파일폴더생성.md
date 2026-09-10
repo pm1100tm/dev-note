@@ -1,7 +1,7 @@
 # vscode 단축키 - 파일/폴더 생성
 
-- 1. ⌘⇧P → Preferences: Open Keyboard Shortcuts (JSON) 실행
-- 2. 기존 배열 안에 아래 항목 추가
+- ⌘⇧P → Preferences: Open Keyboard Shortcuts (JSON) 실행
+- 기존 배열 안에 아래 항목 추가
 
 ```json
 [

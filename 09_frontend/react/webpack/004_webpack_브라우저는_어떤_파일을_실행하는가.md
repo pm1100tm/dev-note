@@ -27,7 +27,7 @@ Font
 const message: string = 'Hello Webpack';
 
 function printMessage(message: string): void {
-	console.log(message);
+  console.log(message);
 }
 
 printMessage(message);
@@ -48,7 +48,7 @@ const message: string;
 const message = 'Hello Webpack';
 
 function printMessage(message) {
-	console.log(message);
+  console.log(message);
 }
 
 printMessage(message);
@@ -75,7 +75,7 @@ JSX는 HTML처럼 보이지만 실제로는 JavaScript 확장 문법이다.
 
 ```js
 function App() {
-	return React.createElement('h1', null, 'Hello Webpack');
+  return React.createElement('h1', null, 'Hello Webpack');
 }
 ```
 

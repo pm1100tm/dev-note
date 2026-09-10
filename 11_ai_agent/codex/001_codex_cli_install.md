@@ -7,18 +7,17 @@
 ```shell
 ❯ brew install --cask codex
 
-✔︎ JSON API packages.arm64_sonoma.jws.json                                                                                                                                                     Downloaded   15.2MB/ 15.2MB
+# Homebrew 메타데이터 다운로드 출력은 생략한다.
 ==> Would install 1 cask:
 codex
 ==> Would install 1 dependency for codex:
 ripgrep
 ==> Do you want to proceed with the installation? [y/n]
 ==> Fetching downloads for: codex
-✔︎ Cask codex (0.144.1)                                                                                                                                                                        Verified     98.3MB/ 98.3MB
+# Codex cask 검증 출력은 생략한다.
 ==> Installing dependencies: ripgrep
 ==> Fetching downloads for: ripgrep
-✔︎ Bottle Manifest ripgrep (15.1.0)                                                                                                                                                            Downloaded    8.8KB/  8.8KB
-✔︎ Bottle ripgrep (15.1.0)                                                                                                                                                                     Downloaded    2.2MB/  2.2MB
+# ripgrep 의존성 다운로드·설치 출력은 생략한다.
 ==> Installing ripgrep
 ==> Pouring ripgrep--15.1.0.arm64_sonoma.bottle.tar.gz
 🍺  /opt/homebrew/Cellar/ripgrep/15.1.0: 14 files, 6.5MB
@@ -51,7 +50,7 @@ codex-cli 0.144.1
 
   Tip: New Use /fast to enable our fastest inference with increased plan usage.
 
-• You have 3 usage limit resets available. Run /usage to use one.
+- 사용량 한도가 남아 있으면 `/usage` 명령으로 확인하고 관리할 수 있다.
 
 
 › Explain this codebase

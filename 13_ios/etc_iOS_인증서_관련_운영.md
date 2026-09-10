@@ -107,7 +107,8 @@ App Store 쪽은 다시 나뉩니다.
 
 #### REF
 
-- Xcode 배포 메서드: Apple Developer Documentation - Distributing your app for beta testing and releases
+- Xcode 배포 메서드: Apple Developer Documentation - Distributing your app for beta testing and
+- releases
 - 등록 기기 배포: Apple Developer Documentation - Distributing your app to registered devices
 - Enterprise 배포: Apple Developer Enterprise Program
 - App Store 공개/비공개/Unlisted: App Store Connect - Set distribution methods
@@ -134,7 +135,8 @@ ls ~/Library/MobileDevice/Provisioning\ Profiles
 특정 프로파일의 상세 정보는 아래 명령으로 확인한다.
 
 ```shell
-security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/<profile-uuid>.mobileprovision
+PROFILE=~/Library/MobileDevice/Provisioning\ Profiles/<profile-uuid>.mobileprovision
+security cms -D -i "$PROFILE"
 ```
 
 운영 문서에는 확인한 값을 별도로 기록한다.

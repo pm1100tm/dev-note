@@ -2,14 +2,16 @@
 
 ## 🧐 What is CORS(Cross-Origin Resource Sharing, 교차 출처 리소스 공유)
 
-웹 브라우저는 보안 상의 이유로 동일 출처 정책(Same-Origin Policy)을 따른다. 이는 한 출처에서 불러온 웹 페이지가 다른 출처의 자원에 접근하는 것을 제한한다. 따라서, 동일 출처 정책은 악성 웹사이트나 스크립트가 쿠키를 사용하여 다른 웹사이트에서 작업을 수행하는 것을 방지하는 보호 계층 중 하나로 작용한다.
+웹 브라우저는 보안 상의 이유로 동일 출처 정책(Same-Origin Policy)을 따른다. 이는 한 출처에서 불러온 웹 페이지가 다른 출처의 자원에 접근하는 것을
+제한한다. 따라서, 동일 출처 정책은 악성 웹사이트나 스크립트가 쿠키를 사용하여 다른 웹사이트에서 작업을 수행하는 것을 방지하는 보호 계층 중 하나로 작용한다.
 
 CORS는 **이러한 제한을 완화**하기 위해 사용된다.
 
 CORS는
 
 * 웹 브라우저에 내장되어 구현된다.
-  * 일반적으로 CORS는 브라우저의 HTTP 요청을 처리하는 부분에서 구현된다. 브라우저가 웹 페이지를 로드하고 다른 출처에 있는 자원을 요청할 때, 브라우저가 자동으로 CORS 규칙을 적용하여 요청을 보낼지 결정하는 것을 의미한다.
+  * 일반적으로 CORS는 브라우저의 HTTP 요청을 처리하는 부분에서 구현된다. 브라우저가 웹 페이지를 로드하고 다른 출처에 있는 자원을 요청할 때, 브라우저가
+  * 자동으로 CORS 규칙을 적용하여 요청을 보낼지 결정하는 것을 의미한다.
 * HTTP 헤더를 기반으로 교차 출처 요청을 허용하는 것이 안전한지 여부를 결정한다.
 * 웹 애플리케이션이 다른 도메인에서 자원을 요청/거부 할 수 있도록 하는 메커니즘이다.
 
@@ -95,7 +97,8 @@ Set-Cookie: sessionId=abc123; SameSite=None; Secure
 * CORS: HTTP 요청 헤더와 응답 헤더를 통해 작동하며, 브라우저와 서버 간의 상호작용에 영향
 * SameSite: 쿠키의 속성으로 작동하며, 특정 조건에서 쿠키가 전송되는 방식을 제한
 
-두 메커니즘 모두 다른 출처 간의 상호작용을 제어하여 보안을 강화하지만, 각기 다른 레벨에서 작동한다. CORS는 서버 측 설정을 통해 클라이언트의 요청을 허용 또는 거부하는 역할을 하며, 주로 API 호출과 같은 HTTP 요청에 적용된다. SameSite는 클라이언트 측에서 쿠키의 전송을 제어하여 특정 상황에서의 보안을 강화한다.
+두 메커니즘 모두 다른 출처 간의 상호작용을 제어하여 보안을 강화하지만, 각기 다른 레벨에서 작동한다. CORS는 서버 측 설정을 통해 클라이언트의 요청을 허용 또는
+거부하는 역할을 하며, 주로 API 호출과 같은 HTTP 요청에 적용된다. SameSite는 클라이언트 측에서 쿠키의 전송을 제어하여 특정 상황에서의 보안을 강화한다.
 
 ### 예시로 본 관계
 
@@ -117,17 +120,20 @@ https://example.com에서 사용되는 쿠키는 SameSite=Lax 또는 SameSite=No
 Set-Cookie: sessionId=abc123; SameSite=None; Secure
 ```
 
-이처럼 CORS는 서버 간의 HTTP 요청을 제어하고, SameSite는 클라이언트 측에서 쿠키의 포함 여부를 제어하여, 둘 다 웹 애플리케이션의 보안을 강화하는 중요한 역할을 한다.
+이처럼 CORS는 서버 간의 HTTP 요청을 제어하고, SameSite는 클라이언트 측에서 쿠키의 포함 여부를 제어하여, 둘 다 웹 애플리케이션의 보안을 강화하는 중요한
+역할을 한다.
 
 ### Preflight requests
 
-웹 애플리케이션에서 CORS (Cross-Origin Resource Sharing)를 사용할 때, 브라우저가 실제 요청을 보내기 전에 서버가 해당 요청을 허용하는지 확인하기 위해 보내는 HTTP 요청이다. 이는 보안 목적으로 특정한 조건을 만족하는 크로스 도메인 요청에 대해 브라우저가 자동으로 수행한다.
+웹 애플리케이션에서 CORS (Cross-Origin Resource Sharing)를 사용할 때, 브라우저가 실제 요청을 보내기 전에 서버가 해당 요청을 허용하는지
+확인하기 위해 보내는 HTTP 요청이다. 이는 보안 목적으로 특정한 조건을 만족하는 크로스 도메인 요청에 대해 브라우저가 자동으로 수행한다.
 
 > 📚 Preflight 요청이 필요한 경우
 >
 > * 커스텀 헤더 사용: Authorization과 같은 표준 헤더 외에 커스텀 헤더를 사용하는 경우.
 > * 비표준 메서드 사용: GET, POST 외의 메서드(PUT, DELETE 등)를 사용하는 경우.
-> * Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain가 아닌 경우: 예를 들어, application/json을 사용하는 경우.
+> * Content-Type이 application/x-www-form-urlencoded, multipart/form-data, text/plain가 아닌 경우:
+> 예를 들어, application/json을 사용하는 경우.
 
 #### Preflight 요청의 목적
 
@@ -139,7 +145,8 @@ Set-Cookie: sessionId=abc123; SameSite=None; Secure
 
 * OPTIONS 메서드 사용: Preflight 요청은 항상 HTTP OPTIONS 메서드를 사용
 * CORS 헤더 포함:
-  * 브라우저는 요청에 Origin, Access-Control-Request-Method, Access-Control-Request-Headers 등의 헤더를 포함한다.
+  * 브라우저는 요청에 Origin, Access-Control-Request-Method, Access-Control-Request-Headers 등의 헤더를
+  * 포함한다.
 
 클라이언트 요청
 

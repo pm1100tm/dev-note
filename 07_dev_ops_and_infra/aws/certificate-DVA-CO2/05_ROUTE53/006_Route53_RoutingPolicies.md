@@ -95,7 +95,7 @@ app.example.com  A     3.88.200.24
 
 ```shell
 예시:
-• A 서버 (Weight=7), B 서버 (Weight=2), C 서버 (Weight=1)
+- A 서버 (Weight=7), B 서버 (Weight=2), C 서버 (Weight=1)
   → 트래픽 분배 = 70% : 20% : 10%
 ```
 

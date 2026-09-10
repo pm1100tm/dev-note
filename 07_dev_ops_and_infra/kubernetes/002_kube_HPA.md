@@ -1,8 +1,8 @@
 # HPA 란?
 
 - HPA = 트래픽(부하)에 따라, Pod 개수를 자동으로 늘리고 줄이는 기능
-- Horizontal = Pod 수를 좌우로 늘림-
-- Vertial(VPA) = Pod 스팩 변경 (다른 개념)
+- Horizontal은 Pod 수를 늘리거나 줄이는 방식이다.
+- Vertical Pod Autoscaler(VPA)는 Pod의 리소스 사양을 조정하는 다른 개념이다.
 
 ## 2️⃣ HPA가 해결하는 문제
 

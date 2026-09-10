@@ -1,179 +1,73 @@
-# docker compose syntax
+# Docker Compose 문법
 
-- 다수의 도커 컨테이너를 일괄적으로 정의하고 제어하는 도구이다.
-- 확장자는 .yml 또는 .yaml 을 사용한다.
-- ex\) docker-compose.yml
+Docker Compose는 여러 컨테이너의 이미지, 환경 변수, 네트워크, 볼륨을 YAML로 선언한다.
+Compose Specification에서는 최상위 `version` 필드가 필요 없다. 명령은 `docker compose`를
+사용한다.
 
-## ⚡️ docker commpose file syntax 구성
+## 기본 예시
 
-- version: 도커 컴포즈 버전 명시
-- services: 실행하려는 컨테이너들을 정의하는 역할
-  - image: 이미지명 지정
-  - environment: 환경 변수 설정
-  - build: 빌드할 이미지에 대한 설정
-    - context: 도커 컨텍스트 경로 지정
-    - dockerfile: 도커 파일 경로 지정
-  - command: 컨테이너가 실행될 때 수행할 명령어
-  - ports: 개방할 포트 지정, docker run 명령어의 -p와 동일
-  - depends_on: 컨테이너 간 의존성 주입. 명시된 컨테이너가 먼저 생성되고 실행
-  - expose: 링크로 연계된 컨테이너에게만 공개할 포트 설정
-  - volumes: 컨테이너에 볼룸을 마운트
-  - restart: 컨테이너가 종료될 때 재시작 정책
-    - no: 재시작하지 않음
-    - always: 외부에 의해 종료되었을 때 항상 재시작
-    - on-failure: 오류가 있을 시 재시작
-- network
-- volume
-- config
-- secret
-
-### docker-compose up [options] [SERVICE...]
-
-컴포즈 파일을 기반으로 컨테이너를 빌드하고 실행한다.
-
-- -f, --file: 파일 경로 지정
-  - docker compose -f /path/to/docker-compose.yml up
-- -d, --detach: 컨테이너를 백그라운드에서 실행
-- --build: 항상 컨테이너를 빌드. 이미지가 없을 경우에도 빌드
-- --no-build: 이미지를 빌드하지 않고 기존에 있는 이미지를 사용
-- --force-recreate: 변경된 설정을 무시하고 컨테이너를 재생성
-- --abort-on-container-exit: 한 컨테이너가 종료되면 모든 컨테이너를 중지
-
-```shell
-docker-compose up --build -d
-```
-
-### docker-compose down [options] [SERVICE...]
-
-컨테이너들을 중지하고 연결된 네트워크, 볼륨등을 제거하는데 사용된다.
-
-- -v, --volumes: 컨테이너에 연결된 볼륨도 함께 삭제
-- --remove-orphans: 파일에서 정의되지 않은 서비스의 컨테이너를 함께 제거
-- --timeout TIMEOUT: 컨테이너를 중지할 때 대기하는 시간을 지정
-
-```shell
-docker-compose down -v # 모든 컨테이너와 네트워크를 종료 + 볼륨 삭제
-docker-compose down # 컨테이너만 중지하고 볼륨과 네트워크 유지
-```
-
-### docker-compose start, restart, stop
-
-컴포즈 파일에 정의된 서비스를 시작/재시작/정지
-
-> 📚 down, stop 차이점
->
-> - down 은 컨테이너를 정지 + 컨테이와 관련된 모든 리소스 제거
-> - stop 은 컨테이너 정지
-
-### docker-compose run
-
-- 새로운 컨테이너를 생성하고 명령 실행
-- 특정 서비스를 실행하는 것이 목적
-- 컴포즈 파일에 정의된 서비스 중 하나만 실행하며, 즉석에서 컨테이너를 시작
-
-> 📚 up 과의 차이점
->
-> - up 은 컴포즈 파일에 정의된 모든 서비스를 시작하며, 컨테이너를 빌드하고 시작한다.
-> - 서비스 간의 의존성을 고려하여 모든 서비스를 함께 시작한다.
-
-### docker-compose logs
-
-- docker-compose logs [options] [service...]
-  - -f, --follow: 실시간으로 로그를 출력합니다.
-  - --tail="all": 최신 로그 몇 줄을 출력합니다. 숫자를 지정하여 출력할 줄 수를 조절할 수 있습니다.
-  - --timestamps: 로그에 타임스탬프를 추가하여 출력합니다.
-  - --no-color: 로그에 색상을 사용하지 않습니다.
-  - --service-logs: 서비스 이름을 로그에 표시합니다.
-  - --no-prefix: 로그에 서비스 이름을 표시하지 않습니다.
-
-```shell
-docker-compose logs -f # 서비스의 로그를 실시간으로 확인
-docker-compose logs service1 # 특정 서비스의 로그만 확인
-docker-compose logs --tail=100 # 최신 100줄의 로그만 확인
-docker-compose logs --timestamps --service-logs # 로그에 타임스탬프와 서비스 이름을 출력
-```
-
-### ETC
-
-- docker-compose pause, unpause
-- docker-compose ps
-- docker-compose images
-- docker-compose config
-- docker-compose version
-- docker-compose help
-
-## 실습
-
-```docker-compose
-version: '3.8'
-
+```yaml
 services:
-  db:
-    container_name: postgres
-    image: postgres:14.11-alpine
-    restart: always
-    ports:
-      - '5433:5432'
-    volumes:
-      - ./docker/db_data:/var/lib/postgresql/data
-    networks:
-      - nestjs-backend
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=backend
-
-    healthcheck:
-      test: ['CMD', 'pg_isready', '-U', 'postgres']
-
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - '5050:80'
-    networks:
-      - nestjs-backend
-
   app:
-    image: node-local:0.1
-    container_name: node-local
     build:
       context: .
-      dockerfile: ./docker/Dockerfile.local
-    restart: always
+      dockerfile: Dockerfile
     ports:
-      - '8000:80'
-    volumes:
-      - ./src:/app/src
-    command: >
-      sh -c "npm run mig:local:run && npm run start"
-    networks:
-      - nestjs-backend
+      - '127.0.0.1:8080:8080'
+    environment:
+      SPRING_PROFILES_ACTIVE: local
     depends_on:
       db:
         condition: service_healthy
+    networks: [backend]
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U app -d app']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks: [backend]
 
 networks:
-  nestjs-backend:
-    driver: bridge
+  backend:
+
+volumes:
+  postgres-data:
 ```
 
-### ❓Q1
+- `services`: 실행할 컨테이너를 선언한다. 서비스 이름은 같은 네트워크에서 DNS 이름이 된다.
+- `build`: 이미지 빌드 설정이며 `image`를 함께 두면 생성 이미지의 이름을 지정할 수 있다.
+- `ports`: `호스트:컨테이너` 포트를 게시한다. DB처럼 내부 전용 서비스에는 보통 불필요하다.
+- `environment`: 설정을 주입한다. 비밀값은 `.env`를 Git에서 제외하거나 secret 관리 도구를 사용한다.
+- `depends_on`: 생성·시작 순서를 제어한다. healthcheck 없이 애플리케이션 준비까지 보장하지 않는다.
+- `volumes`: named volume은 Docker가 관리하며, bind mount는 호스트 경로를 직접 연결한다.
 
-#### docker-compose의 service 외부와 내부에서 정의하는 volume 의 차이
+## 자주 쓰는 명령
 
-##### 서비스 내에서 정의하는 volume
+```shell
+docker compose config
+docker compose up -d --build
+docker compose ps
+docker compose logs -f --tail 100 app
+docker compose exec app /bin/sh
+docker compose down
+```
 
-- 해당 서비스에만 적용
-- 서비스의 컨테이너는 해당 볼륨을 사용하여 데이터를 공유하거나 저장
-- 서비스가 실행되는 동안에만 유효하며, 서비스가 중지되면 삭제될 수 있음
+- `config`: 변수 치환 결과를 포함한 Compose 설정을 검증한다.
+- `up -d`: 서비스를 생성하거나 갱신해 백그라운드에서 실행한다.
+- `down`: 컨테이너와 기본 네트워크를 제거한다. `-v`는 named volume도 삭제하므로 주의한다.
 
-##### 서비스 밖에서 정의하는 volume
+## 운영 시 유의사항
 
-- 모든 서비스에서 공유/재사용 할 수 있음
-- 여러 서비스에서 동일한 데이터를 공유하거나 유지하기 위해 사요됨
-- 컨테이너가 종료되어도 유지되며, 다른 서비스에서도 사용할 수 있음
+- `container_name`은 프로젝트를 여러 개 띄울 때 이름 충돌과 확장 제약을 만들므로 보통 생략한다.
+- 소스 bind mount와 개발용 명령은 개발 오버라이드 파일로 분리한다.
+- 이미지는 태그 또는 digest로 고정하고, 비밀값과 데이터 디렉터리를 이미지에 포함하지 않는다.
+- 서비스 간 연결에는 호스트 포트가 아니라 `db:5432`처럼 서비스 이름과 컨테이너 포트를 사용한다.

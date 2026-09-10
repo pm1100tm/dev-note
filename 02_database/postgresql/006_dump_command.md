@@ -30,10 +30,10 @@ psql -U <user> -d <database_name> -f <filename>
 # SQL 로 dump
 # -----------------------------------------------------------------------
 # 덤프하기
-pg_dump -U tosky_root -d postgres -t shopper.product_info > product_info_bk_20250928.sql
+pg_dump -U root -d postgres -t shop.product_info > product_info_bk_20250928.sql
 
 # 복원하기(복원은 위에서 덤프한 파일을 그대로 흘려 보내기만 하면 됨)
-psql -U tosky_root -d postgres -f product_info_bk_20250928.sql
+psql -U root -d postgres -f product_info_bk_20250928.sql
 
 
 
@@ -41,8 +41,8 @@ psql -U tosky_root -d postgres -f product_info_bk_20250928.sql
 # Custom 형식 (압축 지원, pg_restore로 복원)
 # -----------------------------------------------------------------------
 # 덤프하기
-pg_dump -U tosky_root -d postgres -n shopper -Fc -f shopper_schema.backup
+pg_dump -U root -d postgres -n shop -Fc -f shop_schema.backup
 
 # 복원하기
-pg_restore -U tosky_root -d postgres -n shopper shopper_schema.backup
+pg_restore -U root -d postgres -n shop shop_schema.backup
 ```

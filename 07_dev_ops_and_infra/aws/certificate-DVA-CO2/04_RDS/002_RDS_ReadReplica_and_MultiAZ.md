@@ -154,10 +154,10 @@ RDS에서는 DB를 중단하지 않고 Multi-AZ로 전환할 수 있습니다.
 
 단계별 내부 동작
 
-- 1. AWS가 현재 DB의 Snapshot 생성
-- 2. 다른 AZ에 새로운 Standby 인스턴스 복원
-- 3. Primary ↔ Standby 간 동기 복제(Sync Replication) 설정
-- 4. 전환 완료 후, Multi-AZ 활성화 상태로 전환
+- AWS가 현재 DB의 Snapshot 생성
+- 다른 AZ에 새로운 Standby 인스턴스 복원
+- Primary ↔ Standby 간 동기 복제(Sync Replication) 설정
+- 전환 완료 후, Multi-AZ 활성화 상태로 전환
 
 ✅ 즉, 클릭 한 번(Modify → Multi-AZ 활성화)으로 무중단 전환 가능
 

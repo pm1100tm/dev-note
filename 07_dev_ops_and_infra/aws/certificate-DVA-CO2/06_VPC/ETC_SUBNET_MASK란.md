@@ -192,7 +192,8 @@ AWS 사용 가능 IP = 65,536 - 5 = 65,531개
 - Subnet CIDR끼리는 겹치면 안 된다.
 - AWS는 각 Subnet에서 IPv4 주소 5개를 예약한다.
 - Subnet 크기가 너무 작으면 EC2, Lambda ENI, ECS Task, RDS 등에 할당할 IP가 부족해질 수 있다.
-- Public Subnet 여부는 Subnet Mask가 아니라 Route Table에 `0.0.0.0/0 -> Internet Gateway` 경로가 있는지로 결정된다.
+- Public Subnet 여부는 Subnet Mask가 아니라 Route Table에 `0.0.0.0/0 -> Internet Gateway` 경로가 있는지로
+- 결정된다.
 
 <br>
 
@@ -200,7 +201,8 @@ AWS 사용 가능 IP = 65,536 - 5 = 65,531개
 
 ### 문제 1
 
-개발자가 AWS VPC 안에 `10.0.1.0/28` CIDR을 가진 Subnet을 생성했다. 이 Subnet에서 EC2 인스턴스 등에 실제로 할당 가능한 IPv4 주소 개수는 몇 개인가?
+개발자가 AWS VPC 안에 `10.0.1.0/28` CIDR을 가진 Subnet을 생성했다. 이 Subnet에서 EC2 인스턴스 등에 실제로 할당 가능한 IPv4 주소
+개수는 몇 개인가?
 
 A. 11개
 B. 14개

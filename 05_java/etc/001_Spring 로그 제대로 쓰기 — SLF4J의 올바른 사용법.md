@@ -58,12 +58,10 @@ log.info("Response: {}", response);
 
 ## 👏 4. 비교: 좋은 예 vs 나쁜 예
 
-| 구분       | 코드                                        | 결과/문제점                                |
-| ---------- | ------------------------------------------- | ------------------------------------------ |
-| ❌ 나쁜 예 | log.info("Response: " + response);          | 문자열 결합 항상 수행됨                    |
-| ❌ 나쁜 예 | log.info("{}" + "Response: " + response);   | {} 쓸 이유 없음, 동일하게 문자열 결합 발생 |
-| ✅ 좋은 예 | log.info("Response: {}", response);         | 지연 평가로 효율적                         |
-| ✅ 좋은 예 | log.info("[INFO] {} {}", userId, userName); | 여러 변수도 깔끔하게 출력 가능             |
+- 나쁜 예: `log.info("Response: " + response)`는 문자열 결합을 항상 수행한다.
+- 나쁜 예: `log.info("{}" + "Response: " + response)`는 placeholder를 써도 결합 비용이 남는다.
+- 좋은 예: `log.info("Response: {}", response)`는 로그 레벨이 비활성화되면 인자 처리를 미룬다.
+- 좋은 예: `log.info("[INFO] {} {}", userId, userName)`처럼 여러 값도 placeholder로 전달한다.
 
 ## ⚠️ 5. 예외(Exception) 로깅 주의점
 

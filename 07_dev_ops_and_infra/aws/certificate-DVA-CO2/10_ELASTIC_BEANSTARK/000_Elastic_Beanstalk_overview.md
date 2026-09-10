@@ -24,17 +24,17 @@ Load Balancer, RDS 같은 리소스 비용은 그대로 발생합니다.
 
 ## Chapter
 
-- 1. Elastic Beanstalk 개요
-- 2. Beanstalk 구성 요소
-- 3. 지원 플랫폼
-- 4. Web Server Tier와 Worker Tier
-- 5. 환경 구성 모드: Single Instance vs High Availability
-- 6. 배포 전략
-- 7. EB CLI와 배포 프로세스
-- 8. Application Version Lifecycle Policy
-- 9. .ebextensions와 CloudFormation 내부 동작
-- 10. 환경 복제와 Load Balancer 마이그레이션
-- 11. RDS 연동과 운영 환경 분리 전략
+- Elastic Beanstalk 개요
+- Beanstalk 구성 요소
+- 지원 플랫폼
+- Web Server Tier와 Worker Tier
+- 환경 구성 모드: Single Instance vs High Availability
+- 배포 전략
+- EB CLI와 배포 프로세스
+- Application Version Lifecycle Policy
+- .ebextensions와 CloudFormation 내부 동작
+- 환경 복제와 Load Balancer 마이그레이션
+- RDS 연동과 운영 환경 분리 전략
 
 ---
 

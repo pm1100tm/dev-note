@@ -1,6 +1,7 @@
-# 정렬 null
+# NULL 값의 정렬 순서 지정하기
 
-필드가 null 을 허용할 때, null 을 마지막에 정렬할지를 지정하는 방법이 필요합니다.
+필드가 `NULL`을 허용할 때에는 `NULL`을 앞이나 뒤 어느 쪽에 배치할지 명시하는 편이
+안전합니다. `NULLS FIRST`와 `NULLS LAST`는 PostgreSQL과 Oracle에서 지원됩니다.
 
 ```sql
 select empno, comm from emp order by comm asc nulls last;

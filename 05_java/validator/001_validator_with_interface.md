@@ -97,13 +97,16 @@ public class CartValidator {
         if (promotionVerifier != null) {
             List<String> cartProductIds = cart.getItems().stream()
                 .map(item -> item.getProductId().value()).toList();
-            result = result.merge(new PromotionLimitPolicy(promotionVerifier, cartProductIds).validate(context));
+            PromotionLimitPolicy policy = new PromotionLimitPolicy(
+                promotionVerifier, cartProductIds);
+            result = result.merge(policy.validate(context));
         }
 
         return result;
     }
 
-    private ValidationResult validateForAddItem(CartItemCommand command, Member member, Cart cart) {
+    private ValidationResult validateForAddItem(
+        CartItemCommand command, Member member, Cart cart) {
         PurchaseItemDTO currentItem = PurchaseItemDTO.from(command);
         int existingQuantity = cart.getQuantityOf(command.productId());
 
@@ -115,7 +118,9 @@ public class CartValidator {
         if (promotionVerifier != null) {
             List<String> cartProductIds = cart.getItems().stream()
                 .map(item -> item.getProductId().value()).toList();
-            result = result.merge(new PromotionLimitPolicy(promotionVerifier, cartProductIds).validate(context));
+            PromotionLimitPolicy policy = new PromotionLimitPolicy(
+                promotionVerifier, cartProductIds);
+            result = result.merge(policy.validate(context));
         }
 
         return result;
@@ -140,9 +145,9 @@ public class DomainServiceConfig {
                 new QuantityValidator(),
                 new AdventCalendarPolicy(),
                 new EventProductPolicy(orderRepository),
-                new com.silicon2.stylekorean.domain.cart.service.policy.CountryRestrictionPolicy(),
-                new com.silicon2.stylekorean.domain.cart.service.policy.SpecialOfferLimitPolicy(),
-                new com.silicon2.stylekorean.domain.cart.service.policy.NewMemberDealLimitPolicy()
+                new CountryRestrictionPolicy(),
+                new SpecialOfferLimitPolicy(),
+                new NewMemberDealLimitPolicy()
             ), cartPurchaseValidator);
     }
     ...
@@ -217,13 +222,16 @@ public class CartValidator {
         if (promotionVerifier != null) {
             List<String> cartProductIds = cart.getItems().stream()
                 .map(item -> item.getProductId().value()).toList();
-            result = result.merge(new PromotionLimitPolicy(promotionVerifier, cartProductIds).validate(context));
+            PromotionLimitPolicy policy = new PromotionLimitPolicy(
+                promotionVerifier, cartProductIds);
+            result = result.merge(policy.validate(context));
         }
 
         return result;
     }
 
-    private ValidationResult validateForAddItem(CartItemCommand command, Member member, Cart cart) {
+    private ValidationResult validateForAddItem(
+        CartItemCommand command, Member member, Cart cart) {
         PurchaseItemDTO currentItem = PurchaseItemDTO.from(command);
         int existingQuantity = cart.getQuantityOf(command.productId());
 
@@ -235,7 +243,9 @@ public class CartValidator {
         if (promotionVerifier != null) {
             List<String> cartProductIds = cart.getItems().stream()
                 .map(item -> item.getProductId().value()).toList();
-            result = result.merge(new PromotionLimitPolicy(promotionVerifier, cartProductIds).validate(context));
+            PromotionLimitPolicy policy = new PromotionLimitPolicy(
+                promotionVerifier, cartProductIds);
+            result = result.merge(policy.validate(context));
         }
 
         return result;

@@ -233,7 +233,8 @@ RewriteRule ^api/(.*)$ http://localhost:8080/$1 [P,L]
 - 설정이 여러 위치에 흩어져 추적하기 어려움
 - 중앙 운영 정책과 충돌할 수 있음
 
-Nginx는 `.htaccess`를 지원하지 않습니다. 설정은 보통 `/etc/nginx/nginx.conf` 또는 `/etc/nginx/conf.d/*.conf` 같은 중앙 설정 파일에서 관리합니다.
+Nginx는 `.htaccess`를 지원하지 않습니다. 설정은 보통 `/etc/nginx/nginx.conf` 또는 `/etc/nginx/conf.d/*.conf` 같은
+중앙 설정 파일에서 관리합니다.
 
 운영 환경에서는 중앙 설정 방식이 더 예측 가능하고 배포 자동화에도 유리합니다.
 
@@ -257,7 +258,8 @@ Internet
 - HAProxy
 - Istio Ingress Gateway
 
-클라우드 환경에서는 이미 앞단에 ALB, CloudFront, API Gateway 같은 관리형 서비스가 들어가는 경우도 많기 때문에 Nginx를 반드시 직접 운영해야 하는 것은 아닙니다.
+클라우드 환경에서는 이미 앞단에 ALB, CloudFront, API Gateway 같은 관리형 서비스가 들어가는 경우도 많기 때문에 Nginx를 반드시 직접 운영해야
+하는 것은 아닙니다.
 
 ## 정리
 

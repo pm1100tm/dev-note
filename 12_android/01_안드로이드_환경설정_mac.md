@@ -29,10 +29,10 @@ Installed as /Users/wondushim/Library/Android/sdk/platform-tools/adb
 Running on Darwin 25.6.0 (arm64)
 
 
-╰─ emulator --version                                                                                           ─╯
+emulator --version
 INFO         | Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
 INFO         | Graphics backend: gfxstream
-ERROR        | No AVD specified. Use '@foo' or '-avd foo' to launch a virtual device named 'foo'
+ERROR | AVD가 지정되지 않았습니다. `-avd <name>`으로 가상 기기를 선택합니다.
 ```
 
 > Z SHELL 에서 안드로이드 설정 블록
@@ -42,5 +42,5 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$HOME/Library/Android/sdk/build-tools/36.0.0:$PATH"
-export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/36.0.0:$PATH"
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
 ```

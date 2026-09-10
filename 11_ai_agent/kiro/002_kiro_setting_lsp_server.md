@@ -26,7 +26,7 @@ brew install jdtls
 /code init
 
 ✓ Workspace initialization started
-Workspace: /Users/wondushim/Desktop/work-ai-lounge/ai-lounge-backend
+Workspace: /Users/wondushim/Desktop/work-shop/shop-backend
 Detected Languages: ["java"]
 Project Markers: ["build.gradle"]
 
@@ -72,7 +72,7 @@ LSP 서버가 응답하지 않거나 문제가 있을 때: (강제 재초기화)
 
 문제가 발생하면 로그를 확인: 자동 초기화
 
-```
+```shell
 /code logs -l ERROR -n 50
 ```
 

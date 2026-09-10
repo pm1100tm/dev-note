@@ -3,7 +3,6 @@
 ## 1️⃣ EC2 서버 준비 & RDS 준비
 
 - 두 개의 EC2 인스턴스를 t3.medium 타입 이상으로 생성합니다.
-
   - Jenkins 서버 (EC2 #1): t3.medium
   - 개발 서버 (EC2 #2): t3.medium
   - RDS 생성
@@ -47,7 +46,8 @@ sudo apt update && sudo apt upgrade -y
 # → 최신 보안 패치와 패키지 리스트를 갱신합니다.
 
 # 2. 필수 패키지 설치 (HTTPS 저장소 접근, GPG 키 등록 등에 필요)
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
+sudo apt install -y apt-transport-https ca-certificates curl \
+  software-properties-common gnupg lsb-release
 
 # 3. Docker 공식 GPG 키를 받아서 시스템에 등록
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
@@ -57,7 +57,8 @@ sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 # 4. Docker 공식 저장소 추가
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+  "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
   https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -509,8 +510,8 @@ ssh -i ~/.ssh/swd-aws-keypair.pem ubuntu@3.35.208.126
 
 ```shell
 ubuntu@ip-172-31-44-221:~/jenkins$ docker compose up -d
-WARN[0000] /home/ubuntu/jenkins/docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion
-unable to get image 'jenkins/jenkins:lts-jdk21': permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/images/jenkins/jenkins:lts-jdk21/json": dial unix /var/run/docker.sock: connect: permission denied
+WARN: Compose의 `version` 속성은 더 이상 사용하지 않으므로 제거한다.
+ERROR: Docker daemon socket 권한이 없어 Jenkins 이미지를 가져오지 못했다.
 ```
 
 에러 메세지의 핵심은 아래의 메세지이다.

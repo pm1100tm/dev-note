@@ -243,7 +243,8 @@ EC2 / ALB / CloudFront / S3 등 AWS 리소스로 연결
 - 보통 몇 분 안에 반영되기도 하지만, 경우에 따라 몇 시간에서 최대 24~48시간 정도 걸릴 수 있습니다.
 - 또한 Name Server를 변경한 뒤에는 기존 Registrar의 DNS 설정이 더 이상 적용되지 않습니다.
 
-예를 들어 Gabia에서 DNS 레코드를 관리하다가 Name Server를 Route 53으로 변경하면, 이후에는 Gabia DNS에 있는 A 레코드나 CNAME 레코드가 아니라 Route 53 Hosted Zone에 있는 레코드가 사용됩니다.
+예를 들어 Gabia에서 DNS 레코드를 관리하다가 Name Server를 Route 53으로 변경하면, 이후에는 Gabia DNS에 있는 A 레코드나 CNAME
+레코드가 아니라 Route 53 Hosted Zone에 있는 레코드가 사용됩니다.
 
 따라서 Name Server를 바꾸기 전에 기존 DNS 레코드를 Route 53에 미리 옮겨두는 것이 좋습니다.
 

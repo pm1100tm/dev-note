@@ -1,120 +1,104 @@
-# multiset
+# 다중집합(Multiset)
 
-multiset(다중집합)은 동일한 요소가 여러 번 나타날 수 있는 집합의 일반화된 개념입니다. 각 요소가 한 번만 나타날
-수 있는 일반 집합과는 달리, multiset은 각 요소가 존재하는 횟수를 추적합니다.
+다중집합은 같은 원소의 중복을 허용하는 집합입니다. 일반 집합이 원소의 존재 여부만 표현한다면, 다중집합은 각 원소가 몇 번
+존재하는지 나타내는 **중복도(multiplicity)**를 함께 관리합니다. bag이라고도 부릅니다.
 
-## 🧐 다중집합(multiset)의 주요 개념
+예를 들어 `{사과: 2, 배: 1}`은 사과 두 개와 배 한 개로 이루어진 다중집합입니다. 원소별 개수가 중요하므로 보통 `원소 -> 개수`
+형태의 해시 맵으로 구현합니다.
 
-- Elements: multiset에 추가할 수 있는 항목입니다.
-- Multiplicity: multiset에 각 요소가 표시되는 횟수입니다
+## 집합과의 차이
 
-### 🧵 파이썬에서의 multiset 구현
+| 구분      | 집합(Set)                 | 다중집합(Multiset)             |
+| --------- | ------------------------- | ------------------------------ |
+| 중복 원소 | 허용하지 않음             | 허용함                         |
+| 저장 정보 | 원소의 존재 여부          | 원소별 개수                    |
+| 대표 활용 | 중복 제거, 포함 여부 검사 | 빈도 계산, 재고, 애너그램 검사 |
 
-파이썬에는 set 라는 자료형이 있습니다. set은 중복을 허용하지 않고, set 객체를 집합으로 인식하여,
-집합에 관련된 연산을 할 수 있습니다. 예를 들어, 교집합, 합집합 등의 연산을 할 수 있습니다.
+## Python의 `Counter`
 
-그러나 multiset은 중복을 포함할 수 있기 때문에 set 자료형으로는 multiset을 구현할 수 없습니다.
-대신에, 키가 요소이고 값이 각각의 개수인 dictionary 자료형을 사용하여 구현할 수 있으며, 이러한 연산을
-편하게 해줄 수 있는 collections 모듈의 Counter 클래스를 사용할 수 있습니다.
-
-> 📚 Counter는 dictionary의 서브클래스입니다.
-
-### Counter 클래스를 활용하여 muliset 구현 및 계산
-
-#### multiset 구현
+Python 표준 라이브러리의 `collections.Counter`는 딕셔너리의 하위 클래스이며, 키를 원소로 값은 개수로 저장합니다.
 
 ```python
 from collections import Counter
 
 
-# Creating a multiset
-multiset = Counter()
+items = Counter([1, 2, 2, 3, 3, 3])
+assert items == Counter({3: 3, 2: 2, 1: 1})
 
-# Adding elements to the multiset
-multiset.update([1, 2, 2, 3, 3, 3, 3])
-print("multiset:", multiset) # Counter({3: 4, 2: 2, 1: 1})
+items.update([2, 4])
+assert items[2] == 3
+assert items[5] == 0  # 없는 키를 조회하면 0
 
-# Adding more elements
-multiset.update([2, 2, 4])
-print("multiset:", multiset)  # Counter({2: 4, 3: 4, 1: 1, 4: 1})
+items.subtract([2, 3])
+del items[4]
 
-# Accessing the count of a specific element
-print("Count of element 3:", multiset[3]) # 4
-
-# # Removing elements
-multiset.subtract([2, 2])
-print("Multiset after removal:", multiset) # Counter({3: 4, 2: 2, 1: 1, 4: 1})
-
-# Converting to a list (elements repeated according to their counts)
-multiset_as_list = list(multiset.elements())
-print("Multiset as a list:", multiset_as_list) # [1, 2, 2, 3, 3, 3, 3, 4]
-
-# Checking if an element is in the multiset
-print("Is 4 in the multiset?", 4 in multiset) # True
-print("Is 5 in the multiset?", 4 in multiset) # False
-
-# Removing an element completely
-del multiset[4]
-print("Multiset after deleting element 4:", multiset) # Counter({3: 4, 2: 2, 1: 1})
+print(list(items.elements()))
+print(items.most_common(2))
 ```
 
-#### multiset에 대한 집합 연산
+`update`는 개수를 더하고 `subtract`는 개수를 뺍니다. `subtract` 결과로 0이나 음수인 항목도 `Counter` 내부에
+남을 수 있다는 점에 주의해야 합니다. 양수인 항목만 남기려면 단항 `+` 연산을 사용할 수 있습니다.
+
+```python
+counts = Counter(a=2, b=1)
+counts.subtract(Counter(a=2, b=3))
+
+assert counts == Counter(a=0, b=-2)
+assert +counts == Counter()
+```
+
+또한 `key in counter`는 개수가 양수인지가 아니라 **키가 저장되어 있는지**를 검사합니다. 개수가 양수인지 확인하려면
+`counter[key] > 0`을 사용합니다.
+
+## 다중집합 연산
+
+두 원소의 개수를 각각 `left[x]`, `right[x]`라고 할 때 연산은 다음 의미를 갖습니다.
+
+- 교집합 `left & right`: 원소별 개수의 최솟값
+- 합집합 `left | right`: 원소별 개수의 최댓값
+- 차집합 `left - right`: 개수를 뺀 뒤 양수인 결과만 유지
+- 합 `left + right`: 원소별 개수를 더한 뒤 양수인 결과만 유지
 
 ```python
 from collections import Counter
 
 
-multiset1 = Counter([1, 2, 2, 3, 3, 3])
-multiset2 = Counter([2, 3, 3, 4, 4, 4, 4])
-print("multiset1:", multiset1) # Counter({3: 3, 2: 2, 1: 1})
-print("multiset2:", multiset2) # Counter({4: 4, 3: 2, 2: 1})
+left = Counter([1, 2, 2, 3, 3, 3])
+right = Counter([2, 3, 3, 4, 4, 4, 4])
 
-# Convert to list to see the elements with their counts
-print("multiset1 as a list:", list(multiset1.elements())) # [1, 2, 2, 3, 3, 3]
-print("multiset2 as a list:", list(multiset2.elements())) # [2, 3, 3, 4, 4, 4, 4]
-
-# Calculate intersection
-intersect_multiset = multiset1 & multiset2
-print("Intersection:", intersect_multiset) # Counter({3: 2, 2: 1})
-
-# Calculate union
-union_multiset = multiset1 | multiset2
-print("union:", union_multiset) # Counter({4: 4, 3: 3, 2: 2, 1: 1})
-
-# Calculate difference
-difference_multiset = multiset1 - multiset2
-print("difference:", difference_multiset)  # Counter({1: 1, 2: 1, 3: 1})
+assert left & right == Counter({3: 2, 2: 1})
+assert left | right == Counter({4: 4, 3: 3, 2: 2, 1: 1})
+assert left - right == Counter({1: 1, 2: 1, 3: 1})
+assert left + right == Counter({3: 5, 4: 4, 2: 3, 1: 1})
 ```
 
-### multiset(also known as bags)는 왜, 어디에 사용되는가
+원소의 종류 수를 `k`라고 하면 원소 조회와 개수 변경은 평균 `O(1)`, 전체 저장 공간은 `O(k)`입니다. 두 `Counter`의
+집합 연산은 관련된 서로 다른 원소 수에 비례합니다.
 
-요소의 빈도가 중요한 다양한 사나리오에서 유용합니다. 고유한 요소만 저장하는 집합과 달리 다중 집합은
-동일 요소가 여러 번 발생할 수 있고, 그 수를 추적할 수 있습니다. 따라서, 요소의 발생 횟수를 추적하는
-시나리오에 유용합니다. 예를 들어 텍스트 분석에서 단어 빈도 수, 창고에서의 재고 수 또는 이벤트 발생 횟수
-추적 등이 있습니다.
+## 활용 사례
 
-#### Text Processing
+### 애너그램 검사
 
-- 단어 빈도 수: 문서에서 단어의 빈도를 계산하여 텍스트를 분석하거나 스팸을 감지하거나 검색 엔진용 문서
-  색인을 생성합니다.
-- 애너그램(Anagram) 탐지: 두 문자열의 문자 수를 비교하여 두 문자열이 아나그램인지 확인힙니다.
+두 문자열의 문자별 빈도가 같으면 서로 애너그램입니다.
 
-> 📚 Anagram
->
-> - 어떠한 단어의 문자를 재배열하여 다른 뜻을 가지는 다른 단어로 바꾸는 것을 말한다.
+```python
+from collections import Counter
 
-#### Data Analysis
 
-- 통계 분석: 히스토그램이나 빈도 분포와 같은 통계 분석을 위해 데이터 포인트의 발생을 추적합니다.
-- 설문 조사 분석: 동일한 질문에 대해 여러 개의 응답이 가능한 설문조사 또는 설문지에서 응답을 계산합니다.
+def is_anagram(left: str, right: str) -> bool:
+    return Counter(left) == Counter(right)
 
-#### Inventory Management
 
-- 재고 계산: 각 품목의 수량을 포함하여 상점의 재고 품목을 추적합니다
-- 리소스 관리: 사용 가능한 리소스의 수가 중요한 게임 개발과 같은 앱에서 리소스를 관리합니다.
+assert is_anagram("listen", "silent")
+assert not is_anagram("apple", "apply")
+```
 
-#### Event Counting
+### 그 밖의 사례
 
-- 로깅 및 모니터링: 모니터링 및 경고 목적으로 시스템 로그에서 이벤트 발생 횟수를 계산합니다.
-- 사용자 활동 추적: 사용자 행동을 이해하거나 분석 목적으로 애플리케이션에서 사용자 작업 또는 이벤트를
-  추적합니다.
+- 문서의 단어 빈도와 로그 이벤트 횟수 집계
+- 상품별 재고 수량과 게임 자원 관리
+- 투표·설문 응답 집계
+- 두 컬렉션의 중복을 포함한 차이 비교
+
+순서가 중요하거나 같은 값 각각을 독립 객체로 다뤄야 한다면 다중집합만으로는 충분하지 않습니다. 그 경우 리스트, 큐 또는 별도의
+식별자를 가진 객체 컬렉션을 사용해야 합니다.

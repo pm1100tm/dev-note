@@ -16,9 +16,9 @@ private List<UserTerms> userTerms;
 
 ## ✅ 1. @ElementCollection
 
-•	역할: 이 필드가 엔티티가 아닌 값 타입의 컬렉션임을 JPA에 알려줍니다.
-•	UserTerms는 별도의 엔티티가 아니라 @Embeddable로 정의된 값 객체여야 합니다.
-•	DB에는 별도의 테이블로 저장되지만, JPA에서는 부모 엔티티(UserInfo)에 소속된 데이터로 취급됩니다.
+- 역할: 이 필드가 엔티티가 아닌 값 타입의 컬렉션임을 JPA에 알린다.
+- `UserTerms`는 별도 엔티티가 아니라 `@Embeddable`로 정의한 값 객체여야 한다.
+- DB에는 별도 테이블로 저장되지만, JPA에서는 부모 엔티티(`UserInfo`)에 소속된 데이터로 취급한다.
 
 ```java
 @Embeddable
@@ -31,22 +31,22 @@ public class UserTerms {
 
 ## ✅ 2. @CollectionTable
 
-•	역할: @ElementCollection 필드가 어느 테이블에 저장될지를 지정합니다.
-•	name = "user_terms": 값 객체를 저장할 테이블 이름입니다.
-•	joinColumns = @JoinColumn(name = "user_info_id"): 이 테이블이 어떤 부모 엔티티(UserInfo)와 연결되는지를 지정합니다.
-•	즉, user_terms 테이블은 user_info_id 컬럼을 외래키로 가지며 UserInfo.userId 와 연결됩니다.
+- 역할: `@ElementCollection` 필드가 저장될 테이블을 지정한다.
+- `name = "user_terms"`: 값 객체를 저장할 테이블 이름이다.
+- `joinColumns = @JoinColumn(name = "user_info_id")`: 부모 엔티티와의 연결을 지정한다.
+- `user_terms` 테이블은 `user_info_id`를 외래키로 가지며 `UserInfo.userId`와 연결된다.
 
 ## ✅ 3. fetch = FetchType.EAGER
 
-•	역할: userTerms 필드를 즉시 로딩하겠다는 뜻입니다.
-•	UserInfo 엔티티를 조회하면, user_terms 테이블의 값도 함께 쿼리됩니다.
+- 역할: `userTerms` 필드를 즉시 로딩한다는 뜻이다.
+- `UserInfo` 엔티티를 조회하면 `user_terms` 테이블의 값도 함께 조회한다.
 
 ```sql
 SELECT * FROM user_info;
 SELECT * FROM user_terms WHERE user_info_id = ?;
 ```
 
-•	참고: EAGER는 데이터 양이 많을 경우 성능 저하가 생길 수 있으므로 필요에 따라 LAZY를 사용하는 것이 좋습니다.
+- `EAGER`는 데이터 양이 많으면 성능을 떨어뜨릴 수 있으므로, 필요에 따라 `LAZY`를 사용한다.
 
 ## ✅ 4. 전체 동작 흐름 요약
 
@@ -59,5 +59,5 @@ SELECT * FROM user_terms WHERE user_info_id = ?;
 ---
 ## ✳️ 추가 팁
 
-•	@ElementCollection은 대부분 값 객체의 List, Set, Map에 쓰이며,
-•	기본적으로 부모 엔티티 생명주기에 따라 삭제/삽입되므로, 값 객체는 식별자를 가질 수 없습니다.
+- `@ElementCollection`은 주로 값 객체의 `List`, `Set`, `Map`에 사용한다.
+- 부모 엔티티 생명 주기에 따라 삭제·삽입되므로, 값 객체는 식별자를 가질 수 없다.

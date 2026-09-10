@@ -1,29 +1,28 @@
-# branch rename
+# 브랜치 이름 변경
 
-## 첫번 째 방법
+로컬 브랜치 이름을 바꾼 뒤에는 원격 브랜치를 새 이름으로 push하고, 기존 원격 브랜치의
+삭제 여부와 PR 연결 상태를 확인해야 한다.
+
+## 현재 브랜치 이름 변경
 
 ```shell
-git checkout branch-name
-```
-
-```shell
+git branch --show-current
 git branch -m new-branch-name
 ```
 
-Then, you can use **git status** to see your new branch name.
-
-## 두번 째 방법
-
-### Step 1: Make sure you are in the master/main branch
-
-If you are not in the master/main branch, then you will need to run  git checkout master or git checkout main.
-
-### Step 2: Use the -m flag to rename the branch
+## 다른 로컬 브랜치 이름 변경
 
 ```shell
-git branch -m old-branch new-branch
+git branch -m old-branch-name new-branch-name
 ```
 
-This is what it would look like to rename the test-branch to test-branch2.
+## 원격 브랜치도 변경
 
-To see your new branch name, you can run git branch which will list all of your branches.
+```shell
+git push origin -u new-branch-name
+git push origin --delete old-branch-name
+```
+
+- `-m`은 이름 변경이며, 대상 이름이 이미 있으면 실패한다.
+- `-M`은 대상 이름이 있어도 덮어쓰므로 사용 전 해당 브랜치의 내용을 확인한다.
+- 기본 브랜치와 열린 PR이 연결된 원격 브랜치는 삭제 전에 팀과 CI 설정을 확인한다.

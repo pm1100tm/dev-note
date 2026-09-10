@@ -1,6 +1,7 @@
 # 005. NAT IP란?
 
-NAT IP(Network Address Translation IP) 는 프라이빗 네트워크(내부 네트워크)에서 퍼블릭 네트워크(인터넷)로 통신할 때 사용되는 IP 주소입니다.
+NAT IP(Network Address Translation IP) 는 프라이빗 네트워크(내부 네트워크)에서 퍼블릭 네트워크(인터넷)로 통신할 때 사용되는 IP
+주소입니다.
 
 ## 📌 주요 특징
 

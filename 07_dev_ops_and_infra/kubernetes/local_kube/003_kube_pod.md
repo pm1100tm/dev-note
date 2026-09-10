@@ -31,26 +31,22 @@ spec:
 ```
 
 - apiVersion
-
   - 이 리소스를 어떤 Kubernetes API 그룹/버전으로 해석할지 지정
   - v1 = core API group
   - Pod, Service, ConfigMap 같은 기본 리소스는 대부분 v1
   - Kubernetes는 API 기반 시스템 → 버전이 다르면 스펙도 다름
 
 - kind
-
   - Pod = 쿠버네티스에서 가장 작은 실행 단위
   - 컨테이너 자체 ❌
   - 컨테이너를 감싸는 실행 래퍼
   - 하나의 Pod 에 컨테이너 1개 이상 가능
 
 - metadata
-
   - metadata: 리소스의 식별 정보 영역
   - name: 클러스터 내에서 이 Pod를 구분하는 고유 이름
 
 - spec
-
   - 이 리소스를 어떻게 만들고 실행하지에 대한 명세
   - 쿠버네티스 yaml 의 핵심은 항상 spec
 

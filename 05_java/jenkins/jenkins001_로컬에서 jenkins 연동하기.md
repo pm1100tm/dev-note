@@ -17,9 +17,11 @@ EXPOSE 8080 50000 # (옵션) 컨테이너 내에서 사용할 포트를 명시�
 # 공식 이미지의 ENTRYPOINT 및 CMD가 이미 설정되어 있으므로 별도의 실행 명령은 필요하지 않습니다.
 ```
 
-프로젝트가 Java 버전 21을 사용하고 있어, JDK21 을 지원하는 Jenkins 이미지를 사용하였습니다. 그렇지 않고 일반 Jenkins lts 버전의 이미지를 사용하면 Java 17 버전이 설치되어있어, 별도로 Java 21을 설치하고 기본 사용 버전으로 이미지를 커스터마이징 해야 합니다. Java 21 버전을 사용하는 방법은 아래의 블로그를 참고할 수 있습니다.
+프로젝트가 Java 버전 21을 사용하고 있어, JDK21 을 지원하는 Jenkins 이미지를 사용하였습니다. 그렇지 않고 일반 Jenkins lts 버전의 이미지를
+사용하면 Java 17 버전이 설치되어있어, 별도로 Java 21을 설치하고 기본 사용 버전으로 이미지를 커스터마이징 해야 합니다. Java 21 버전을 사용하는 방법은
+아래의 블로그를 참고할 수 있습니다.
 
-* [Jenkins JDK 21](https://velog.io/@habins226/Jenkins-JDK-21-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0)
+* Jenkins의 JDK 21 설정은 공식 Jenkins Tools 문서도 함께 확인한다.
 
 ### Jenkins JDK 21 installation by Tools
 
@@ -48,7 +50,8 @@ pipeline {
 
 ## 2. \[1.] 에서 만든 Dockerfile 을 사용하여 이미지 생성
 
-여기서는 docker compose 파일을 사용하여 이미지를 생성하였습니다. docker compose 를 사용하지 않는다면 docker run 명령어를 사용하여 이미지를 만들 수 있습니다.
+여기서는 docker compose 파일을 사용하여 이미지를 생성하였습니다. docker compose 를 사용하지 않는다면 docker run 명령어를 사용하여
+이미지를 만들 수 있습니다.
 
 ```docker-compose
 services:
@@ -79,15 +82,25 @@ networks:
   * 비밀번호는 컨테이너의 로그에서 확인할 수 있습니다.
   * 또한, 직접 컨테이너 안에 들어가서 확인할 수 도 있습니다.
 
-![초기 Unlock 페이지](../../.gitbook/assets/jenkins001-unlock.png) ![초기 비밀번호](../../.gitbook/assets/jenkins002-unlock.png)
+![초기 Unlock 페이지](../../.gitbook/assets/jenkins001-unlock.png)
+
+![초기 비밀번호](../../.gitbook/assets/jenkins002-unlock.png)
 
 ## 4. 유저 생성
 
-![유저생성1](../../.gitbook/assets/jenkins003-user.png) ![유저생성2](../../.gitbook/assets/jenkins004-user.png) ![유저생성3](../../.gitbook/assets/jenkins005-user.png)
+![유저생성 1](../../.gitbook/assets/jenkins003-user.png)
+
+![유저생성 2](../../.gitbook/assets/jenkins004-user.png)
+
+![유저생성 3](../../.gitbook/assets/jenkins005-user.png)
 
 ## 5. 플러그인 설치
 
-![플러그인 설치1](../../.gitbook/assets/jenkins006-plugin.png) ![플러그인 설치2](../../.gitbook/assets/jenkins007-plugin.png) ![플러그인 설치3](../../.gitbook/assets/jenkins008-plugin.png)
+![플러그인 설치 1](../../.gitbook/assets/jenkins006-plugin.png)
+
+![플러그인 설치 2](../../.gitbook/assets/jenkins007-plugin.png)
+
+![플러그인 설치 3](../../.gitbook/assets/jenkins008-plugin.png)
 
 > 🥲 젠킨스가 자꾸 멈추는 현상이 있습니다. 버튼을 아무리 클릭해도 먹통일 때는, 고민하지 말고 재접속 합니다.
 
@@ -115,7 +128,8 @@ networks:
 
 ## 7. ngrok
 
-Github Repository 에 setting webhook 으로 들어갈 주소를 등록해줘야 합니다. 이 때 localhost 또는 퍼블릭 IP의 port 9081로 등록해도, 로컬 젠킨스 컨테이너를 찾을 수 없으므로 ngrok 라는 것을 사용하여 외부 IP를 임시로 생성하여 등록합니다.
+Github Repository 에 setting webhook 으로 들어갈 주소를 등록해줘야 합니다. 이 때 localhost 또는 퍼블릭 IP의 port 9081로
+등록해도, 로컬 젠킨스 컨테이너를 찾을 수 없으므로 ngrok 라는 것을 사용하여 외부 IP를 임시로 생성하여 등록합니다.
 
 ### 7-1. ngrok 설치
 
@@ -133,7 +147,7 @@ brew install --cask ngrok
 
 ```shell
 ngrok authtoken 20wnvzsRf4Rg3J3lhIpFrXPt49a_*************
-# Authtoken saved to configuration file: /Users/your-profile/Library/Application Support/ngrok/ngrok.yml
+# Authtoken saved to ngrok configuration file.
 ```
 
 그리고, localhost:9081 에 대한 외부 IP를 생성합니다.
@@ -218,7 +232,8 @@ pipeline {
 }
 ```
 
-위의 Jenkinsfile 스크립트는 /feature/jenkins-test 브랜치에 푸시되는 순간 작동합니다. 해당 브랜치를 jenkins 컨테이너에서 체크아웃&빌드하고, 젠킨스 컨테이너의 특정 폴더에 빌드 산출물인 jar 파일을 특정 폴더에 복사합니다.
+위의 Jenkinsfile 스크립트는 /feature/jenkins-test 브랜치에 푸시되는 순간 작동합니다. 해당 브랜치를 jenkins 컨테이너에서
+체크아웃&빌드하고, 젠킨스 컨테이너의 특정 폴더에 빌드 산출물인 jar 파일을 특정 폴더에 복사합니다.
 
 특정 폴더는 docker compose 에서 볼륨마운트 하여, 로컬 폴더에서도 해당 jar 파일을 볼 수 있습니다.
 

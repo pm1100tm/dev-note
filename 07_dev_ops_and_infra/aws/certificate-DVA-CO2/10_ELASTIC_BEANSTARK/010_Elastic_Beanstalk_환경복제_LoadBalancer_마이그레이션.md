@@ -258,7 +258,8 @@ Elastic Beanstalk 환경을 생성한 뒤 Classic Load Balancer에서
 Application Load Balancer로 타입을 변경하려고 합니다. 가장 적절한 방법은 무엇입니까?
 
 - A. 기존 Environment에서 Load Balancer 타입만 직접 변경합니다.
-- B. 새 Environment를 원하는 Load Balancer 타입으로 생성하고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트를 수행합니다.
+- B. 새 Environment를 원하는 Load Balancer 타입으로 생성하고 애플리케이션을 배포한 뒤 CNAME Swap 또는 Route 53 업데이트를
+  수행합니다.
 - C. 기존 EC2 인스턴스에 SSH로 접속해 Load Balancer 타입을 수정합니다.
 - D. Security Group 이름을 변경하면 Load Balancer 타입이 자동 변경됩니다.
 

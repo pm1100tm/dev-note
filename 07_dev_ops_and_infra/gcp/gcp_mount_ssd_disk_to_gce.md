@@ -120,7 +120,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 # ---------------------------------------------------------------------------
 # ① VM에 디스크 attach
 # 1. GCP Console → Compute Engine → VM instances
-# 2. 해당 VM (shopper-house-dev) 클릭
+# 2. 해당 VM (shop-dev) 클릭
 # 3. 상단 메뉴에서 Edit 클릭
 # 4. Additional disks → Add new disk
 #    - 방금 만든 SSD 디스크 선택
@@ -208,7 +208,7 @@ services:
 
 ```shell
 docker stop postgres
-sudo rsync -av /var/lib/docker/volumes/shopper-dev_postgres_data/_data/ /mnt/disks/ssd-data/postgres/
+sudo rsync -av /var/lib/docker/volumes/shop-dev_postgres_data/_data/ /mnt/disks/ssd-data/postgres/
 ```
 
 📌 컨테이너 재배포
@@ -229,7 +229,7 @@ sudo apt-get update
 sudo apt-get install -y rsync
 
 docker stop postgres
-sudo rsync -av /var/lib/docker/volumes/shopper-dev_postgres_data/_data/ /mnt/disks/ssd-data/postgres/
+sudo rsync -av /var/lib/docker/volumes/shop-dev_postgres_data/_data/ /mnt/disks/ssd-data/postgres/
 # 옵션 설명:
 # -a : 권한, 소유자, 타임스탬프 등 모두 유지
 # -v : 진행 상황 출력

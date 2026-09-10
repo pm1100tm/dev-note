@@ -1,218 +1,76 @@
-# Dockerfile syntax
+# Dockerfile 문법
 
-| syntax     |
-| ---------- |
-| FROM       |
-| RUN        |
-| WORKDIR    |
-| COPY       |
-| ADD        |
-| CMD        |
-| ENTRYPOINT |
-| ENV        |
-| ARG        |
-| EXPOSE     |
-| VOLUME     |
-| USER       |
-| LABEL      |
-| SHELL      |
-| STOPSIGNAL |
+Dockerfile은 이미지를 만드는 선언형 스크립트다. 빌드 컨텍스트에 포함된 파일만 `COPY`와
+`ADD`로 가져올 수 있으므로, `.dockerignore`로 불필요한 파일과 비밀 파일을 제외한다.
 
-## ⚡️ Description
+## 주요 지시어
 
-### FROM
+| 지시어        | 용도                                                     |
+| ------------- | -------------------------------------------------------- |
+| `FROM`        | 베이스 이미지를 지정한다.                                |
+| `WORKDIR`     | 이후 명령의 작업 디렉터리를 지정한다. 없으면 만든다.     |
+| `COPY`        | 빌드 컨텍스트의 파일을 이미지에 복사한다.                |
+| `RUN`         | 이미지 빌드 중 명령을 실행한다.                          |
+| `ENV`         | 런타임에도 남는 환경 변수를 설정한다.                    |
+| `ARG`         | 빌드 시에만 전달되는 인수를 선언한다.                    |
+| `EXPOSE`      | 사용할 컨테이너 포트를 문서화한다. 포트를 열지는 않는다. |
+| `CMD`         | 기본 실행 명령 또는 인수를 지정한다.                     |
+| `ENTRYPOINT`  | 컨테이너의 고정 실행 파일을 지정한다.                    |
+| `USER`        | 이후 명령과 런타임의 사용자를 변경한다.                  |
+| `HEALTHCHECK` | 컨테이너 상태 확인 명령을 정의한다.                      |
 
-- 베이스 이미지 지정한다.
-- Docker Hub 에서 원하는 이미지를 찾을 수 있다.
-
-### RUN
-
-- Dockerfile에서 이미지 빌드 과정 중에 실행된다.
-- 각 RUN 명령어마다 새로운 레이어가 생성되므로, 캐시를 효과적으로 사용하여 빌드 속도를 높일 수 있다.
+## Node.js 예시
 
 ```dockerfile
-RUN apt-get update && apt-get install -y \
-    git \
-    curl
-```
+FROM node:22-alpine
 
-### WORKDIR
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY . ./
 
-- 명령이 실행될 작업 디렉토리를 지정한다.
-- 해당 디렉토리가 없다면 생성된다.
-
-### COPY
-
-- 호스트 머신의 파일을 컨테이너 내부로 복사한다.
-
-### ADD
-
-- COPY와 유사하나 추가적인 기능 제공한다.
-- 로컬 파일이나 URL 복사할 수 있으며, 압축 파일 자동으로 해제하고 원격 파일 다운로드 할 수 있다.
-
-### CMD
-
-- 컨테이너가 시작될 때 실행하는 명령을 설정한다.
-- 도커 파일에서 한 번만 사용해야 한다.
-- 동시에 여러 개의 CMD 지시문을 사용할 수 있지만, 마지막 CMD만 적용된다.
-
-```dockerfile
-CMD ["executable", "param1", "param2"]
+USER node
+EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-### ENTRYPOINT
+`COPY package*.json`을 소스 코드보다 먼저 둬야 의존성이 바뀌지 않은 빌드에서 해당
+레이어의 캐시를 재사용할 수 있다. 운영 이미지는 lock 파일을 사용하는 `npm ci`가
+재현성이 높다.
 
-- 컨테이너가 시작될 때 실행할 실행 파일 또는 스크립트를 설정한다.
-- CMD와 달리 항상 실행되며, CMD와 함께 사용될 경우에는 CMD의 인자로 사용된다.
-
-```dockerfile
-ENTRYPOINT ["executable", "param1", "param2"]
-```
-
-### ENV
-
-- 환경 변수를 설정한다.
-
-### ARG
-
-- 빌드 중에 전달되는 인수를 정의한다.
-
-### EXPOSE
-
-- 컨테이너가 노출할 포트 설정한다.
-
-### VOLUME
-
-- 호스트 머신과 컨테이너 간에 볼륨을 공유할 수 있도록 설정한다.
-
-### USER
-
-- 컨테이너가 실행될 사용자를 설정한다.
-
-### HEALTHCHECK
-
-- 컨테이너의 상태를 확인하는 방법을 설정한다.
-
-### LABEL
-
-- 이미지에 메타데이터를 추가
-- LABEL version="1.0"
-
-### SHELL
-
-- 기본 쉘 지정
-- SHELL ["/bin/bash", "-c"]
-
-### STOPSIGNAL
-
-- 컨테이너가 종료될 때 보내질 시그널을 지정
-- STOPSIGNAL SIGTERM
-
-## 실습
+## RUN, CMD, ENTRYPOINT
 
 ```dockerfile
-FROM node:14
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD ["node", "app.js"]
-
-EXPOSE 3000
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+CMD ["--spring.profiles.active=prod"]
 ```
 
-```dockerfile
-FROM node:20.11-alpine
+- `RUN`은 이미지를 빌드할 때만 실행되며 결과가 이미지 레이어에 남는다.
+- `CMD`는 컨테이너 시작 시의 기본 명령 또는 기본 인수이며 `docker run` 인수로 바꿀 수 있다.
+- `ENTRYPOINT`는 고정 실행 명령이다. 위 예시에서 `CMD`는 `java -jar`의 기본 인수가 된다.
+- 셸 형식보다 JSON 배열 형태(exec form)를 사용하면 셸을 거치지 않아 시그널 전달이 명확하다.
 
-RUN apk update && apk add bash sudo vim
+## 보안과 크기 관리
 
-WORKDIR /app
+- `latest` 대신 고정 태그 또는 digest를 사용한다.
+- 비밀값을 `ARG`, `ENV`, `COPY`로 이미지에 넣지 않는다. BuildKit secret이나 런타임 주입을 사용한다.
+- 패키지 설치 후 패키지 목록 캐시를 같은 `RUN`에서 제거한다.
+- 루트가 아닌 사용자로 실행하고, 빌드 도구는 멀티 스테이지 빌드에서 제외한다.
 
-COPY . .
-
-RUN npm cache clean --force && rm -rf node_modules && npm install
-
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+```text
+# .dockerignore 예시
+node_modules
+.git
+.env
+dist
 ```
 
-```dockerfile
-FROM python:3.11
-
-ENV PYTHONUNBUFFERED=1
-
-WORKDIR /app
-
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-ENTRYPOINT ["uvicorn", "myproject.asgi:application", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-### Multi-Stage Build
-
-```dockerfile
-FROM node:14 AS development
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD ["npm", "run", "dev"]
-
-FROM node:14 AS production
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install --production
-
-COPY . .
-
-RUN npm run build
-
-CMD ["npm", "start"]
-```
-
-Build Docker image with Multi-Stage
+## 빌드와 실행
 
 ```shell
-docker build --target development --t node:dev .
-docker build --target production --t node:dev .
+docker build -t my-app:1.0 .
+docker run --rm -p 3000:3000 my-app:1.0
 ```
 
-## RUN, CMD, ENTRYPOINT 차이점과 쓰임새
-
-| syntax     | desc                                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------------- |
-| RUN        | 이미지 빌드 중에 실행할 명령어 설정                                                               |
-| CMD        | 컨테이너가 시작될 때 실행할 기본 명령 설정                                                        |
-| ENTRYPOINT | 컨테이너가 시작될 때 실행할 실행 파일 또는 스크립트를 설정하며, CMD명령어의 인자로 사용될 수 있음 |
-
-```dockerfile
-FROM node:14
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-
-# 컨테이너가 시작될 때 실행할 실행 파일을 설정합니다.
-ENTRYPOINT ["node"]
-
-# 컨테이너가 시작될 때 실행할 명령 및 파라미터를 설정합니다.
-CMD ["app.js"]
-```
+멀티 스테이지 빌드는 [이미지 경량화와 멀티 스테이지]
+(001*도커이미지*경량화\_멀티스테이징.md)를 참고한다.

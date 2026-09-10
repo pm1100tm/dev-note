@@ -127,25 +127,25 @@ athena.max-concurrent-queries=5
 
 ### Step 1: IAM 콘솔 접속
 
-- 1. AWS 콘솔 → IAM 검색 후 접속
-- 2. 왼쪽 메뉴에서 정책(Policies) 클릭
+- AWS 콘솔 → IAM 검색 후 접속
+- 왼쪽 메뉴에서 정책(Policies) 클릭
 
 ### Step 2: 커스텀 정책 생성
 
-- 1. 정책 생성(Create policy) 클릭
-- 2. JSON 탭 선택
-- 3. 위 JSON 내용을 붙여넣기
-- 4. 다음 → 정책 이름 입력 (예: AthenaSearchLogPolicy)
-- 5. 정책 생성 클릭
+- 정책 생성(Create policy) 클릭
+- JSON 탭 선택
+- 위 JSON 내용을 붙여넣기
+- 다음 → 정책 이름 입력 (예: AthenaSearchLogPolicy)
+- 정책 생성 클릭
 
 ### Step 3: IAM 사용자에게 정책 연결
 
-- 1. 왼쪽 메뉴에서 사용자(IAM users) 클릭
-- 2. 정책을 연결할 사용자 이름 클릭
-- 3. 권한(Permissions) 탭 → 권한 추가(Add permissions) 클릭
-- 4. 직접 정책 연결(Attach policies directly) 선택
-- 5. 검색창에 AthenaSearchLogPolicy 입력 후 체크
-- 6. 다음 → 권한 추가 클릭
+- 왼쪽 메뉴에서 사용자(IAM users) 클릭
+- 정책을 연결할 사용자 이름 클릭
+- 권한(Permissions) 탭 → 권한 추가(Add permissions) 클릭
+- 직접 정책 연결(Attach policies directly) 선택
+- 검색창에 AthenaSearchLogPolicy 입력 후 체크
+- 다음 → 권한 추가 클릭
 
 ### Step 4: 확인
 
