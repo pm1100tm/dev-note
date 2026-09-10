@@ -77,7 +77,7 @@ function App() {
 5. @babel/plugin-transform-react-jsx 검색 후 선택
 
 ```jsx
-<Greeting name='world' />;
+<Greeting name="world" />;
 
 // --- 변환
 /*#__PURE__*/ React.createElement(Greeting, {
@@ -86,7 +86,7 @@ function App() {
 ```
 
 ```jsx
-<Button type='submit'>Send</Button>;
+<Button type="submit">Send</Button>;
 
 // --- 변환
 /*#__PURE__*/ React.createElement(
@@ -100,9 +100,9 @@ function App() {
 
 ```jsx
 // JSX
-<div className='test'>
+<div className="test">
   <p>Hello, world!</p>
-  <Button type='submit'>Send</Button>
+  <Button type="submit">Send</Button>
 </div>;
 
 // --- 변환
@@ -119,7 +119,7 @@ React.createElement(
 ```jsx
 <div>
   <p>Count: {count}!</p>
-  <button type='button' onClick={() => setCount(count + 1)}>
+  <button type="button" onClick={() => setCount(count + 1)}>
     Increase
   </button>
 </div>;
