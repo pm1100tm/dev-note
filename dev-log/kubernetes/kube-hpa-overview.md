@@ -1,2 +1,0 @@
-# Kube HPA Overview
-

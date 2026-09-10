@@ -8,4 +8,4 @@ site:
       path: dev-log
       default: true
       content:
-        directory: ./dev-log
+        directory: ./
