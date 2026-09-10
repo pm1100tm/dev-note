@@ -8,7 +8,7 @@ GCP CLI, Compute Engine, Pub/Sub, Cloud Logging, 디스크 운영 실습을 정�
 - [GCE에 Docker 설정](gce_docker_settting.md)
 - [gcloud CLI 연결](gcp_cli_connect.md)
 - [Pub/Sub CLI](gcp_cli_pubsub.md)
-- [Cloud Logging Log Writer 오류](gcp_log_writer_오류_100%.md)
+- [Cloud Logging Log Writer 오류](gcp_log_writer_오류_100_percent.md)
 - [GCE에 SSD 디스크 마운트](gcp_mount_ssd_disk_to_gce.md)
 - [GCE 부팅 디스크 용량 늘리기](인스턴스_용량_늘리기.md)
 

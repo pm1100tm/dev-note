@@ -10,6 +10,10 @@
 - [CIDR](CIDRs.md)
 - [POSIX](posix.md)
 
+## AI
+
+- [One-shot Learning과 Few-shot Learning](ai_oneshot_fewshot.md)
+
 ## 인프라와 가용성
 
 - [고가용성](high_available_고가용성.md)
