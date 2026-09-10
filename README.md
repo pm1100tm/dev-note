@@ -20,6 +20,7 @@ GitBook은 [SUMMARY.md](SUMMARY.md)를 기준으로 문서의 탐색 목차를 �
 - [Java](05_java/README.md)
 - [Python](06_python/README.md)
 - [DevOps · 인프라](07_dev_ops_and_infra/README.md)
+  - [Amazon Bedrock](07_dev_ops_and_infra/aws/bedrock/README.md)
 - [CI/CD](08_cicd/README.md)
 - [React](react/README.md)
 - [디자인](10_design/README.md)

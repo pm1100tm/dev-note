@@ -6,6 +6,7 @@
 ## AWS
 
 - [AWS 서비스와 실습](aws/README.md)
+  - [Amazon Bedrock](aws/bedrock/README.md)
 - [AWS Developer Associate 학습 노트](aws/certificate-DVA-CO2/README.md)
 
 ## Google Cloud Platform
