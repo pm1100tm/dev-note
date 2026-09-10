@@ -22,7 +22,7 @@ AWS 서비스의 기본 개념, 실습, 운영 이슈를 정리한다. 서비스
 - [Bedrock 소개](bedrock/01_BedRock이란_무엇인가.md)
 - [Bedrock 설정](bedrock/02_BedRock설정.md)
 - [Bedrock 실습](bedrock/03_BedRock실습.md)
-- [Bedrock 예외 처리](bedrock/04_예외처리_1.md)
+- [Bedrock 예외 처리](bedrock/private_04_예외처리_1.md)
 
 ## 운영 원칙
 
