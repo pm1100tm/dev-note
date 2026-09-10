@@ -35,7 +35,7 @@ s3:ListBucket
 ```shell
 {
   "Effect": "Allow",
-  "Principal": {"AWS": "arn:aws:iam::123456789012:role/ExternalRole"},
+  "Principal": {"AWS": "arn:aws:iam::12345678****:role/ExternalRole"},
   "Action": "s3:GetObject",
   "Resource": "arn:aws:s3:::my-bucket/*"
 }
@@ -88,11 +88,9 @@ AND Explicit DENY가 없어야 한다
 ## 6️⃣ 시험에 자주 나오는 함정 문장
 
 - “User has no IAM permission but can access S3”
-
   - 👉 Bucket Policy에서 ALLOW
 
 - “IAM allows access but still denied”
-
   - 👉 Bucket Policy / SCP / Explicit DENY
 
 - “Grant access to another AWS account”

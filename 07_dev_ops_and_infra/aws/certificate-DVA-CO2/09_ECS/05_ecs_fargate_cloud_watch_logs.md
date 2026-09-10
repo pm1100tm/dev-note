@@ -44,7 +44,7 @@ log.error("결제 처리 중 오류가 발생했습니다.");
   "containerDefinitions": [
     {
       "name": "spring-app",
-      "image": "123456789012.dkr.ecr.ap-northeast-2.amazonaws.com/spring-app:latest",
+      "image": "12345678****.dkr.ecr.ap-northeast-2.amazonaws.com/spring-app:latest",
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {

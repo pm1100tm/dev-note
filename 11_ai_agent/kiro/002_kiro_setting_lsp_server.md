@@ -26,7 +26,7 @@ brew install jdtls
 /code init
 
 ✓ Workspace initialization started
-Workspace: /Users/wondushim/Desktop/work-shop/shop-backend
+Workspace: /Users/swd/Desktop/work-shop/shop-backend
 Detected Languages: ["java"]
 Project Markers: ["build.gradle"]
 

@@ -25,7 +25,7 @@ OpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sha
 ❯ adb --version
 Android Debug Bridge version 1.0.41
 Version 37.0.1-15733141
-Installed as /Users/wondushim/Library/Android/sdk/platform-tools/adb
+Installed as /Users/swd/Library/Android/sdk/platform-tools/adb
 Running on Darwin 25.6.0 (arm64)
 
 

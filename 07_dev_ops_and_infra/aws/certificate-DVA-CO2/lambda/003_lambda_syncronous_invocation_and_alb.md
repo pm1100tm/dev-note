@@ -88,7 +88,7 @@ aws lambda add-permission \
   --statement-id alb-invoke \
   --action "lambda:InvokeFunction" \
   --principal elasticloadbalancing.amazonaws.com \
-  --source-arn arn:aws:elasticloadbalancing:ap-northeast-2:123456789012:targetgroup/my-tg/abc123
+  --source-arn arn:aws:elasticloadbalancing:ap-northeast-2:12345678****:targetgroup/my-tg/abc123
 ```
 
 #### 각 옵션 역할

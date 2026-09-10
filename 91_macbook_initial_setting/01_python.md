@@ -131,7 +131,7 @@ testpaths = ["tests"]
 ## 요약
 
 ```shell
-cd /Users/wondushim/Desktop/work/<workdir>
+cd /Users/swd/Desktop/work/<workdir>
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip

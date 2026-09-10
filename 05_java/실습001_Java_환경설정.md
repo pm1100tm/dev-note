@@ -106,7 +106,7 @@ jenv remove /Library/Java/JavaVirtualMachines/openjdk64-11.0.24/Contents/Home/
 
 # 확인
 $ jenv versions
-* system (set by /Users/wondushim/.jenv/version)
+* system (set by /Users/swd/.jenv/version)
   17
   17.0
   17.0.20.1
