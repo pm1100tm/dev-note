@@ -291,6 +291,7 @@
 - [AI Agent](11_ai_agent/README.md)
   - [Codex CLI 설치](11_ai_agent/codex/001_codex_cli_install.md)
   - [Codex CLI 명령어](11_ai_agent/codex/002_codex_command.md)
+  - [Codex를 잘 사용하기 위한 지침 만들기](11_ai_agent/codex/003_codex_docs.md)
   - [Kiro CLI 설치](11_ai_agent/kiro/001_kiro-cli-install.md)
   - [Kiro LSP 서버 설정](11_ai_agent/kiro/002_kiro_setting_lsp_server.md)
 - [Android](12_android/README.md)
