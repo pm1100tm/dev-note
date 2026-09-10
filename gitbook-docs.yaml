@@ -1,0 +1,11 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: pm1100-log
+  structure:
+    - type: space
+      key: space-1
+      title: pm1100-log
+      path: dev-log
+      default: true
+      content:
+        directory: ./dev-log
