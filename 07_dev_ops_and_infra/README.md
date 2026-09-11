@@ -9,7 +9,7 @@
   - [Amazon Bedrock](aws/bedrock/README.md)
 - [AWS Developer Associate 학습 노트](aws/certificate-DVA-CO2/README.md)
 
-## Google Cloud Platform
+## GCP
 
 - [GCP 실습과 운영](gcp/README.md)
 

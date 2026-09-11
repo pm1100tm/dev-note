@@ -1,11 +1,13 @@
 # Table of contents
 
 - [README](README.md)
+
 - [알고리즘과 자료구조](01_algorithms/README.md)
   - [배열](01_algorithms/algo_array.md)
   - [탐욕 알고리즘](01_algorithms/algo_greedy.md)
   - [LRU 캐시](01_algorithms/data_lru_cache.md)
   - [다중집합](01_algorithms/data_multiset.md)
+
 - [데이터베이스](02_database/README.md)
   - [인덱스](02_database/index.md)
   - [EXPLAIN과 EXPLAIN ANALYZE](02_database/Q_001_explain_explain_analyze.md)
@@ -40,6 +42,7 @@
     - [STRING_AGG](02_database/cookbook/0018_string_agg.md)
     - [다중테이블 - 행 집합을 다른 행 위에 추가](<02_database/cookbook/0009_union_다중테이블(행_집합을_다른_행_위에_추가).md>)
     - [두 테이블에 같은 데이터가 있는지 확인하기(카디널리티)](<02_database/cookbook/0015_두_테이블에_같은_데이터_확인(카디널리티).md>)
+
 - [Docker](03_docker/README.md)
   - [Docker](03_docker/a.docker.md)
   - [Docker CLI](03_docker/b.docker-cli.md)
@@ -53,6 +56,7 @@
   - [다른 Compose 프로젝트의 컨테이너 연결](03_docker/002_다른_컨테이너와_연결하기_위한_네트워크_수정.md)
   - [Docker 로그 정리](03_docker/003_도커로그_정리하기.md)
   - [Docker 로그인](03_docker/004_docker-login.md)
+
 - [Git](04_git/README.md)
   - [브랜치 이름 변경](04_git/branch-rename.md)
   - [커밋 메시지 템플릿](04_git/commit-message.md)
@@ -66,6 +70,7 @@
   - [파일 삭제와 추적 해제](04_git/git-rm.md)
   - [upstream 설정](04_git/git-set-upstream.md)
   - [태그 관리](04_git/git-tag.md)
+
 - [Java](05_java/README.md)
   - [객체지향 프로그래밍의 특징](05_java/기초001_객체지향프로그래밍의특징.md)
   - [변수와 메서드의 JVM 메모리 위치](05_java/기초002_변수와메소드가JVM에저장되는위치.md)
@@ -91,13 +96,13 @@
   - [낙관락 Best Practice](<05_java/springboot/20260402_02_낙관락_Best Practice.md>)
   - [SLF4J로 Spring 로그 작성하기](<05_java/etc/001_Spring 로그 제대로 쓰기 — SLF4J의 올바른 사용법.md>)
   - [Enum 비교에 `==` 사용하기](<05_java/etc/002_Java Enum 비교에 == 연산자를 사용해야 하는 이유.md>)
-  <!-- - [인터페이스 기반 Validator](05_java/validator/001_validator_with_interface.md) -->
   - [로컬 Jenkins 연동](<05_java/jenkins/jenkins001_로컬에서 jenkins 연동하기.md>)
   - [IntelliJ Java 코드 컨벤션](05_java/TODO_code_convention.md)
   - [Java String.toString() vs String.valueOf() 차이 완벽 정리](<05_java/java/20260402_01_Java String.toString() vs String.valueOf() 차이 완벽 정리.md>)
   - [Java Long.valueOf() vs Long.parseLong() 차이 완벽 정리](<05_java/java/20260402_02_Java Long.valueOf() vs Long.parseLong() 차이 완벽 정리.md>)
   - [JPA: Detached 상태](05_java/jpa-jpa-detached.md)
   - [JPA: StaleObjectStateException](05_java/jpa-staleobjectstateexception.md)
+
 - [Python](06_python/README.md)
   - [heapq](06_python/heapq.md)
   - [중복 제거에 set을 선호하는 이유](06_python/중복제거는set을선호하자.md)
@@ -106,14 +111,15 @@
   - [uv 패키지 매니저](06_python/998_etc_uv_package_manager.md)
   - [pdb 단축키](06_python/999_etc_pdb_shortcut.md)
   - [면접 질문](06_python/interview.md)
+
 - [DevOps와 인프라](07_dev_ops_and_infra/README.md)
   - [AWS](07_dev_ops_and_infra/aws/README.md)
-    - [AWS 인증서](07_dev_ops_and_infra/aws/000_aws_certificate.md)
-    - [AWS 소개](<07_dev_ops_and_infra/aws/001. Intro.md>)
-    - [네트워크 구성](<07_dev_ops_and_infra/aws/002. 네트워크 구성하기.md>)
-    - [웹 서버 생성](<07_dev_ops_and_infra/aws/003. Webserver 생성하기.md>)
-    - [로드 밸런서 구성](<07_dev_ops_and_infra/aws/004. 로드벨런서 구성하기.md>)
-    - [인스턴스 타입 변경](<07_dev_ops_and_infra/aws/005. 인스턴스 타입 변경하기.md>)
+    - [AWS 인증서](07_dev_ops_and_infra/aws/000_AWS_자격증_종류.md)
+    - [AWS 소개](07_dev_ops_and_infra/aws/001_Intro.md)
+    - [네트워크 구성](07_dev_ops_and_infra/aws/002_네트워크_구성하기.md)
+    - [웹 서버 생성](07_dev_ops_and_infra/aws/003_Webserver_생성하기.md)
+    - [로드 밸런서 구성](07_dev_ops_and_infra/aws/004_로드벨런서_구성하기.md)
+    - [인스턴스 타입 변경](07_dev_ops_and_infra/aws/005_인스턴스_타입_변경하기.md)
     - [Elastic IP 설정](07_dev_ops_and_infra/aws/006_elastic_ip_setting.md)
     - [AWS CLI 설정](07_dev_ops_and_infra/aws/007_aws_cli_setting.md)
     - [Athena](07_dev_ops_and_infra/aws/athena/01_Athena란_무엇인가.md)
@@ -123,6 +129,7 @@
       - [Bedrock이란 무엇인가](07_dev_ops_and_infra/aws/bedrock/01_BedRock이란_무엇인가.md)
       - [Bedrock 설정](07_dev_ops_and_infra/aws/bedrock/02_BedRock설정.md)
       - [Bedrock 실습](07_dev_ops_and_infra/aws/bedrock/03_BedRock실습.md)
+
   - [AWS Developer Associate 학습 노트](07_dev_ops_and_infra/aws/certificate-DVA-CO2/README.md)
     - [기본 개념](07_dev_ops_and_infra/aws/certificate-DVA-CO2/00_BASIC/001_지역_및_AZ.md)
       - [IAM](07_dev_ops_and_infra/aws/certificate-DVA-CO2/00_BASIC/002_IAM.md)
@@ -256,6 +263,7 @@
     - [로컬 Kubernetes 학습 로드맵](07_dev_ops_and_infra/kubernetes/local_kube/001_kube_로컬_쿠베학습_로드맵.md)
     - [Docker Desktop Kubernetes 설정](07_dev_ops_and_infra/kubernetes/local_kube/002_kube_도커_데스크탑_설정.md)
     - [Pod 실습](07_dev_ops_and_infra/kubernetes/local_kube/003_kube_pod.md)
+
 - [React](react/README.md)
   - [기존 React 개발 환경 설정](react/aaa.react-dev-env-setting.md)
   - [JSX](react/aab.jsx.md)
