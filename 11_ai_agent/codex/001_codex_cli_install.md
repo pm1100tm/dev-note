@@ -52,8 +52,11 @@ codex-cli 0.144.1
 
 - 사용량 한도가 남아 있으면 `/usage` 명령으로 확인하고 관리할 수 있다.
 
-
 › Explain this codebase
 
   gpt-5.5 default · ~/Desktop/dev-note
 ```
+
+- /status 로 현재 사용량을 확인할 수 있다.
+- /usage 로 주간 한도 갱신을 할 수 있다.
+- /fast 모드로 fast 모드를 적용/해제 할 수 있다.

@@ -7,6 +7,8 @@ AI 코딩 에이전트의 설치, 명령어, 언어 서버 연동 기록을 모�
 
 - [Codex CLI 설치](codex/001_codex_cli_install.md)
 - [Codex CLI 명령어](codex/002_codex_command.md)
+- [Codex 지침 설정](codex/003_codex_docs.md)
+- [Codex 지침 경로 설정](codex/004_codex_home_설정하기.md)
 
 ## Kiro
 

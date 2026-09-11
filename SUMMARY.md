@@ -288,12 +288,15 @@
   - [GitHub Actions로 FastAPI 배포](08_cicd/cicd_github_action_fast_api.md)
   - [Jenkins, Docker, AWS EC2 배포](08_cicd/cicd_jenkins_docker_aws.md)
   - [EC2의 Jenkins 성능 이슈](08_cicd/cicd_jenkins_on_ec2_performance_issue.md)
+
 - [AI Agent](11_ai_agent/README.md)
   - [Codex CLI 설치](11_ai_agent/codex/001_codex_cli_install.md)
   - [Codex CLI 명령어](11_ai_agent/codex/002_codex_command.md)
-  - [Codex를 잘 사용하기 위한 지침 만들기](11_ai_agent/codex/003_codex_docs.md)
+  - [Codex 지침 설정](11_ai_agent/codex/003_codex_docs.md)
+  - [Codex 지침 경로 설정](11_ai_agent/codex/004_codex_home_설정하기.md)
   - [Kiro CLI 설치](11_ai_agent/kiro/001_kiro-cli-install.md)
   - [Kiro LSP 서버 설정](11_ai_agent/kiro/002_kiro_setting_lsp_server.md)
+
 - [Android](12_android/README.md)
   - [macOS 환경 설정](12_android/01_안드로이드_환경설정_mac.md)
   - [Windows 환경 설정](12_android/02_안드로이드_환경설정_window.md)
