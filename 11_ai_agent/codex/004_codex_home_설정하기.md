@@ -36,27 +36,20 @@ installation_id
 dev-note/
 └── .codex/
     ├── AGENTS.md      # 이 Codex 홈을 사용하는 실행에 적용할 지침
-    └── config.toml    # 별도 Codex 설정
 ```
 
 ```shell
 CODEX_HOME="$PWD/.codex" codex "현재 적용된 지침 파일과 주요 규칙을 요약해줘."
+
+# 이렇게 해봤을 때, 로그인 화면이 나왔다..
 ```
 
-> 아예, shell 에 설정하는 것은 특정 프로젝트 경로의 CODEX_HOME 을 읽기 때문에, 적합하지 않을 수 있겠습니다.
+> 아예, shell 에 CODEX_HOME을 설정하는 것은, 특정 프로젝트에서 사용할 때마다 변경해줘야 하기 때문에 부적합..
 
 ```shell
 # 이렇게 설정하면 매번 바꿔줘야함..
 CODEX_HOME=/Users/<username>/Desktop/dev-note/.codex codex
 ```
-
-<br>
-
-## CODEX_HOME
-
-`CODEX_HOME`을 지정하지 않고 프로젝트에 `.codex/AGENTS.md`만 생성하면, 프로젝트 전체 지침으로 자동 적용되지는
-않습니다. 프로젝트 지침만 필요하다면 루트 `AGENTS.md`를 사용하는 것이 간단합니다. 지침과 Codex 설정을 프로젝트별로
-분리하려면 위와 같이 `CODEX_HOME`을 지정할 수 있습니다.
 
 <br>
 
@@ -72,3 +65,49 @@ CODEX_HOME=/Users/<username>/Desktop/dev-note/.codex codex
 - 같은 위치에 비어 있지 않은 `AGENTS.override.md`가 있으면 해당 파일이 우선합니다.
 
 공식 문서: [Custom instructions with AGENTS.md — 지침 탐색 및 CODEX_HOME 설정](https://developers.openai.com/codex/guides/agents-md)
+
+<br>
+
+## 테스트 해보자
+
+```shell
+dev-note/
+└── AGENTS.md
+
+> codex 현재 적용 중인 AGENTS.md 파일 경로와 핵심 규칙을 알려줘.
+
+현재 적용 중인 저장소 지침은 AGENTS.md:1입니다.
+
+핵심 규칙은 다음과 같습니다.
+
+- 기본 언어는 한국어이며, 개발 조사·트러블슈팅·학습 내용을 GitBook용 Markdown으로 관리합니다.
+```
+
+```shell
+dev-note/
+└── .codex/
+    ├── AGENTS.md
+
+> codex 현재 적용 중인 AGENTS.md 파일 경로와 핵심 규칙을 알려줘.
+
+현재 작업 디렉터리(/Users/<username>/Desktop/dev-note) 및 상위 경로에서 적용되는 AGENTS.md 파일은 발견되지
+않았습니다.
+현재 적용 중인 지침은 대화에 인라인으로 제공된 Personal Codex Instructions이며, 별도 파일 경로는 없습니다.
+핵심 규칙:
+- 응답은 기본적으로 한국어로 작성
+- 기존 코드 구조와 사용자 변경사항을 먼저 확인·보존
+- 작고 일관된 변경을 선호하고, 프로젝트 기존 관례를 우선
+- API 계약, DB 스키마, 인증, 배포·운영 설정의 위험을 명확히 설명
+- 가능하면 관련 검증 명령을 실행하고, 변경·검증·미검증 항목을 보고
+```
+
+```shell
+dev-note/
+└── .codex/
+    ├── AGENTS.md
+
+CODEX_HOME="$PWD/.codex" codex "현재 적용된 지침 파일과 주요 규칙을 요약해줘."
+
+# 로그인창 출현..
+# 그리고 .codex 에 엄청나게 많은 파일이 생성되었다.
+```
