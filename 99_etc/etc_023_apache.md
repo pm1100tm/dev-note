@@ -340,7 +340,7 @@ vim /opt/homebrew/etc/httpd/httpd.conf
 
 ## Q1. Nginx의 차이점
 
-- [Apache 와 Nginx 의 차이점](./etc024_apache_nginx_차이점.md)
+- [Apache 와 Nginx 의 차이점](./etc_024_apache_nginx_차이점.md)
 
 ## Q2. 톰캣(Tomcat)과의 관계
 
