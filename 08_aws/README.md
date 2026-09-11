@@ -24,4 +24,4 @@ AWS 서비스의 기본 개념, 실습, 운영 이슈를 정리한다. 서비스
 
 ## AWS 자격증 학습
 
-- [AWS Certified Developer - Associate 학습노트](certificate-DVA-CO2/README.md)
+- [AWS Certified Developer - Associate 학습노트](certi_DVA_CO2/README.md)
