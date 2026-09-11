@@ -317,6 +317,7 @@
   - [Codex CLI 명령어](11_ai_agent/codex/002_codex_command.md)
   - [Codex 지침 설정](11_ai_agent/codex/003_codex_docs.md)
   - [Codex 지침 경로 설정](11_ai_agent/codex/004_codex_home_설정하기.md)
+  - [Codex에 GitBook MCP 연결](11_ai_agent/codex/005_codex_gitbook_mcp.md)
   - [Kiro CLI 설치](11_ai_agent/kiro/001_kiro-cli-install.md)
   - [Kiro LSP 서버 설정](11_ai_agent/kiro/002_kiro_setting_lsp_server.md)
 
