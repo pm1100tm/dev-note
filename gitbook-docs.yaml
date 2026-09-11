@@ -5,7 +5,7 @@ site:
     - type: space
       key: space-1
       title: pm1100-log
-      path: dev-log
+      path: swd-note
       default: true
       content:
         directory: ./
