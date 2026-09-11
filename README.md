@@ -19,10 +19,11 @@ GitBook은 [SUMMARY.md](SUMMARY.md)를 기준으로 문서의 탐색 목차를 �
 - [Git](04_git/README.md)
 - [Java](05_java/README.md)
 - [Python](06_python/README.md)
-- [DevOps · 인프라](07_dev_ops_and_infra/README.md)
-  - [Amazon Bedrock](07_dev_ops_and_infra/aws/bedrock/README.md)
+- [React](07_react/README.md)
+- [AWS](08_aws/README.md)
+- [GCP](08_gcp/README.md)
+- [Kubernetes](08_kubernetes/README.md)
 - [CI/CD](08_cicd/README.md)
-- [React](react/README.md)
 - [디자인](10_design/README.md)
 - [AI Agent](11_ai_agent/README.md)
 - [Android](12_android/README.md)
@@ -41,10 +42,7 @@ GitBook은 [SUMMARY.md](SUMMARY.md)를 기준으로 문서의 탐색 목차를 �
 
 ## 문서 반영 절차
 
-1. 주제에 맞는 디렉터리에 Markdown 문서를 작성하거나 수정합니다.
-
-2. 새 문서이거나 경로가 바뀐 경우 `SUMMARY.md`에 제목과 링크를 추가합니다.
-
-3. 상대 링크, 이미지 경로, 코드 예시를 확인합니다.
-
-4. 변경 사항을 검토한 뒤 기본 브랜치에 반영하면 GitBook 동기화 설정에 따라 문서가 갱신됩니다.
+- [1.] 주제에 맞는 디렉터리에 Markdown 문서를 작성하거나 수정합니다.
+- [2.] 새 문서이거나 경로가 바뀐 경우 `SUMMARY.md`에 제목과 링크를 추가합니다.
+- [3.] 상대 링크, 이미지 경로, 코드 예시를 확인합니다.
+- [4.] 변경 사항을 검토한 뒤 기본 브랜치에 반영하면 GitBook 동기화 설정에 따라 문서가 갱신됩니다.

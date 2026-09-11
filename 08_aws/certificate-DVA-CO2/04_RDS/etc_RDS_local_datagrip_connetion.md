@@ -12,7 +12,7 @@
 
 ### RDS 의 보안그룹 설정
 
-![rds-sg](./assets/connection_to_rds_with_ip.png)
+![rds-sg](../assets/connection_to_rds_with_ip.png)
 
 - 첫번째 Inbound Rule
 
