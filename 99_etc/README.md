@@ -29,7 +29,6 @@
 - [Apache와 Nginx 비교](etc_024_apache_nginx_차이점.md)
 - [애플리케이션 버전 정보](etc_026_app_version_정보의_의미.md)
 - [Codex MCP 등록](etc_027_codex_mcp_등록.md)
-- [Git Repository와 GitBook 연동](etc_028_git_repository_gitbook_연동.md)
 - [Docker Desktop 재설치](etc_017_도커_데스트탑_완전삭제_재설치.md)
 
 ## 데이터와 미디어

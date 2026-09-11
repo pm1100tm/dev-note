@@ -334,6 +334,9 @@
   - [iOS 인증서 운영](13_ios/etc_iOS_인증서_관련_운영.md)
   - [.p12 키체인 등록](<13_ios/etc_키체인(.p12)등록_방법.md>)
   - [iOS 앱 인증서(.p12) Mac Keychain 등록 방법](<13_ios/etc_키체인(.p12)등록_방법.md>)
+- [GitBook](14_gitbook/README.md)
+  - [GitBook 개요](14_gitbook/GIT_BOOK_01_overview.md)
+  - [Git Repository와 GitBook 연동](14_gitbook/GIT_BOOK_02_git_repository_gitbook_연동.md)
 - [MacBook 초기 설정](91_macbook_initial_setting/README.md)
   - [초기 시스템 설정](91_macbook_initial_setting/00_initial_setting.md)
   - [Python과 pyenv](91_macbook_initial_setting/01_python.md)
@@ -383,7 +386,6 @@
   - [Apache에서 앱 버전 정보 가져오기](99_etc/etc_025_apache_서버에서_앱_버전_정보_가져오기.md)
   - [애플리케이션 버전 정보](99_etc/etc_026_app_version_정보의_의미.md)
   - [Codex MCP 등록](99_etc/etc_027_codex_mcp_등록.md)
-  - [Git Repository와 GitBook 연동](99_etc/etc_028_git_repository_gitbook_연동.md)
 
 ## 프론트엔드 학습 노트
 
