@@ -1,24 +1,24 @@
-# AWS Developer Associate 학습 노트
+# AWS 이론/시험 학습노트
 
 AWS Certified Developer – Associate 범위의 핵심 서비스를 주제별로 정리한다. 이 문서는
 학습용 노트이며, 시험 범위와 서비스 동작은 AWS 공식 문서의 최신 버전을 기준으로 확인한다.
 
 ## 학습 범위
 
-- [기본 개념: 리전, AZ, IAM, AMI](00_BASIC/001_지역_및_AZ.md)
-- [EC2](01_EC2/003_EC2_01.md)
-- [EBS](02_EBS/004_EBS_A.md)
-- [EFS](03_EFS/004_EFS_A.md)
-- [RDS와 캐시](04_RDS/001_RDS_Overview.md)
-- [Route 53](05_ROUTE53/002_Route53_Overview.md)
-- [VPC](06_VPC/001_VPC_overview.md)
-- [S3](07_S3/001_S3_overview.md)
-- [CloudFront](08_CLOUD_FRONT/01_cf_overview.md)
-- [Elastic Beanstalk](10_ELASTIC_BEANSTARK/000_Elastic_Beanstalk_overview.md)
-
-## 제외 범위
-
-이 정리 작업에서는 `09_ECS`, `lambda`, `ELB_ASG`, `sqs` 하위 문서를 변경하지 않는다.
+- [기본 개념](00_BASIC/README.md)
+- [Amazon EC2](01_EC2/README.md)
+- [Amazon EBS](02_EBS/README.md)
+- [Amazon EFS](03_EFS/README.md)
+- [Amazon RDS와 캐시](04_RDS/README.md)
+- [Amazon Route 53](05_ROUTE53/README.md)
+- [Amazon VPC](06_VPC/README.md)
+- [Amazon S3](07_S3/README.md)
+- [Amazon CloudFront](08_CLOUD_FRONT/README.md)
+- [Amazon ECS](09_ECS/README.md)
+- [AWS Elastic Beanstalk](10_ELASTIC_BEANSTARK/README.md)
+- [Elastic Load Balancing과 Auto Scaling](ELB_ASG/README.md)
+- [AWS Lambda](lambda/README.md)
+- [Amazon SQS](sqs/README.md)
 
 ## 학습 원칙
 

@@ -16,13 +16,12 @@ AWS 서비스의 기본 개념, 실습, 운영 이슈를 정리한다. 서비스
 
 ## AWS Athena
 
-- [Athena 소개](athena/01_Athena란_무엇인가.md)
-- [Athena 실습](athena/02_Athena실습.md)
-- [Athena 문제 해결](athena/03_Athena_Trouble_Shooting.md)
+- [AWS Athena](athena/README.md)
 
 ## AWS BedRock
 
-- [Bedrock 소개](bedrock/01_BedRock이란_무엇인가.md)
-- [Bedrock 설정](bedrock/02_BedRock설정.md)
-- [Bedrock 실습](bedrock/03_BedRock실습.md)
-- [Bedrock 예외 처리](bedrock/private_04_예외처리_1.md)
+- [Amazon Bedrock](bedrock/README.md)
+
+## AWS 자격증 학습
+
+- [AWS Certified Developer - Associate 학습노트](certificate-DVA-CO2/README.md)
