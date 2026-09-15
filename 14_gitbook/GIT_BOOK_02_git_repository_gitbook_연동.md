@@ -50,7 +50,6 @@ git branch --show-current
 developer-note/
 ├── README.md
 ├── SUMMARY.md
-├── getting-started.md
 └── gitbook-docs.yaml
 ```
 
@@ -59,14 +58,7 @@ developer-note/
 ```markdown
 # 개발 노트
 
-개발하면서 배운 내용을 정리하는 문서 사이트입니다.
-```
-
-`getting-started.md`를 새로 만들고 다음을 작성한다.
-
-```markdown
-# 시작하기
-
+개발하면서 학습한 내용을 정리하는 문서 입니다.
 GitHub와 GitBook을 연결해 문서를 관리합니다.
 ```
 
@@ -121,6 +113,18 @@ site:
 | `content.directory` | 문서를 가져올 디렉터리다. `./`는 Project directory 기준이며, 이 예시에서는 저장소 루트다.             |
 
 - `key: space-1`은 연결 후 임의로 바꾸지 않는다. GitBook은 이 값으로 기존 Space를 식별한다.
+- `path` 값은 게시 URL에서 Space를 구분하는 경로다. 예를 들어 사이트 주소가
+  `https://<organization>.gitbook.io/<site>`이고 Space 경로가 `dev-log`이면, 해당 Space의
+  페이지 URL에는 일반적으로 `dev-log` 경로가 포함된다.
+  GitBook의 사이트 이름, Space 제목(`title`), GitHub 저장소명, 브랜치명과 같을 필요가 없다.
+  이 값이 같아야 GitHub Repository에 push 했을 때 동기화가 된다.
+  GitBook에서 Space를 선택하고, Settings > General > Site name 에서 변경 가능하다.
+- 이미 연결된 사이트에서 `path`를 바꾸면 문서 파일의 위치가 바뀌는 것이 아니라 GitBook
+  사이트 구조와 공개 URL 경로를 바꾸는 설정 변경이다. 기존 URL이나 외부 링크에 영향이
+  있을 수 있으므로, 경로를 유지하려면 GitBook에 설정된 Path를 확인한 뒤 같은 값을 사용한다.
+- 동기화할 저장소의 디렉터리는 `path`가 아니라 `content.directory` 및 GitBook 화면의
+  **Content mapping**으로 정한다. 따라서 저장소 루트를 동기화하는 `directory: ./`와
+  `path: dev-log`는 서로 달라도 정상이다.
 - `.gitbook.yaml`은 개별 Space의 읽기 설정이며 `gitbook-docs.yaml`과 역할이 다르다.
 - 이 예시처럼 루트의 `README.md`와 `SUMMARY.md`를 쓰면 기본값으로 동작하므로 추가 생성할 필요가 없다.
   명시적으로 설정할 때의 예시는 다음과 같다.
@@ -139,7 +143,7 @@ structure:
 작성한 파일을 저장한 뒤 저장소 디렉터리에서 실행한다.
 
 ```shell
-git add README.md SUMMARY.md getting-started.md gitbook-docs.yaml
+git add .
 git commit -m "docs: add initial GitBook documentation"
 git push origin main
 ```
