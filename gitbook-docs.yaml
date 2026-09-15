@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: pm1100-log
+  title: swd-note
   structure:
     - type: space
       key: space-1
