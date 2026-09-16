@@ -71,6 +71,7 @@
   - [upstream 설정](04_git/git_011_git-set-upstream.md)
   - [태그 관리](04_git/git_012_git-tag.md)
   - [작업 브랜치 체크아웃 상태에서 다른 브랜치의 최신 업데이트 Pull 받기](04_git/git_013_B브랜치에서_A브랜치_최신_pull.md)
+  - [브랜치 보호 설정하기](04_git/git_014_브랜치_보호_설정하기.md)
 
 - [Java](05_java/README.md)
   - [객체지향 프로그래밍의 특징](05_java/기초001_객체지향프로그래밍의특징.md)
