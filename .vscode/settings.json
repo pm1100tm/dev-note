@@ -7,7 +7,13 @@
     "editor.detectIndentation": false
   },
   "editor.formatOnSave": true,
-  "editor.rulers": [92],
+  "files.associations": {
+    ".gitmessage": "git-commit"
+  },
+  "[git-commit]": {
+    "editor.formatOnSave": false
+  },
+  "editor.rulers": [84],
   "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "js/ts.preferences.quoteStyle": "single",

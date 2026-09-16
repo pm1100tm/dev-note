@@ -15,10 +15,10 @@ git pull --ff-only
 git pull --rebase
 ```
 
-| 명령 | 결과 |
-| --- | --- |
-| `git fetch` | `origin/main` 같은 원격 추적 브랜치만 갱신한다. |
-| `git pull` | fetch 후 merge 또는 rebase를 수행한다. |
+| 명령                 | 결과                                                                |
+| -------------------- | ------------------------------------------------------------------- |
+| `git fetch`          | `origin/main` 같은 원격 추적 브랜치만 갱신한다.                     |
+| `git pull`           | fetch 후 merge 또는 rebase를 수행한다.                              |
 | `git pull --ff-only` | fast-forward가 불가능하면 실패해 의도치 않은 merge commit을 막는다. |
 
 - 변경을 검토하거나 충돌 가능성을 판단할 때는 먼저 `fetch`를 사용한다.
