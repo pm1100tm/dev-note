@@ -5,18 +5,19 @@ Git은 파일 변경 이력을 커밋으로 기록하고, 브랜치와 원격 �
 
 ## 학습 순서
 
-- [브랜치 이름 변경](branch-rename.md)
-- [커밋 메시지 템플릿](commit-message.md)
-- [변경 사항 비교](git-diff.md)
-- [fetch와 pull](git-fetch-pull.md)
-- [로그 조회](git-log.md)
-- [여러 GitHub 계정의 SSH 설정](git-multiple-account-ssh.md)
-- [안전한 강제 push](git-push-force-with-lease.md)
-- [원격 추적 브랜치가 연결되지 않을 때](git-remote-추척이_안될때.md)
-- [원격 저장소 관리](git-remote.md)
-- [파일 삭제와 추적 해제](git-rm.md)
-- [upstream 설정](git-set-upstream.md)
-- [태그 관리](git-tag.md)
+- [브랜치 이름 변경](git_001_branch-rename.md)
+- [커밋 메시지 템플릿](git_002_commit-message.md)
+- [변경 사항 비교](git_003_git-diff.md)
+- [fetch와 pull](git_004_git-fetch-pull.md)
+- [로그 조회](git_005_git-log.md)
+- [여러 GitHub 계정의 SSH 설정](git_006_git-multiple-account-ssh.md)
+- [안전한 강제 push](git_007_git-push-force-with-lease.md)
+- [원격 추적 브랜치가 연결되지 않을 때](git_008_git-remote-추척이_안될때.md)
+- [원격 저장소 관리](git_009_git-remote.md)
+- [파일 삭제와 추적 해제](git_010_git-rm.md)
+- [upstream 설정](git_011_git-set-upstream.md)
+- [태그 관리](git_012_git-tag.md)
+- [다른 브랜치의 최신 업데이트 받기](git_013_B브랜치에서_A브랜치_최신_pull.md)
 
 ## 작업 전 원칙
 
