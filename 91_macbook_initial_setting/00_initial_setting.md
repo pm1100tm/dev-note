@@ -160,7 +160,8 @@ npm install -g ts-node
 download consolas
 edit > font
 
-delete entire line > cmd d
+# Editor Actions
+delete line > cmd d
 duplicate entire line > option shift down
 move line down > option down
 move line up > option down
@@ -180,7 +181,7 @@ clone caret above, below > option, cmd up down
 select next tap > option, cmd right
 select previous tap > option, cmd left
 
-> 단축키가 겹치는게 있으면 안먹을 때 있음
+> 단축키가 겹치는 게 있으면 안먹을 때 있음
 ```
 
 ## MAC
