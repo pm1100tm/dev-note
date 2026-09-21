@@ -12,7 +12,8 @@ if (member.getStatus().equals(MemberStatus.ACTIVE)) {
 ```
 
 겉보기엔 문제없지만, 사실 == 연산자로 비교하는 것이 더 정확하고 안전한 방법입니다.
-오늘은 그 이유를 자세히 정리해보겠습니다.
+
+그 이유를 자세히 정리해보겠습니다.
 
 ---
 
@@ -107,7 +108,7 @@ if (member.getStatus() == MemberStatus.ACTIVE) {
 
 ### ⚡ 6. null 방어가 꼭 필요하다면
 
-가끔 외부 데이터 등으로 인해 null 가능성이 높을 때는 이렇게 써도 됩니다 👇
+외부 데이터 등으로 인해 null 가능성이 높을 때는 아래와 같이 써도 됩니다 👇
 
 ```java
 if (MemberStatus.ACTIVE.equals(member.getStatus())) {
