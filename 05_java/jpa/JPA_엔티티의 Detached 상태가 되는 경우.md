@@ -102,6 +102,7 @@ public class ICTInfoService {
 ### ✅ Detached 상태 해결 방법
 
 - ✔️ 해결 방법 1: @Transactional 사용 (가장 추천!)
+
 ```java
 @Transactional
 public void process(String userId, String newLocalIp) {
@@ -111,7 +112,9 @@ public void process(String userId, String newLocalIp) {
     ictInfo.setLocalIp(newLocalIp); // ✅ Dirty Checking으로 자동 업데이트됨
 }
 ```
+
 - ✔️ 해결 방법 2: merge()를 사용하여 영속 상태로 변경
+
 ```java
 public void process(String userId, String newLocalIp) {
     ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
@@ -121,7 +124,9 @@ public void process(String userId, String newLocalIp) {
     managedEntity.setLocalIp(newLocalIp);
 }
 ```
+
 - ✔️ 해결 방법 3: save() 대신 saveAndFlush() 사용
+
 ```java
 public void process(String userId, String newLocalIp) {
     ICTInfo ictInfo = ictInfoRepository.findByUserId(userId)
@@ -134,9 +139,9 @@ public void process(String userId, String newLocalIp) {
 
 ## 참고: JPA에서 엔티티는 4가지 상태를 가집니다.
 
-|상태|설명|
-|---|---|
-|Transient (비영속, New)|DB에 저장되지 않은 새로운 객체|
-|Managed (영속, Persistent)|JPA가 관리하는 상태|
-|Detached (준영속, Detached)|트랜잭션 종료 후 관리되지 않는 상태|
-|Removed (삭제, Removed)|삭제된 상태|
+| 상태                        | 설명                                |
+| --------------------------- | ----------------------------------- |
+| Transient (비영속, New)     | DB에 저장되지 않은 새로운 객체      |
+| Managed (영속, Persistent)  | JPA가 관리하는 상태                 |
+| Detached (준영속, Detached) | 트랜잭션 종료 후 관리되지 않는 상태 |
+| Removed (삭제, Removed)     | 삭제된 상태                         |

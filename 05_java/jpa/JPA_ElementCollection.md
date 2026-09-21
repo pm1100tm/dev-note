@@ -13,7 +13,6 @@ private List<UserTerms> userTerms;
 
 이 코드는 JPA에서 UserInfo 엔티티가 user_terms 테이블에 매핑된 복합 값 타입(컬렉션) 을 포함하고 있음을 의미한다.
 
-
 ## ✅ 1. @ElementCollection
 
 - 역할: 이 필드가 엔티티가 아닌 값 타입의 컬렉션임을 JPA에 알린다.
@@ -50,13 +49,13 @@ SELECT * FROM user_terms WHERE user_info_id = ?;
 
 ## ✅ 4. 전체 동작 흐름 요약
 
-1.	UserInfo 엔티티를 저장하거나 조회하면,
-2.	JPA는 user_terms 필드를 user_terms 테이블에 매핑하고,
-3.	user_info_id를 외래키로 연결하여 insert/select/delete 작업을 처리합니다.
-4.	UserTerms 클래스는 엔티티가 아닌 값 타입이므로 @Entity가 아닌 @Embeddable로 선언됩니다.
-
+1. UserInfo 엔티티를 저장하거나 조회하면,
+2. JPA는 user_terms 필드를 user_terms 테이블에 매핑하고,
+3. user_info_id를 외래키로 연결하여 insert/select/delete 작업을 처리합니다.
+4. UserTerms 클래스는 엔티티가 아닌 값 타입이므로 @Entity가 아닌 @Embeddable로 선언됩니다.
 
 ---
+
 ## ✳️ 추가 팁
 
 - `@ElementCollection`은 주로 값 객체의 `List`, `Set`, `Map`에 사용한다.

@@ -12,10 +12,9 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [인터페이스의 메서드](기초004_인터페이스에서의_메서드.md)
 - [추상 클래스](기초005_추상클래스.md)
 - [JVM](기초006_JVM.md)
-- [String.toString과 String.valueOf](<java/20260402_01_Java String.toString() vs
-- String.valueOf() 차이 완벽 정리.md>)
-- [Long.valueOf와 Long.parseLong](<java/20260402_02_Java Long.valueOf() vs Long.parseLong() 차이
-- 완벽 정리.md>)
+- [String.toString과 String.valueOf](<java/001_JAVA_Java String.toString() vs String.valueOf() 차이 완벽 정리.md>)
+- [Long.valueOf와 Long.parseLong](<java/002_JAVA_Long.valueOf() vs Long.parseLong() 차이 완벽 정리.md>)
+- [Enum 비교에 `==` 사용하기](<java/004_JAVA_Enum 비교에 == 연산자를 사용해야 하는 이유.md>)
 
 ## Spring과 데이터 접근
 
@@ -41,8 +40,7 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 
 ## 운영과 품질
 
-- [SLF4J로 Spring 로그 작성하기](<etc/001_Spring 로그 제대로 쓰기 — SLF4J의 올바른 사용법.md>)
-- [Enum 비교에 `==` 사용하기](<etc/002_Java Enum 비교에 == 연산자를 사용해야 하는 이유.md>)
+- [SLF4J로 Spring 로그 작성하기](<java/003_JAVA_Spring 로그 제대로 쓰기 — SLF4J의 올바른 사용법.md>)
 - [인터페이스 기반 Validator](validator/001_validator_with_interface.md)
 - [로컬 Jenkins 연동](<jenkins/jenkins001_로컬에서 jenkins 연동하기.md>)
 - [IntelliJ Java 코드 컨벤션](TODO_code_convention.md)

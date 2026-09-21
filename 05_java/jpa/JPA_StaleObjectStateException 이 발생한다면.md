@@ -27,7 +27,6 @@ StaleObjectStateException 은 Hibernate 에서 동시에 같은 엔티티를 수
 
 두 개 이상의 트랜잭션이 거의 동시에 같은 데이터를 수정하면 StaleObjectStateException이 발생 가능.
 
-
 ---
 
 ## 🥲 위의 예시 중에 내가 겪었던 것은 [2. Detached Entity] 문제..
