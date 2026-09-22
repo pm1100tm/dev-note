@@ -7,8 +7,9 @@ CI/CD는 코드 변경을 빌드·테스트·배포로 연결하는 자동화 �
 
 - [GitHub Actions 기본](cicd_github_action.md)
 - [GitHub Actions로 FastAPI 배포](cicd_github_action_fast_api.md)
-- [Jenkins, Docker, AWS EC2 배포](cicd_jenkins_docker_aws_ec2.md)
+- [Jenkins, Docker, AWS EC2 배포](cicd_jenkins_docker_aws.md)
 - [EC2의 Jenkins 성능 이슈](cicd_jenkins_on_ec2_performance_issue.md)
+- [로컬 Jenkins 연동](jenkins/jenkins001_로컬에서 jenkins 연동하기.md)
 
 ## 운영 전 확인
 
