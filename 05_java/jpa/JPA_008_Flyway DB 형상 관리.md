@@ -92,7 +92,7 @@ Spring Boot 애플리케이션에는 Flyway Core와 사용하는 DB에 필요한
 데이터베이스 모듈을 추가합니다. 최근 Flyway는 DB별 지원을 별도 모듈로 제공할 수
 있습니다. 의존성 이름과 버전은 사용하는 Flyway 버전의 공식 문서를 따릅니다.
 
-```kotlin
+```java
 dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-database-postgresql")

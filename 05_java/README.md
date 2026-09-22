@@ -25,8 +25,9 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [JDBC와 DataSource](Theory_002_JDBC_DataSource.md)
 - [트랜잭션](Theory_003_트랜잭션.md)
 - [선언적·명시적 트랜잭션](Theory_004_트랜잭션_선언적_명시적.md)
-- [Spring Boot 프로젝트 구동 과정](Theory_005_Springboot_project_startup_process.md)
+- [Spring Boot 프로젝트 구동 과정](Theory_005_Springboot_startup_process.md)
 - [실행 JAR와 plain JAR](Theory_006_SNAP_jar_plain_jar_차이점.md)
+- [트랜잭션 아웃박스 패턴](etc_001_트랜잭션_아웃박스_패턴.md)
 
 ## JPA와 동시성
 
@@ -40,10 +41,10 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [트랜잭션과 동시성 제어](<jpa/JPA_007_트랜잭션과 동시성 제어.md>)
 - [Flyway DB 형상 관리](<jpa/JPA_008_Flyway DB 형상 관리.md>)
 - [@Transient](jpa/entity-annotation-transient.md)
-- [엔티티의 Detached 상태](<jpa/JPA_엔티티의 Detached 상태가 되는 경우.md>)
-- [StaleObjectStateException](<jpa/JPA_StaleObjectStateException 이 발생한다면.md>)
-- [@ElementCollection](jpa/JPA_ElementCollection.md)
-- [JSONB 타입 설정](jpa/JPA_JSONB_타입_설정하기.md)
+- [엔티티의 Detached 상태](<jpa/JPA_103_엔티티의 Detached 상태가 되는 경우.md>)
+- [StaleObjectStateException](<jpa/JPA_102_StaleObjectStateException 이 발생한다면.md>)
+- [@ElementCollection](jpa/JPA_100_ElementCollection.md)
+- [JSONB 타입 설정](jpa/JPA_101_JSONB_타입_설정하기.md)
 - [낙관락과 비관락](<springboot/20260402_01_Spring Boot 에서 낙관락, 비관락.md>)
 - [낙관락 Best Practice](springboot/20260402*02*낙관락\_Best Practice.md)
 
@@ -52,7 +53,7 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [SLF4J로 Spring 로그 작성하기](<java/003_JAVA_Spring 로그 제대로 쓰기 — SLF4J의 올바른 사용법.md>)
 - [인터페이스 기반 Validator](validator/001_validator_with_interface.md)
 - [로컬 Jenkins 연동](<jenkins/jenkins001_로컬에서 jenkins 연동하기.md>)
-- [IntelliJ Java 코드 컨벤션](TODO_code_convention.md)
+- [IntelliJ Java 코드 컨벤션](etc_999_code_convention_설정.md)
 
 ## 학습 원칙
 
