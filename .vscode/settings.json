@@ -13,7 +13,7 @@
   "[git-commit]": {
     "editor.formatOnSave": false
   },
-  "editor.rulers": [84],
+  "editor.rulers": [82],
   "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "js/ts.preferences.quoteStyle": "single",

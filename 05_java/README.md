@@ -41,13 +41,18 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [CQRS 패턴 적용](<03_jpa/JPA_006_CQRS 패턴 적용.md>)
 - [트랜잭션과 동시성 제어](<03_jpa/JPA_007_트랜잭션과 동시성 제어.md>)
 - [Flyway DB 형상 관리](<03_jpa/JPA_008_Flyway DB 형상 관리.md>)
+- [JPA 완전 정복](03_jpa/JPA_009_완정정복.md)
+- [Spring Data JPA와 JPQL의 차이](03_jpa/JPA_Q_001_DataJPA_JPQL.md)
+- [@Modifying 완벽 정리](03_jpa/JPA_Q_002_Modifying.md)
+- [낙관적 락의 처리 흐름](03_jpa/JPA_Q_003_낙관락의_흐름.md)
+- [영속성 컨텍스트 상태 변이 과정](03_jpa/JPA_Q_004_영속성_컨텍스트_상태_변이_과정.md)
 - [@Transient](03_jpa/JPA_105_entity-annotation-transient.md)
 - [엔티티의 Detached 상태](<03_jpa/JPA_104_엔티티의 Detached 상태가 되는 경우.md>)
 - [StaleObjectStateException](<03_jpa/JPA_103_StaleObjectStateException 이 발생한다면.md>)
 - [@ElementCollection](03_jpa/JPA_101_ElementCollection.md)
 - [JSONB 타입 설정](03_jpa/JPA_102_JSONB_타입_설정하기.md)
 - [낙관락과 비관락](<02_spring/ING_20260402_01_Spring Boot 에서 낙관락, 비관락.md>)
-- [낙관락 Best Practice](02_spring/ING_20260402_02_낙관락_Best Practice.md)
+- [낙관락 Best Practice](02*spring/ING_20260402_02*낙관락\_Best Practice.md)
 
 ## 운영과 품질
 
