@@ -95,6 +95,7 @@
   - [선언적·명시적 트랜잭션](05_java/02_spring/spring_004_트랜잭션_선언적_명시적.md)
   - [Spring Boot 프로젝트 구동 과정](05_java/02_spring/spring_005_스프링_컨테이너_시작_프로세스.md)
   - [실행 JAR와 plain JAR](05_java/02_spring/spring_006_SNAP_jar_plain_jar_차이점.md)
+  - [Spring AOP 완전 정복](05_java/02_spring/spring_007_AOP_완전정복.md)
   - [ORM과 JPA 기초 개념](<05_java/03_jpa/JPA_001_ORM과 JPA 기초 개념.md>)
   - [기본 Entity Mapping](<05_java/03_jpa/JPA_002_기본 Entity Mapping.md>)
   - [연관관계 매핑 기초](<05_java/03_jpa/JPA_003_연관관계 매핑 기초.md>)
