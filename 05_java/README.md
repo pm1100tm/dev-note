@@ -22,12 +22,12 @@ Java 언어의 기초, JVM, Spring Boot, JPA, 트랜잭션과 운영에 필요�
 - [Java 환경 설정](001_Java_환경설정.md)
 - [Spring Boot 프로젝트 만들기](002_SpringBoot_프로젝트_만들기.md)
 - [H2 Database 실습](003_H2DB.md)
-- [Spring 프로젝트 소개](02_spring/001_스프링_프로젝트_소개.md)
-- [JDBC와 DataSource](02_spring/002_JDBC_DataSource.md)
-- [트랜잭션](02_spring/003_트랜잭션.md)
-- [선언적·명시적 트랜잭션](02_spring/004_트랜잭션_선언적_명시적.md)
-- [Spring Boot 프로젝트 구동 과정](02_spring/005_Springboot_startup_process.md)
-- [실행 JAR와 plain JAR](02_spring/006_SNAP_jar_plain_jar_차이점.md)
+- [Spring 프로젝트 소개](02_spring/spring_001_스프링_프로젝트_소개.md)
+- [JDBC와 DataSource](02_spring/spring_002_JDBC_DataSource.md)
+- [트랜잭션](02_spring/spring_003_트랜잭션.md)
+- [선언적·명시적 트랜잭션](02_spring/spring_004_트랜잭션_선언적_명시적.md)
+- [Spring Boot 프로젝트 구동 과정](02_spring/spring_005_스프링_컨테이너_시작_프로세스.md)
+- [실행 JAR와 plain JAR](02_spring/spring_006_SNAP_jar_plain_jar_차이점.md)
 - [트랜잭션 아웃박스 패턴](etc_001_트랜잭션_아웃박스_패턴.md)
 
 ## JPA와 동시성
