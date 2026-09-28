@@ -4,6 +4,7 @@
 
 - [] ECS 이론 정리
 - [] Java/Spring Boot 로 DDD + Hexagonal 구조 CRUD 만들기
+- [] 포트폴리오 만들기 By 노션
 
 ## Main
 
