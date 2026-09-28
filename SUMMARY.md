@@ -435,8 +435,18 @@
 - [python: 소수 판별](snippet/python/check_prime_number.md)
 - [python: 파이썬 버전 체크하기](snippet/python/check_python_version.md)
 - [python: 주어진 n 개의 연속되는 숫자의 존재 여부 판단하기](snippet/python/consecutive_numbers_with_n.md)
+- [snippet: BigInt 활용](temp_react/snippet/BigInt활용.md)
+- [snippet: JavaScript Code Snippet](temp_react/snippet/README.md)
+- [snippet: 무작위 수](temp_react/snippet/무작위수.md)
+- [snippet: 문자열을 뒤집는 방법](<temp_react/snippet/문자열을 뒤집는 방법.md>)
+- [snippet: 소수](temp_react/snippet/소수.md)
+- [snippet: 소인수분해](temp_react/snippet/소인수분해.md)
+- [snippet: 정규식](temp_react/snippet/정규식.md)
+- [snippet: 진수 전환](temp_react/snippet/진수전환.md)
+- [snippet: 특정 문자 개수 세기](<temp_react/snippet/특정 문자 갯수세기.md>)
+- [snippet: 특정 문자가 몇 번 등장하는지](<temp_react/snippet/특정문자가 몇 번 등장하는지.md>)
 
-## 임시 React 학습 자료
+<!-- ## 임시 React 학습 자료
 
 - [Idea-note: Idea Note](temp_react/Idea-note/youtube-next.md)
 - [NestJS: 02.folder-structure](temp_react/NestJS/02.folder-structure.md)
@@ -488,14 +498,4 @@
 - [WEEK09: 통합개발환경 세팅](<temp_react/WEEK09/통합개발환경 세팅.md>)
 - [WEEK11: WEEK11 Note](temp_react/WEEK11/README.md)
 - [WEEK11: 우편번호 검색(주소 검색)](temp_react/WEEK11/우편번호검색.md)
-- [WEEK11: 포트원(PortOne)](temp_react/WEEK11/포트원.md)
-- [snippet: BigInt 활용](temp_react/snippet/BigInt활용.md)
-- [snippet: JavaScript Code Snippet](temp_react/snippet/README.md)
-- [snippet: 무작위 수](temp_react/snippet/무작위수.md)
-- [snippet: 문자열을 뒤집는 방법](<temp_react/snippet/문자열을 뒤집는 방법.md>)
-- [snippet: 소수](temp_react/snippet/소수.md)
-- [snippet: 소인수분해](temp_react/snippet/소인수분해.md)
-- [snippet: 정규식](temp_react/snippet/정규식.md)
-- [snippet: 진수 전환](temp_react/snippet/진수전환.md)
-- [snippet: 특정 문자 개수 세기](<temp_react/snippet/특정 문자 갯수세기.md>)
-- [snippet: 특정 문자가 몇 번 등장하는지](<temp_react/snippet/특정문자가 몇 번 등장하는지.md>)
+- [WEEK11: 포트원(PortOne)](temp_react/WEEK11/포트원.md) -->
