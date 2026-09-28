@@ -12,8 +12,9 @@ brew search temurin
 maturin
 
 ==> Casks
-temurin ✔              temurin@11 ✔           temurin@17             temurin@19
-temurin@20             temurin@21             temurin@8 ✔
+==> Casks
+temurin                          temurin@17 ✔                     temurin@20 (disabled)            temurin@25 ✔
+temurin@11                       temurin@19 (disabled)            temurin@21 ✔                     temurin@8
 
 # 설치
 brew install --cask temurin@8
@@ -21,8 +22,6 @@ brew install --cask temurin@11
 brew install --cask temurin@17
 brew install --cask temurin@21
 ```
-
-> 📚 주로 많이 사용되는 자바 버전은 8, 11, 17, 21 버전입니다.
 
 ### 자바가 설치된 위치 확인
 
@@ -52,14 +51,6 @@ $ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
 $ echo 'eval "$(jenv init -)"' >> ~/.zshrc
 ```
 
-### jenv의 Export Plugin 설치
-
-JAVA_HOME 자동 설정 플러그인 활성화
-
-```shell
-$ jenv enable-plugin export
-```
-
 ### jenv 설치 확인
 
 ```shell
@@ -85,7 +76,7 @@ See `jenv help <command>' for information on a specific command.
 For full documentation, see: https://github.com/jenv/jenv/blob/master/README.md
 ```
 
-### jenv 활용하기
+### jenv 에 설치한 java 버전 등록하기
 
 ```shell
 # 현재 설치된 자바 확인
@@ -153,68 +144,6 @@ brew install openjdk@17
 ```
 
 > 📚 openJDK 8설치는 Apple Silicon Chip 환경에서 설치 오류가 발생합니다.
->
-> - 이 부분은 나중에 알아보도록 합니다.
-
----
-
-## jenv enable-plugin export 명령어 실행이 안될 경우
-
-```shell
-$ jenv enable-plugin export
-jenv: no such command `enable-plugin' 가 표시되는 경우
-```
-
-원인은 보통 둘 중 하나입니다.
-
-- 1. jenv 초기화가 현재 셸에 적용되지 않음
-- 2. Homebrew로 설치한 jenv가 아니라 예전에 설치된 다른 jenv가 PATH에서 먼저 잡힘
-
-먼저 확인:
-
-```shell
-which -a jenv
-jenv --version
-jenv commands | grep plugin
-
-# enable-plugin이 목록에 안 나오면 현재 잡힌 jenv가 정상 설치본이 아니거나 오래된 설치본일 가능성이 큽니다.
-```
-
-해결 순서:
-
-```plain
-# 1. Homebrew jenv 재설치
-brew reinstall jenv
-
-# 2. zsh 설정 확인
-vi ~/.zshrc
-
-~/.zshrc에 아래가 있어야 합니다.
-
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-저장 후 현재 셸에 적용합니다.
-
-exec $SHELL -l
-
-다시 확인합니다.
-
-jenv commands | grep plugin
-
-이제 아래 명령이 동작해야 합니다.
-
-만약 여전히 안 되면 which -a jenv 결과에서 여러 개가 나올 가능성이 높습니다.
-그 경우 Homebrew 경로가 먼저 잡히도록 확인하세요.
-
-Apple Silicon 기준:
-
-which jenv
-
-정상 예시:
-
-/opt/homebrew/bin/jenv
-```
 
 ## 왜 brew 로 Java 를 설치할 때 --cask 로 설치하는가?
 
@@ -273,5 +202,5 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk \
 | Cask      | brew install --cask temurin@17 | macOS 표준 JDK 설치 방식, 추천                       |
 | Formula   | brew install openjdk@17        | Homebrew 내부 경로 설치, symlink/PATH 추가 필요 가능 |
 
-Java 개발 환경에서는 Temurin Cask 방식이 더 실무적으로 편합니다.
-GUI 앱은 아니지만 macOS 패키지/번들 설치 방식이라 cask로 관리한다고 보면 됩니다.
+- Java 개발 환경에서는 Temurin Cask 방식이 더 실무적으로 편합니다.
+- GUI 앱은 아니지만 macOS 패키지/번들 설치 방식이라 cask로 관리한다고 보면 됩니다.
