@@ -36,6 +36,7 @@ https://brew.sh/index_ko
   https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew update
+brew upgrade
 ```
 
 환경 변수 설정:
@@ -59,9 +60,9 @@ chrome, kakao talk, pycharm, datagrip, web storm, docker, runjs, slack, notion
 brew install wget
 brew install cask
 brew install iterm2
-brew install —cask sublime-text
-brew install —cask visual-studio-code
-brew install —cask postman
+brew install --cask sublime-text
+brew install --cask visual-studio-code
+brew install --cask postman
 brew install node (node -v, npm -v)
 ```
 
@@ -163,8 +164,6 @@ edit > font
 # Editor Actions
 delete line > cmd d
 duplicate entire line > option shift down
-move line down > option down
-move line up > option down
 
 move caret to text start > cmd up
 select first row
@@ -180,6 +179,10 @@ move caret to line end with selection > cmd shift right
 clone caret above, below > option, cmd up down
 select next tap > option, cmd right
 select previous tap > option, cmd left
+
+# main menu > code
+Move Line down > option down
+Move Line up > option down
 
 > 단축키가 겹치는 게 있으면 안먹을 때 있음
 ```

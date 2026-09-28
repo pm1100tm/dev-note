@@ -1,6 +1,14 @@
 # 키보드 with Karabiner element 설정
 
+```shell
+# 윈도우
+FN + W
+
+# Mac
+FN + E
 ```
+
+```shell
 FN 1 또는 2 또는 3을 길게 눌러 블루투스 인식되도록
 
 ⬇
