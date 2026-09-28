@@ -184,6 +184,12 @@ select previous tap > option, cmd left
 Move Line down > option down
 Move Line up > option down
 
+# Editor Tabs
+Split and move right > ctrl + cmd + right
+Split and move down > ctrl + cmd + down
+Select Next Tab > option + cmd + right
+Select Previous Tab > option + cmd + left
+
 > 단축키가 겹치는 게 있으면 안먹을 때 있음
 ```
 
