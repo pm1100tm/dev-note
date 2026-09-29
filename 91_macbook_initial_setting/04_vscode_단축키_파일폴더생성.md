@@ -34,14 +34,14 @@
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "cmd+n",
-    "command": "explorer.newFile",
-    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer' && !textInputFocus"
-  },
-  {
     "key": "cmd+shift+n",
     "command": "explorer.newFolder",
-    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer' && !textInputFocus"
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
   }
 ]
 ```

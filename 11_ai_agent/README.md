@@ -11,6 +11,10 @@ AI 코딩 에이전트의 설치, 명령어, 언어 서버 연동 기록을 모�
 - [Codex 지침 경로 설정](codex/004_codex_home_설정하기.md)
 - [Codex에 GitBook MCP 연결](codex/005_codex_gitbook_mcp.md)
 
+## Claude
+
+- [Claude Code CLI 설치와 로그인](claude/claude_001_install.md)
+
 ## Kiro
 
 - [Kiro CLI 설치](kiro/001_kiro-cli-install.md)
