@@ -11,6 +11,8 @@ ECS에서 EC2 Launch Type을 사용할 때는 하나의 클러스터에 여러 E
 
 공식 문서: [Amazon ECS task placement strategies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html)
 
+![ecs_placement_strategy.png](./assets/ecs_placement_strategy.png)
+
 ## 적용 범위와 기본 개념
 
 - 이 기능은 **EC2 Launch Type의 ECS 태스크만** 지원합니다.
@@ -69,6 +71,8 @@ ECS는 다음 순서로 후보를 줄인 뒤 전략을 적용합니다.
 자원이 남게 되는 인스턴스의 태스크를 ECS가 우선 종료합니다. 비어 있는
 인스턴스를 만들기 쉬워 Auto Scaling Group의 축소와도 잘 맞습니다.
 
+![ecs_placement_strategy_binpack](./assets/ecs_placement_strategy_binpack.png)
+
 ### random: 무작위로 선택하기
 
 - `random`은 별도의 기준 필드 없이 실행 가능한 후보 중 하나를 무작위로 선택합니다.
@@ -76,6 +80,8 @@ ECS는 다음 순서로 후보를 줄인 뒤 전략을 적용합니다.
 
 특별한 배치 목표가 없다면 사용할 수 있지만, 운영 요구 사항이 있다면
 의도를 명확히 드러내는 `spread` 또는 `binpack`을 선택하는 편이 좋습니다.
+
+![ecs_placement_strategy_random](./assets/ecs_placement_strategy_random.png)
 
 ### spread: 특정 기준으로 고르게 나누기
 
@@ -93,6 +99,8 @@ ECS는 다음 순서로 후보를 줄인 뒤 전략을 적용합니다.
 배치하려고 합니다.
 
 서비스 축소 시에는 가용 영역 간 균형을 유지하도록 종료 대상을 고르며, 같은 가용 영역 안에서는 무작위로 선택합니다.
+
+![ecs_placement_strategy_spread](./assets/ecs_placement_strategy_spread.png)
 
 ## 전략 조합과 적용 순서
 
@@ -122,6 +130,8 @@ ECS는 다음 순서로 후보를 줄인 뒤 전략을 적용합니다.
 - 배치 전략은 서비스 생성·갱신 또는 `RunTask` 호출에서 지정할 수 있습니다.
 - 변경한 전략은 기존에 실행 중인 태스크를 자동으로 옮기지 않습니다.
 - 새로 배치되는 태스크부터 영향을 받는다는 점을 배포 계획에 반영해야 합니다.
+
+![ecs_placement_strategy_spread](./assets/ecs_placement_strategy_combination.png)
 
 ## 배치 제약 조건과의 차이
 
