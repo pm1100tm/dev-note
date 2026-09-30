@@ -4,12 +4,12 @@
 
 - [] Java/Spring Boot 로 DDD + Hexagonal 구조 CRUD 만들기
 - [] 포트폴리오 만들기 By 노션
-- [] EC2 Launch Type에서는 동적 Host Port Mapping..
 - [] codex 나만의 스킬 만들기
 - [] Spring Batch, Scheduled, Quartz, Spring Cloud
 
 ## 학습할 블로그
 
+- https://wikidocs.net/
 - [[AWS] 9-2.EC2 SSH 무작위 로그인 시도 막기(무차별 대입 공격 방어)](https://goddaehee.tistory.com/272)
 - [[400 Bad Request] - Header Or Cookie Too Large 해결방법](https://goddaehee.tistory.com/357)
 
