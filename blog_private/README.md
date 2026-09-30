@@ -1,4 +1,4 @@
-# Blog 모음
+# Blog 읽고 정리할 것
 
 - https://www.surfit.io/explore/startup/ai
 - https://www.techblogposts.com/ko
