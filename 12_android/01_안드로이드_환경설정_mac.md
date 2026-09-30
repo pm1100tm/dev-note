@@ -29,7 +29,7 @@ Installed as /Users/swd/Library/Android/sdk/platform-tools/adb
 Running on Darwin 25.6.0 (arm64)
 
 
-emulator --version
+❯ emulator --version
 INFO         | Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
 INFO         | Graphics backend: gfxstream
 ERROR | AVD가 지정되지 않았습니다. `-avd <name>`으로 가상 기기를 선택합니다.

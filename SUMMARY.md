@@ -339,6 +339,7 @@
 
 - [AI Agent](11_ai_agent/README.md)
   - [Claude Code CLI 설치와 로그인](11_ai_agent/claude/claude_001_install.md)
+  - [Claude Code CLI 자주 쓰는 명령어](11_ai_agent/claude/claude_002_cli.md)
   - [Codex CLI 설치](11_ai_agent/codex/001_codex_cli_install.md)
   - [Codex CLI 명령어](11_ai_agent/codex/002_codex_command.md)
   - [Codex 지침 설정](11_ai_agent/codex/003_codex_docs.md)

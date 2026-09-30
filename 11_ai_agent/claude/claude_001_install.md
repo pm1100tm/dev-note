@@ -21,9 +21,11 @@ Claude 데스크톱 앱에서 Claude를 사용할 수 있어도 터미널에서 
 - 작업 폴더의 파일을 읽고 명령을 제안할 수 있으므로, 민감한 정보가 있는 저장소에서는 권한 요청과 변경 내용을
   검토합니다.
 
-계정과 플랫폼 요구 사항은
-[Claude Code 공식 설치 문서](https://code.claude.com/docs/en/setup)에서
-확인할 수 있습니다. 설치 오류가 있으면 해당 문서도 함께 확인합니다.
+계정과 플랫폼 요구 사항 확인
+
+- [Claude Code 공식 설치 문서](https://code.claude.com/docs/en/setup)에서
+
+설치 오류가 있으면 해당 문서도 함께 확인합니다.
 
 ## macOS에 설치하기
 
@@ -162,9 +164,11 @@ claude doctor
 `claude doctor`는 대화 세션을 시작하지 않고 설치 상태, 설정 파일 오류, 업데이트 관련 경고를 읽기
 전용으로 보여 줍니다.
 
-설치 경로가 `PATH`에 없다는 메시지가 나오면 공식 문서의
-[설치 및 로그인 문제 해결 안내](https://code.claude.com/docs/en/troubleshooting)를
-따라 현재 사용하는 셸의 PATH를 설정합니다.
+설치 경로가 `PATH`에 없다는 메시지가 나오면 공식 문서를 참고합니다.
+
+- [설치 및 로그인 문제 해결 안내](https://code.claude.com/docs/en/troubleshooting)를
+
+위의 문서에 따라서 따라 현재 사용하는 셸의 PATH를 설정합니다.
 
 로그인 창이 열리지 않거나 인증에 실패하면 네트워크 연결, 지원 국가,
 계정의 Claude Code 사용 권한을 순서대로 확인합니다. 회사 계정은
