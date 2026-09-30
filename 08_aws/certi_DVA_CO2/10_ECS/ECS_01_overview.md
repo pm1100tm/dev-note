@@ -14,8 +14,8 @@
 
 ## ECS란?
 
-ECS(Elastic Container Service)는 AWS 컨테이너 오케스트레이션 서비스입니다.
-공식 설명 기준으로 ECS는 컨테이너를 실행, 중지, 관리하는 확장 가능한 컨테이너 관리 서비스입니다.
+- ECS(Elastic Container Service)는 AWS 컨테이너 오케스트레이션 서비스입니다.
+- 공식 설명 기준으로 ECS는 컨테이너를 실행, 중지, 관리하는 확장 가능한 컨테이너 관리 서비스입니다.
 
 ECS는 다음과 같은 일을 합니다.
 
