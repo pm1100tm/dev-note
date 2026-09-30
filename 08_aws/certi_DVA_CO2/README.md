@@ -16,6 +16,7 @@ AWS Certified Developer – Associate 범위의 핵심 서비스를 주제별로
 - [Amazon CloudFront](08_CLOUD_FRONT/README.md)
 - [AWS Elastic Beanstalk](09_ELASTIC_BEANSTARK/README.md)
 - [Amazon ECS](10_ECS/README.md)
+- [AWS CloudFormation](11_CLOUD_FORMATION/README.md)
 - [Elastic Load Balancing과 Auto Scaling](ELB_ASG/README.md)
 - [AWS Lambda](lambda/README.md)
 - [Amazon SQS](sqs/README.md)

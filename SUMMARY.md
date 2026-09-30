@@ -253,6 +253,8 @@
       - [Amazon ECR](08_aws/certi_DVA_CO2/10_ECS/ECS_14_ECR.md)
       - [ENI(Elastic Network Interface)](08_aws/certi_DVA_CO2/10_ECS/ECS_etc_Q_001_ENI란.md)
       - [ECS 분산 환경의 배치 작업](08_aws/certi_DVA_CO2/10_ECS/ECS_etc_Q_002_ECS에서의_배치작업.md)
+    - [AWS CloudFormation](08_aws/certi_DVA_CO2/11_CLOUD_FORMATION/README.md)
+      - [CloudFormation 개요](08_aws/certi_DVA_CO2/11_CLOUD_FORMATION/CLOUD_FORMATION_001_overview.md)
     - [ELB와 Auto Scaling](08_aws/certi_DVA_CO2/ELB_ASG/README.md)
       - [확장성과 고가용성](08_aws/certi_DVA_CO2/ELB_ASG/006_ELB_01_two_scalability_and_high_availability.md)
       - [ELB - 확장성의 두가지 방식과 고가용성](08_aws/certi_DVA_CO2/ELB_ASG/006_ELB_02_scalability_ha_for_EC2.md)
