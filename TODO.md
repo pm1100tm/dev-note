@@ -2,11 +2,11 @@
 
 ## 2026.09.28 월
 
-- [] ECS 이론 정리
 - [] Java/Spring Boot 로 DDD + Hexagonal 구조 CRUD 만들기
 - [] 포트폴리오 만들기 By 노션
 - [] EC2 Launch Type에서는 동적 Host Port Mapping..
 - [] codex 나만의 스킬 만들기
+- [] Spring Batch, Scheduled, Quartz, Spring Cloud
 
 ## 학습할 블로그
 
