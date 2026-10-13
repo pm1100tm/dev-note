@@ -14,6 +14,7 @@ AI 코딩 에이전트의 설치, 명령어, 언어 서버 연동 기록을 모�
 ## Claude
 
 - [Claude Code CLI 설치와 로그인](claude/claude_001_install.md)
+- [Claude Code 잘 사용하는 방법](claude/claude_002_best_practices.md)
 
 ## Kiro
 
