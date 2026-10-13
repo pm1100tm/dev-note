@@ -72,6 +72,7 @@
   - [태그 관리](04_git/git_012_git-tag.md)
   - [작업 브랜치 체크아웃 상태에서 다른 브랜치의 최신 업데이트 Pull 받기](04_git/git_013_B브랜치에서_A브랜치_최신_pull.md)
   - [브랜치 보호 설정하기](04_git/git_014_브랜치_보호_설정하기.md)
+  - [git worktree로 여러 브랜치를 동시에 작업하기](04_git/git_016_git-worktree.md)
 
 - [Java](05_java/README.md)
   - [Java 환경 설정](05_java/001_Java_환경설정.md)
