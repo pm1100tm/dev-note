@@ -5,8 +5,12 @@ Kubernetes의 핵심 구조, Pod, Service, Ingress, HPA와 로컬 학습 환경�
 
 ## 기본 개념
 
-- [Kubernetes 개요](001_kube_overview.md)
-- [Horizontal Pod Autoscaler](002_kube_HPA.md)
+- [Kubernetes 개요](KUBE_001_overview.md)
+- [Horizontal Pod Autoscaler](KUBE_002_HPA.md)
+
+## 실무 기록
+
+- [EKS KEDA cron 트리거 배포 확인](WORK_001_EKS_KEDA_CRON_트리거_배포_확인방법.md)
 
 ## 로컬 학습
 
