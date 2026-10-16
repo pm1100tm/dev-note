@@ -15,24 +15,24 @@ AWS CloudFormation의 개념을 이해하고, 직접 템플릿을 작성해 스�
 
 ## 챕터 구성
 
-| 번호 | 문서                                                                                                          | 다루는 내용                                                     | 슬라이드 |
-| ---- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | -------- |
-| 001  | [CloudFormation 개요](CLOUD_FORMATION_001_overview.md)                                                         | 선언형 IaC, 장점, Infrastructure Composer (기존 문서 유지)      | 380~384  |
-| 002  | [동작 방식과 배포 방법](CLOUD_FORMATION_002_how_it_works_and_deploy.md)                                       | 템플릿 업로드, 스택, 수동 배포와 자동 배포                      | 385~386  |
-| 003  | [템플릿 구성 요소와 YAML 기초](CLOUD_FORMATION_003_template_structure_and_yaml.md)                            | 템플릿 섹션, YAML 문법                                          | 387, 389 |
-| 004  | [첫 실습: EC2와 보안 그룹 스택](CLOUD_FORMATION_004_hands_on_first_stack.md)                                  | AWS CLI로 스택 생성·변경·삭제                                   | 388, 392 |
-| 005  | [Resources](CLOUD_FORMATION_005_resources.md)                                                                 | 리소스 타입, 공식 문서 읽는 법, Macro와 Custom Resource 개념    | 390~393  |
-| 006  | [Parameters](CLOUD_FORMATION_006_parameters.md)                                                               | 파라미터 타입과 제약 조건, `Ref`, Pseudo Parameters             | 394~399  |
-| 007  | [Mappings](CLOUD_FORMATION_007_mappings.md)                                                                   | `Fn::FindInMap`, Mappings와 Parameters 선택 기준                | 400~402  |
-| 008  | [Outputs와 Cross-Stack Reference](CLOUD_FORMATION_008_outputs_and_cross_stack.md)                            | `Export`, `Fn::ImportValue`, 스택 간 참조 제약                  | 403~405  |
-| 009  | [Conditions](CLOUD_FORMATION_009_conditions.md)                                                               | 조건 정의와 적용, 조건 함수                                     | 406~408  |
-| 010  | [Intrinsic Functions](CLOUD_FORMATION_010_intrinsic_functions.md)                                             | `Ref`, `Fn::GetAtt`, `Fn::Sub`, `Fn::Base64` 등 내장 함수       | 409~415  |
-| 011  | [Rollbacks](CLOUD_FORMATION_011_rollbacks.md)                                                                 | 생성·업데이트 실패 시 롤백, `ContinueUpdateRollback`            | 416      |
-| 012  | [Service Role과 Capabilities](CLOUD_FORMATION_012_service_role_and_capabilities.md)                           | `iam:PassRole`, `CAPABILITY_IAM`, `CAPABILITY_AUTO_EXPAND`      | 417~418  |
-| 013  | [DeletionPolicy](CLOUD_FORMATION_013_deletion_policy.md)                                                      | `Delete`, `Retain`, `Snapshot`                                  | 419~421  |
-| 014  | [Stack Policy와 Termination Protection](CLOUD_FORMATION_014_stack_policy_and_termination_protection.md)       | 업데이트 보호와 삭제 보호                                       | 422~423  |
-| 015  | [Custom Resources](CLOUD_FORMATION_015_custom_resources.md)                                                   | `ServiceToken`, Lambda 기반 사용자 정의 리소스                  | 424~426  |
-| 016  | [StackSets](CLOUD_FORMATION_016_stacksets.md)                                                                 | 여러 계정·리전에 같은 스택 배포                                 | 427      |
+| 번호 | 문서                                                                                                    | 다루는 내용                                                  | 슬라이드 |
+| ---- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| 001  | [CloudFormation 개요](CLOUD_FORMATION_001_overview.md)                                                  | 선언형 IaC, 장점, Infrastructure Composer (기존 문서 유지)   | 380~384  |
+| 002  | [동작 방식과 배포 방법](CLOUD_FORMATION_002_how_it_works_and_deploy.md)                                 | 템플릿 업로드, 스택, 수동 배포와 자동 배포                   | 385~386  |
+| 003  | [템플릿 구성 요소와 YAML 기초](CLOUD_FORMATION_003_template_structure_and_yaml.md)                      | 템플릿 섹션, YAML 문법                                       | 387, 389 |
+| 004  | [첫 실습: EC2와 보안 그룹 스택](CLOUD_FORMATION_004_hands_on_first_stack.md)                            | AWS CLI로 스택 생성·변경·삭제                                | 388, 392 |
+| 005  | [Resources](CLOUD_FORMATION_005_resources.md)                                                           | 리소스 타입, 공식 문서 읽는 법, Macro와 Custom Resource 개념 | 390~393  |
+| 006  | [Parameters](CLOUD_FORMATION_006_parameters.md)                                                         | 파라미터 타입과 제약 조건, `Ref`, Pseudo Parameters          | 394~399  |
+| 007  | [Mappings](CLOUD_FORMATION_007_mappings.md)                                                             | `Fn::FindInMap`, Mappings와 Parameters 선택 기준             | 400~402  |
+| 008  | [Outputs와 Cross-Stack Reference](CLOUD_FORMATION_008_outputs_and_cross_stack.md)                       | `Export`, `Fn::ImportValue`, 스택 간 참조 제약               | 403~405  |
+| 009  | [Conditions](CLOUD_FORMATION_009_conditions.md)                                                         | 조건 정의와 적용, 조건 함수                                  | 406~408  |
+| 010  | [Intrinsic Functions](CLOUD_FORMATION_010_intrinsic_functions.md)                                       | `Ref`, `Fn::GetAtt`, `Fn::Sub`, `Fn::Base64` 등 내장 함수    | 409~415  |
+| 011  | [Rollbacks](CLOUD_FORMATION_011_rollbacks.md)                                                           | 생성·업데이트 실패 시 롤백, `ContinueUpdateRollback`         | 416      |
+| 012  | [Service Role과 Capabilities](CLOUD_FORMATION_012_service_role_and_capabilities.md)                     | `iam:PassRole`, `CAPABILITY_IAM`, `CAPABILITY_AUTO_EXPAND`   | 417~418  |
+| 013  | [DeletionPolicy](CLOUD_FORMATION_013_deletion_policy.md)                                                | `Delete`, `Retain`, `Snapshot`                               | 419~421  |
+| 014  | [Stack Policy와 Termination Protection](CLOUD_FORMATION_014_stack_policy_and_termination_protection.md) | 업데이트 보호와 삭제 보호                                    | 422~423  |
+| 015  | [Custom Resources](CLOUD_FORMATION_015_custom_resources.md)                                             | `ServiceToken`, Lambda 기반 사용자 정의 리소스               | 424~426  |
+| 016  | [StackSets](CLOUD_FORMATION_016_stacksets.md)                                                           | 여러 계정·리전에 같은 스택 배포                              | 427      |
 
 ## 학습 순서
 

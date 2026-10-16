@@ -56,7 +56,7 @@ mkdir -p ~/cfn-lab && cd ~/cfn-lab
 같은 디렉터리에 `first-stack.yaml` 파일을 만들고 아래 내용을 저장합니다.
 
 ```yaml
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Description: First CloudFormation stack - EC2 web server with a security group
 
 Parameters:
@@ -117,6 +117,26 @@ Outputs:
 > 22번 포트를 `0.0.0.0/0`으로 열면 전 세계에서 SSH 접속 시도가 들어옵니다. 예제나
 > 블로그 템플릿에 그렇게 되어 있더라도 내 IP(`/32`)로 제한합니다.
 
+> 이 템플릿은 `WebServer`에 `KeyName`(키 페어)을 지정하지 않으므로 `.pem` 키로 SSH 접속할 수
+> 없습니다. 22번 포트로 연결은 되지만 인증 단계에서 `Permission denied (publickey)`로 실패합니다.
+> 이 실습은 `curl`로 80번 포트만 확인하므로 키가 없어도 끝까지 진행할 수 있습니다. 접속이 필요하면
+> 다음 방법 중 하나를 사용합니다.
+>
+> - **키 페어 추가**: `Type: AWS::EC2::KeyPair::KeyName` 파라미터를 만들고 `KeyName: !Ref KeyName`을
+>   지정합니다. 이미 만든 스택에 나중에 추가하면 인스턴스가 **교체(Replacement)** 되어 퍼블릭 DNS도
+>   바뀝니다.
+> - **EC2 Instance Connect**: AL2023 표준 AMI에는 기본으로 설치되어 있어 키 페어 없이
+>   `aws ec2-instance-connect ssh --instance-id <인스턴스_ID> --region ap-northeast-2`로 접속할 수
+>   있습니다. IAM 사용자에게 EC2 Instance Connect 권한이 필요합니다. 내 컴퓨터에서 접속하므로 지금
+>   보안 그룹(내 IP)으로 충분하지만, 콘솔의 **연결 → EC2 Instance Connect**(브라우저 접속)는 AWS 서비스
+>   IP 대역에서 들어오므로 이 보안 그룹으로는 실패합니다.
+
+- 공식 문서:
+  [AWS::EC2::Instance KeyName](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-ec2-instance.html#cfn-ec2-instance-keyname),
+  [EC2 Instance Connect로 접속](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html),
+  [EC2 Instance Connect 사전 요구 사항](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html)
+  (확인일: 2026-10-16)
+
 ### 슬라이드 예제와 다른 점
 
 슬라이드의 예제는 Elastic IP도 함께 만들지만, 이 실습에서는 제외했습니다. 현재 AWS는 퍼블릭 IPv4
@@ -124,10 +144,10 @@ Outputs:
 IP를 인스턴스에 연결하는 리소스는 다음과 같이 선언합니다.
 
 ```yaml
-  WebServerEIP:
-    Type: AWS::EC2::EIP
-    Properties:
-      InstanceId: !Ref WebServer
+WebServerEIP:
+  Type: AWS::EC2::EIP
+  Properties:
+    InstanceId: !Ref WebServer
 ```
 
 - 근거:
@@ -217,21 +237,21 @@ curl http://<PublicDnsName>
 `WebServer` 리소스 `Properties` 아래에 `Tags`를 추가합니다.
 
 ```yaml
-  WebServer:
-    Type: AWS::EC2::Instance
-    Properties:
-      ImageId: !Ref LatestAmiId
-      InstanceType: t3.micro
-      SecurityGroupIds:
-        - !GetAtt WebServerSecurityGroup.GroupId
-      Tags:
-        - Key: Name
-          Value: cfn-first-web-server
-      UserData: !Base64 |
-        #!/bin/bash
-        dnf install -y httpd
-        echo "<h1>Hello from CloudFormation</h1>" > /var/www/html/index.html
-        systemctl enable --now httpd
+WebServer:
+  Type: AWS::EC2::Instance
+  Properties:
+    ImageId: !Ref LatestAmiId
+    InstanceType: t3.micro
+    SecurityGroupIds:
+      - !GetAtt WebServerSecurityGroup.GroupId
+    Tags:
+      - Key: Name
+        Value: cfn-first-web-server
+    UserData: !Base64 |
+      #!/bin/bash
+      dnf install -y httpd
+      echo "<h1>Hello from CloudFormation</h1>" > /var/www/html/index.html
+      systemctl enable --now httpd
 ```
 
 바로 반영하기 전에 어떤 변경이 일어나는지 먼저 보고 싶다면 `--no-execute-changeset`을 붙여 변경
@@ -350,3 +370,144 @@ B
 스택 밖에서 리소스를 직접 바꿔 템플릿과 실제 상태가 달라진 것을 드리프트라고 합니다. CloudFormation은
 드리프트 감지 기능으로 차이를 확인할 수 있으며, 근본적으로는 모든 변경을 템플릿으로 관리해야 합니다. 롤백은 배포
 실패 시 이전 상태로 되돌리는 동작이고, 스택 정책은 스택 업데이트 중 특정 리소스 변경을 막는 기능입니다.
+
+## 부록: 키 페어를 포함한 템플릿 예시
+
+본문 템플릿은 `KeyName`이 없어 `.pem` 키로 SSH 접속할 수 없습니다. 아래 예시는 기존 키 페어 이름을
+파라미터로 받아 인스턴스에 연결하므로, 배포 후 `ssh -i`로 접속할 수 있습니다. 본문 실습 스택과 섞이지
+않도록 파일 이름과 스택 이름을 따로 씁니다.
+
+### 1. 키 페어 만들기
+
+키 페어는 스택 밖에서 미리 만듭니다. 개인 키(`.pem`)는 만들 때 한 번만 받을 수 있으므로 잘 보관합니다.
+
+```shell
+cd ~/cfn-lab
+
+aws ec2 create-key-pair \
+  --key-name cfn-lab-key \
+  --key-type rsa \
+  --key-format pem \
+  --query "KeyMaterial" \
+  --output text \
+  --region ap-northeast-2 > cfn-lab-key.pem
+
+chmod 400 cfn-lab-key.pem
+```
+
+- `chmod 400`으로 내 계정만 읽을 수 있게 해야 합니다. 권한이 넓으면 SSH가 키 사용을 거부합니다.
+- `.pem` 파일은 저장소나 공유 폴더에 올리지 않습니다.
+
+### 2. 템플릿 작성
+
+`~/cfn-lab/first-stack-with-key.yaml` 파일을 만듭니다. 본문 템플릿과 달라진 부분에는 `# 추가` 주석을
+달았습니다.
+
+```yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: EC2 web server with a security group and an existing key pair
+
+Parameters:
+  SshCidr:
+    Type: String
+    Description: SSH 접속을 허용할 내 공인 IP (예시 형식 203.0.113.10/32)
+    AllowedPattern: '^(\d{1,3}\.){3}\d{1,3}/\d{1,2}$'
+    ConstraintDescription: CIDR 형식(예 203.0.113.10/32)으로 입력해야 합니다.
+  KeyName: # 추가
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: 인스턴스에 연결할 기존 EC2 키 페어 이름
+  LatestAmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+
+Resources:
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH from my IP and HTTP from anywhere
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref SshCidr
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  WebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: t3.micro
+      KeyName: !Ref KeyName # 추가
+      SecurityGroupIds:
+        - !GetAtt WebServerSecurityGroup.GroupId
+      UserData: !Base64 |
+        #!/bin/bash
+        dnf install -y httpd
+        echo "<h1>Hello from CloudFormation</h1>" > /var/www/html/index.html
+        systemctl enable --now httpd
+
+Outputs:
+  PublicDnsName:
+    Description: 웹 서버 퍼블릭 DNS 이름
+    Value: !GetAtt WebServer.PublicDnsName
+  SshCommand: # 추가
+    Description: SSH 접속 명령
+    Value: !Sub 'ssh -i ${KeyName}.pem ec2-user@${WebServer.PublicDnsName}'
+```
+
+- `AWS::EC2::KeyPair::KeyName`: CloudFormation이 제공하는 AWS 전용 파라미터 타입입니다. 배포하는
+  계정과 리전에 실제로 있는 키 페어 이름만 받으며, 콘솔에서는 드롭다운 목록으로 고를 수 있습니다.
+- `KeyName: !Ref KeyName`: 인스턴스를 시작할 때 이 키 페어의 공개 키를 `ec2-user`에 등록합니다.
+- `SshCommand`: `!Sub`로 키 이름과 퍼블릭 DNS를 끼워 넣어, 출력값을 그대로 복사해 접속할 수 있게
+  했습니다.
+
+### 3. 배포와 접속
+
+```shell
+aws cloudformation deploy \
+  --stack-name cfn-keypair-stack \
+  --template-file first-stack-with-key.yaml \
+  --parameter-overrides \
+    SshCidr=$(curl -s https://checkip.amazonaws.com)/32 \
+    KeyName=cfn-lab-key \
+  --region ap-northeast-2
+
+aws cloudformation describe-stacks \
+  --stack-name cfn-keypair-stack \
+  --query "Stacks[0].Outputs[?OutputKey=='SshCommand'].OutputValue" \
+  --output text \
+  --region ap-northeast-2
+```
+
+두 번째 명령이 출력한 `ssh -i cfn-lab-key.pem ec2-user@ec2-...amazonaws.com`을 `~/cfn-lab`
+디렉터리에서 실행합니다. 처음 접속할 때 호스트 키 확인 질문이 나오면 `yes`를 입력합니다.
+
+- 계정에 없는 키 이름을 넣으면 파라미터 검증 단계에서 배포가 실패합니다.
+- 본문 스택(`cfn-first-stack`)에 `KeyName`을 나중에 추가하면 인스턴스가 **교체(Replacement)** 됩니다.
+  그래서 이 예시는 새 스택으로 만듭니다.
+
+### 4. 정리
+
+키 페어는 스택이 만든 리소스가 아니므로 스택을 삭제해도 남습니다. 실습이 끝나면 따로 지웁니다.
+
+```shell
+aws cloudformation delete-stack \
+  --stack-name cfn-keypair-stack \
+  --region ap-northeast-2
+
+aws cloudformation wait stack-delete-complete \
+  --stack-name cfn-keypair-stack \
+  --region ap-northeast-2
+
+aws ec2 delete-key-pair --key-name cfn-lab-key --region ap-northeast-2
+rm -f cfn-lab-key.pem
+```
+
+- 공식 문서:
+  [EC2 키 페어 만들기](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html),
+  [CloudFormation 제공 파라미터 타입](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-supplied-parameter-types.html),
+  [AWS::EC2::Instance KeyName](https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-ec2-instance.html#cfn-ec2-instance-keyname)
+  (확인일: 2026-10-16)
